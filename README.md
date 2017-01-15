@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+# Skinny Bones Jekyll Starter
 
-You can use the [editor on GitHub](https://github.com/mikebridge/mikebridge.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Just a little something I'm using to jump start a site refresh. I like to think of it as a starter for building your own Jekyll site. I purposely keep the styling minimal and bare to make it easier to add your own flare and markup.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I'm currently using a variation of it on my personal website [Made Mistakes](http://mademistakes.com) with some modifications. To learn more about how to use the theme and install it check out the [Skinny Bones demo](http://mmistakes.github.io/skinny-bones-jekyll/) (*work in progress*).
 
-### Markdown
+![screenshot of Skinny Bones](http://mmistakes.github.io/skinny-bones-jekyll/images/skinny-bones-theme-feature.jpg)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+---
 
-```markdown
-Syntax highlighted code block
+## Notable Features
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mikebridge/mikebridge.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+* Jekyll 3.x and GitHub Pages compatible.
+* Stylesheet built using Sass.
+* Data files for easier customization of the site navigation/footer and for supporting multiple authors.
+* Optional Disqus comments, table of contents, social sharing links, and Google AdSense ads.
+* And more.
