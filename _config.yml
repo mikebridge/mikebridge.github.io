@@ -1,11 +1,11 @@
 # Site wide configuration
 
-title: "My Site"
-description: "This is a description of my awesome site."
+title: "Binder Twine"
+description: "A miscellaneous tech blog."
 logo: # 120x120 px default image used for Twitter summary card
-teaser: # 400x250 px default teaser image used in image archive grid
+teaser: twine-250x250.jpg # 400x250 px default teaser image used in image archive grid
 locale: en
-url:
+# url: https://mikebridge.github.io
 feed:
   path: atom.xml
 
@@ -26,15 +26,15 @@ gems:
 
 # Site owner
 owner:
-  name:
-  email:
-  twitter:
+  name: Mike Bridge
+  email: mike@bridgecanada.com
+  twitter: "@michaelbridge"
   google:
     ad-client:
     ad-slot:
   bio:
   avatar: bio-photo.jpg # 160x160 px image for author byline
-  disqus-shortname:
+  disqus-shortname: mikelbridge
 
 
 include:
