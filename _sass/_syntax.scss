@@ -122,5 +122,13 @@ pre.highlight {
 //Remove extra padding
 .gist table {
   margin-top:0px;
+}
 
+.gist .js-line-number {
+  border-bottom: 0px;
+}
+
+.gist code {
+  border:0;
+  padding: 0;
 }

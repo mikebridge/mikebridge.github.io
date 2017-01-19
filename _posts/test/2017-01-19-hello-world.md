@@ -28,7 +28,8 @@ end
 
 <script src="https://gist.github.com/mikebridge/d93f472596b0d7778e2d826f7b4c74ad.js"></script>
 
-*as gist via jekyll-gist*
+*via [gist-embed](http://blairvanderhoof.com/gist-embed/)*
 
-{% gist mikebridge/d93f472596b0d7778e2d826f7b4c74ad%}
+
+<code data-gist-id="d93f472596b0d7778e2d826f7b4c74ad"></code>
 
