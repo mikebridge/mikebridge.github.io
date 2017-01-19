@@ -124,12 +124,3 @@ pre.highlight {
   margin-top:0px;
 
 }
-
-//Remove hover effect
-.gist tbody
-{
-  tr:hover > td, tr:hover > th {
-    background-color:transparent;
-  };
-  background-color:white; //Background color white
-}
