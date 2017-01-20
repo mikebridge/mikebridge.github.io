@@ -34,7 +34,8 @@ led me to some fascinating projects involving motion-detection and computer-gene
 I don't have much experience in graphics but I wanted to try this out with Microsoft's Kinect 
 and Processing, with the idea that maybe I could incorporate it into a team programming 
 project for kids later on.  I took several wrong turns before I got this working, 
-so here are some directions down the "happy path" for anyone else wants to give it a try.  
+so here are some directions down the "happy path" for anyone else wants to give it a try.
+  
 I'll post later on how to manipulate some Kinect data with this setup.
 
 ### Requirements 
@@ -45,7 +46,7 @@ I'll post later on how to manipulate some Kinect data with this setup.
 - [Kinect SDK 2.0](https://developer.microsoft.com/en-us/windows/kinect)
 
 There are several versions of the Kinect, and I've only tried the second generation Kinect (aka "V2").  
-There was once a *Kinect V2 for Windows* as well as a **Kinect V2 for XBox One**, but the 
+There was once a **Kinect V2 for Windows** as well as a **Kinect V2 for XBox One**, but the 
 Windows version was discontinued in favour of using the XBox One version with an adapter—they 
 realized there was no point in supporting two products.  Both will work, but I'm using
 the standalone XBox One Kinect.
@@ -58,13 +59,13 @@ Mac, but I haven't verified that.
 
 - Download the [Kinect SDK 2.0](https://developer.microsoft.com/en-us/windows/kinect) and 
 install it.  This has some programming libraries as well as a program called Kinect Studio 
-that you can use to try out the Kinect.
-- Set up the Kinect and attach it to the computer, then otest that it's working with Kinect 
+that you can use to try out the Kinect.  (The processing library we install below requires it.)
+- Set up the Kinect and attach it to the computer, then verify that it's working with Kinect 
 Studio.
-- Download and install the [64-bit version of Processing](https://processing.org/download).  
-All you need to do is download the zip file and uncompress it somewhere, e.g. `C:\Program Files\Processing`
-- From the `Sketch -> Import Library... -> Add Library` menu item, type "kinect" in the search box and choose "Kinect V2 for Processing".
-Click "Install"---I have version 0.7.8.
+- Download and install the [64-bit version of Processing](https://processing.org/download).  Download
+the zip file and uncompress it somewhere, e.g. `C:\Program Files\Processing`
+- Launch the program from the `processing.exe` executable, and from the `Sketch -> Import Library... -> Add Library` menu item, type "kinect" in the 
+search box and choose "Kinect V2 for Processing".  Click "Install"---I have version 0.7.8.
 
 <figure>
  	<img src="/images/kinect/kinect-libs.png">
@@ -72,11 +73,11 @@ Click "Install"---I have version 0.7.8.
 
 I had first tried the **Open Kinect for Processing** library, but it seems to have [several problems](https://github.com/shiffman/OpenKinect-for-Processing/issues),
 and I couldn't get it working on either the 32 or 64 bit version.  This is too bad because the [video introduction](http://shiffman.net/p5/kinect/) is pretty good.
-I didn't try [Kinect4WinSDK](https://github.com/chungbwc/Kinect4WinSDK), because it hasn't been modified in several years.
+I didn't try **[Kinect4WinSDK](https://github.com/chungbwc/Kinect4WinSDK)**, because it hasn't been modified in several years.
 
 ### Code
 
-Open up Processing and, copy-and-paste the following code in the window, and click the "Run" icon:
+Open up Processing, copy-and-paste the following code in the window, and click the "Run" icon:
 
 <script src="https://gist.github.com/mikebridge/385e085895e5ef490ee53178995dba6d.js"></script>
 
@@ -87,9 +88,8 @@ If everything went well, you should see a depth map image and a point cloud imag
  	<figcaption>Hello World!</figcaption>
 </figure>
 
-I'll describe what I did in Processing in a future blog post.  In the meantime, have a look at the 
+In the next part of this series I'll describe how to use data that comes in from
+the Kinect to do something interesting.  In the meantime, have a look at the 
 [KinectPV2 documentation on github](https://github.com/ThomasLengeling/KinectPV2).
 
-Cheers!
 
--Mike
