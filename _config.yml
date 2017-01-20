@@ -48,12 +48,11 @@ owner:
   email: mike@bridgecanada.com
   twitter: "@michaelbridge"
   google:
-    ad-client:
-    ad-slot:
+    ad-client: ca-pub-7174560093999812
+    ad-slot: blog
   bio:
   avatar: bio-photo.jpg # 160x160 px image for author byline
   disqus-shortname: mikelbridge
-
 
 include:
   - .htaccess
