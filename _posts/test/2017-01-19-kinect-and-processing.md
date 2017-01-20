@@ -11,7 +11,7 @@ image:
 
 I fell into a discussion with another soccer-dad last weekend as we watched our own children 
 play indoor soccer about teaching kids to code.  I talked about my experiences 
-with [Raspberry Pi](https://www.raspberrypi.org/), [Scratch](https://scratch.mit.edu/), 
+with [Raspberry Pi](https://www.raspberrypi.org/), [Scratch](https://scratch.mit.edu/) and
 [Sonic Pi](http://sonic-pi.net/) at the coding club we set up at my son's school, 
 and I mentioned that after reading *[Generative Art](http://abandonedart.org/)* several 
 years ago I pair-programmed some happy faces with my then-seven-year-old son in 
@@ -26,16 +26,16 @@ Heh, memories. :)
  
 He replied that his
 daughter was involved in dance, and he'd seen that some people use 
-Processing for stage productions and import them into live performances via 
+Processing for stage productions and they incorporate them into live performances via 
 [Isadora](http://troikatronix.com/isadora/about/).  A little post-discussion
 [Googling](https://www.youtube.com/results?search_query=dance+interactive+projection) 
-showed that some dance companies were doing some interesting 
-things with motion-detection and computer-generated art.  
+led me to some fascinating projects involving motion-detection and computer-generated art.  
 
 I don't have much experience in graphics but I wanted to try this out with Microsoft's Kinect 
-and Processing—maybe we can incorporate it into an interesting project for kids later on.  I 
-took several wrong turns before I got this working, so here's a description for anyone else 
-wants to give it a try.  I'll post later on how to manipulate some Kinect data with this setup.
+and Processing, with the idea that maybe I could incorporate it into a team programming 
+project for kids later on.  I took several wrong turns before I got this working, 
+so here are some directions down the "happy path" for anyone else wants to give it a try.  
+I'll post later on how to manipulate some Kinect data with this setup.
 
 ### Requirements 
 - Windows 10
