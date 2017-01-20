@@ -2,7 +2,7 @@
 layout: article
 title: Hello World!
 tags: [test, setup]
-comments: true
+published: false
 ---
 
 hello world.

@@ -1,6 +1,7 @@
 # Site navigation links
 
-- title:
-  url:
-  excerpt:
-  image:
+- title:  Most Recent
+  url: /articles/kinect-and-processing/
+  excerpt: "how to connect a MS Kinect with the Processing environment"
+  image: kinect/first_try_thumb_400x250.png
+
