@@ -7,6 +7,7 @@ comments: true
 excerpt: Set up the graphical programming environment Processing to import motion data from a Microsoft Kinect.
 image: 
   teaser: kinect/first_try_thumb_400x250.png
+ads: true
 ---
 
 I fell into a discussion with another soccer-dad last weekend as we watched our own children 
