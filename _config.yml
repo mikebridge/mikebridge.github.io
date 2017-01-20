@@ -1,6 +1,6 @@
 # Site wide configuration
 
-title: "Binder Twine"
+title: "Binary Twine"
 description: "A miscellaneous tech blog."
 logo: # 120x120 px default image used for Twitter summary card
 teaser: twine-250x250.jpg # 400x250 px default teaser image used in image archive grid
