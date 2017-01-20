@@ -12,7 +12,7 @@ ads: true
 
 I fell into a discussion with another soccer-dad last weekend as we watched our own children 
 play indoor soccer about teaching kids to code.  I talked about my experiences 
-with [Raspberry Pi](https://www.raspberrypi.org/), [Scratch](https://scratch.mit.edu/) and
+with [Raspberry Pi](https://www.raspberrypi.org/){:target="_blank"}, [Scratch](https://scratch.mit.edu/) and
 [Sonic Pi](http://sonic-pi.net/) at the coding club we set up at my son's school, 
 and I mentioned that after reading *[Generative Art](http://abandonedart.org/)* several 
 years ago I pair-programmed some happy faces with my then-seven-year-old son in 
