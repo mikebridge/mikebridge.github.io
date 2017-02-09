@@ -52,7 +52,7 @@ owner:
     ad-slot: blog
   bio:
   avatar: bio-photo.jpg # 160x160 px image for author byline
-  disqus-shortname: mikelbridge
+  disqus-shortname: mikebridge-github-io
 
 include:
   - .htaccess
