@@ -1,10 +1,10 @@
 ---
 layout: article
-title: SignalR and Akka on DotNet Core
-tags: [signalr, akka, ASP.Net Core, es2016, react, owin, cqrs]
+title: SignalR and Akka.NET on DotNet Core
+tags: [signalr, akka.net, ASP.Net Core, es2016, react, owin, cqrs]
 categories: articles
 comments: true
-excerpt: Configure SignalR and Akka on DotNet Core 
+excerpt: Configure SignalR and Akka.NET on DotNet Core 
 image: 
   teaser: akka/signalr-400x250.png
 ads: true
