@@ -81,7 +81,7 @@ This is just a temporary solution until the new pipeline is supported in SignalR
 
 [`Startup.cs`](https://github.com/mikebridge/AkkaSignalR/blob/master/src/EchoAPI/Startup.cs) will look something like this:
 
-<script src="https://gist.github.com/mikebridge/09197d807600f46919684180dfbc6f6c#file-startup-cs"></script>
+<script src="https://gist.github.com/mikebridge/ecd0bc5f09e8be72750a3b8b2459499f.js"></script>
 
 Note that CORS is configured to allow connections from our Node server, which
 will be running locally on port 3000.
@@ -95,25 +95,25 @@ authentication.
 
 Here's the single message type that this system supports:
 
-<script src="https://gist.github.com/mikebridge/09197d807600f46919684180dfbc6f6c.js#file-echorequest-cs"></script>
+<script src="https://gist.github.com/mikebridge/45c4a28e206b021ea7523b99408b0c7a.js"></script>
 
 The [echo actor](https://github.com/mikebridge/AkkaSignalR/blob/master/src/EchoAPI/Actors/SignalREchoActor.cs) 
 handles the `EchoRequest` messages it receives and sends them back to all the current JavaScript clients. 
 It finds those clients via the `IHubContext`, which it locates using
 `GlobalHost.ConnectionManager.GetHubContext`:
 
-<script src="https://gist.github.com/mikebridge/09197d807600f46919684180dfbc6f6c.js#file-signalrechoactor-cs"></script>
+<script src="https://gist.github.com/mikebridge/02a36532f32da703017e7a7f60ccf919.js"></script>
 
 The Hub passes along client requests to the Echo Actor, and it finds the actor via the ActorSystem.  I'm
 getting the ActorSystem from the Owin environment variable `Context.Request.Environment["akka.actorsystem"]` 
 that we configured in `Startup.cs`, but the [Offical Documentation](https://petabridge.com/blog/akkadotnet-aspnet/) says
 that you can use a global variable to find the Actor instead.
 
-<script src="https://gist.github.com/mikebridge/09197d807600f46919684180dfbc6f6c.js#file-echohub-cs"></script>
+<script src="https://gist.github.com/mikebridge/9635f784309c9c961afbcbaa0de4413f.js"></script>
 
 You will need to adjust the port that the API runs on in [Program.cs](https://github.com/mikebridge/AkkaSignalR/blob/master/src/EchoAPI/Program.cs#L14).
  
-<script src="https://gist.github.com/mikebridge/09197d807600f46919684180dfbc6f6c.js#file-startup-cs"></script>
+<script src="https://gist.github.com/mikebridge/48a09fe197a29e909a085dcb1774688d.js"></script>
 
 ### Miscellaneous Configuration 
 
