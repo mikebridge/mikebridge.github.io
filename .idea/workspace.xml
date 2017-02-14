@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fc73942b-67de-41ca-9b5e-66c0d4c9b06e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_data/navigation.yml" afterPath="$PROJECT_DIR$/_data/navigation.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-02-13-signalr-akka.md" afterPath="$PROJECT_DIR$/_posts/test/2017-02-13-signalr-akka.md" />
     </list>
     <ignored path="mikebridge.github.io.iws" />
@@ -29,8 +28,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-02-13-signalr-akka.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="296">
-                <caret line="137" column="17" lean-forward="true" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
+              <first_editor relative-caret-position="610">
+                <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -82,8 +81,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-01-19-hello-world.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="51">
-                <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+              <first_editor relative-caret-position="381">
+                <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -95,8 +94,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-01-19-kinect-and-processing.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="119">
-                <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="9" />
+              <first_editor relative-caret-position="175">
+                <caret line="82" column="94" lean-forward="true" selection-start-line="82" selection-start-column="94" selection-end-line="82" selection-end-column="94" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -124,10 +123,11 @@
       <find>500</find>
       <find>handlem</find>
       <find>send</find>
-      <find>gist</find>
       <find>---</find>
       <find>package</find>
       <find>still</find>
+      <find>handles</find>
+      <find>gist</find>
     </findStrings>
     <replaceStrings>
       <replace>inary</replace>
@@ -1070,12 +1070,12 @@
       <workItem from="1486179893978" duration="200000" />
       <workItem from="1486614636030" duration="699000" />
       <workItem from="1487010754578" duration="8514000" />
-      <workItem from="1487041006341" duration="12029000" />
+      <workItem from="1487041006341" duration="12444000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56429000" />
+    <option name="totallyTimeSpent" value="56844000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="60" y="82" width="1374" height="844" extended-state="0" />
@@ -1430,28 +1430,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/test/2017-01-19-hello-world.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="51">
-            <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/test/2017-01-19-kinect-and-processing.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="9" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_includes/latest-posts-list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1484,11 +1462,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/test/2017-01-19-kinect-and-processing.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="175">
+            <caret line="82" column="94" lean-forward="true" selection-start-line="82" selection-start-column="94" selection-end-line="82" selection-end-column="94" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/test/2017-01-19-hello-world.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="381">
+            <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/test/2017-02-13-signalr-akka.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="296">
-            <caret line="137" column="17" lean-forward="true" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
+          <first_editor relative-caret-position="610">
+            <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
