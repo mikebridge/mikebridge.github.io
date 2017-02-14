@@ -1,7 +1,10 @@
 # Site navigation links
 
-- title:  Most Recent
+- title:  SignalR & Akka.NET
+  url: /articles/signalr-akka/
+  excerpt: "Configure SignalR and Akka.NET on DotNet Core"
+  image: akka/signalr-400x250.png
+- title: Kinect & Processing
   url: /articles/kinect-and-processing/
-  excerpt: "how to connect a MS Kinect with the Processing environment"
+  excerpt: "Connect a MS Kinect with the Processing environment"
   image: kinect/first_try_thumb_400x250.png
-
