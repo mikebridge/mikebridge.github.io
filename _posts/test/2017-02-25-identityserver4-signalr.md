@@ -6,9 +6,12 @@ tags: [dotnet-core webapi spa jwt identityserver4 react]
 comments: true
 excerpt: Configuring a dotnet core webapi authentication with JWT
 image: 
-  teaser: kinect/first_try_thumb_400x250.png
+  teaser: signalr/token_400x250.png
 ads: true
 ---
+
+
+
 
 One way of authenticating a user for a single page application running on .Net Core
 is to issue JWT tokens via [OpenID](http://openid.net/connect/) and then use them to validate 
