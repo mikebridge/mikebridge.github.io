@@ -6,12 +6,11 @@ tags: [dotnet-core spa jwt identityserver4 react signalr webapi openid-connect]
 comments: true
 excerpt: Configuring SignalR to authenticate via JWT and OpenID Connect
 image: 
-  teaser: kinect/first_try_thumb_400x250.png
+  teaser: signalr/token_400x250.png
 ads: true
 ---
 
 Current SPA applications are more likely to use token-based 
-
 
 
 One way of authenticating a user for a single page application running on .Net Core
@@ -58,6 +57,16 @@ which will allow us later to implement our own backing store.
 All you need from the example is 
 [the IdentityServer project](https://github.com/IdentityServer/IdentityServer4.Samples/tree/dev/Quickstarts/7_JavaScriptClient/src/QuickstartIdentityServer)---
 we can ignore the rest of the solution for now.
+
+IMPORTANT NOTE: To get this to work, you need to upgrade to at least IdentityServer4 version 1.0.2.  
+I'm using 1.1.1.
+([Access tokens required special configuration before](http://stackoverflow.com/questions/41664604/claims-for-identityserver4-user-not-included-in-jwt-and-not-sent-to-web-api))
+
+<pre>
+  "dependencies": {
+    "IdentityServer4": "1.1.1"
+  }
+</pre>
 
 In Visual Studio, you can create an empty Solution and add this new project to it.
 
