@@ -1,14 +1,18 @@
 ---
 layout: article
-title: JWT Authentication in a DotNet Core Single Page App 
+title: JWT Authentication, SignalR and Single Page Applications 
 categories: articles
-tags: [dotnet-core webapi spa jwt identityserver4 react]
+tags: [dotnet-core spa jwt identityserver4 react signalr webapi openid-connect]
 comments: true
-excerpt: Configuring a dotnet core webapi authentication with JWT
+excerpt: Configuring SignalR to authenticate via JWT and OpenID Connect
 image: 
   teaser: kinect/first_try_thumb_400x250.png
 ads: true
 ---
+
+Current SPA applications are more likely to use token-based 
+
+
 
 One way of authenticating a user for a single page application running on .Net Core
 is to issue JWT tokens via [OpenID](http://openid.net/connect/) and then use them to validate 
