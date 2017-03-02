@@ -1,6 +1,11 @@
 # Site navigation links
 
-- title:  Most Recent
+- title:  JWT Authentication, SignalR and Single Page Applications
+  url: /articles/kinect-and-processing/
+  excerpt: "SignalR, OpenID Connect & IdentityServer4"
+  image: signalr/token_400x250.png
+
+- title:  Kinect and Processing
   url: /articles/kinect-and-processing/
   excerpt: "how to connect a MS Kinect with the Processing environment"
   image: kinect/first_try_thumb_400x250.png

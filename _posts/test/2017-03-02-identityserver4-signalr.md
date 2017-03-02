@@ -18,33 +18,41 @@ There are many SaaS services such as [Auth0](https://auth0.com/), [Stormpath](ht
 those in your organization, you should---it will save you a lot of time.  But if you're stuck hosting
 your data yourself you will need to look at a product like [IdentityServer4](https://identityserver.io/) or 
 [ForgeRock](https://www.forgerock.com/).  This blog is the result of my evaluation of 
-[IdentityServer4](https://identityserver.io/). 
+using OpenID Connect with [IdentityServer4](https://identityserver.io/) and integrating it with SignalR.  
+
+**TL;DR** The code for this example is [here](https://github.com/mikebridge/IdentityServer4SignalR/).
+
+<figure>
+ 	<img src="/images/signalr/whosonfirst.png">
+ 	<figcaption>A React Chat App.</figcaption>
+</figure>
 
 Before you get started, you should realize that implementing IdentityServer4 requires a lot 
-of coding.  The spec is huge, the documentation is voluminous and the project maintainers do no 
-hand-holding, so the learning curve is steep.  Caveat Emptor! 
+of coding.  The spec is rather confusing, the documentation is voluminous and the project 
+maintainers don't do much hand-holding, so the learning curve is steep.  Caveat Emptor! 
 
 ## The Basic Idea
 
 The basic idea is this: we send a user from our JavaScript application to a web server 
-running IdentityServer4.  IdentityServer4 hands out two tokens if the user can prove his
-identity somehow, and the user then sends one of those tokens to our API—in this demo, a very 
-simple [SignalR](https://www.asp.net/signalr) Chat App API.  Our API then authenticates the 
-tokens to determine whether the user should have access to a particular API call.
+running IdentityServer4.  IdentityServer4 hands out two tokens to the user if he can 
+prove his identity somehow, and the user then sends one of those tokens to our API—in this 
+demo, a very simple [SignalR](https://www.asp.net/signalr) Chat App API.  Our API then 
+authenticates that token to determine whether the user should have access to a particular API call.
 
-Sounds simple, but there's a lot of configuration to do to get there.
+This sounds simple, but there's a lot of configuration to do to get there.
 
-[JWT](https://jwt.io/introduction/), or **JSON Web Token** is what connects everything 
+**[JWT](https://jwt.io/introduction/)s**, or **JSON Web Tokens** is what connects everything 
 together.  JWT tokens can contain information about the identity of someone (like 
-names, email addresses, etc.) as well as other information, such as permissions or roles.  
-Bits of information contained in the payload of a JWT token are called "claims"—e.g. 
-I claim that my name is "Mike" and I claim to have "admin" access, the issuing server 
-claims that the token expires at midnight, and so on.
+names, email addresses, etc.) as well as other information, such as permissions or roles.  Bits 
+of information contained in the payload of a JWT token are called "claims"—e.g. I claim that 
+my name is "Mike" and I claim to have "admin" access, the issuing server claims that the token 
+expires at midnight, and so on.
 
 Tokens are signed by IdentityServer4 and verified by any app that has access to the
-key---using symmetric or asymmetric signing.  Because asymmetric keys have the advantage 
-that there is no shared secret to protect among all the clients that need to authenticate 
-users, we'll be using them in this demo. 
+right info.  Because asymmetric keys have the advantage that there is no shared secret to protect 
+among all the clients that need to authenticate users, we'll be using them in this demo.
+So in our case, a IdentityServer has a private key, and any client that wishes to identify the
+token will have a public key.
 
 ### IdentityServer4
 
@@ -55,10 +63,10 @@ application accessing IdentityServer---either a native application, a traditiona
 application or a JavaScript-based application.  Each flow is a 
 [**grant type**](http://docs.identityserver.io/en/release/topics/grant_types.html).  Since
 we're using React, we'll use the OpenID Connect Implicit grant type, which was developed
-for that kind of application.  In other grant types, there is client secret that is 
+for that kind of client application.  In other grant types, there is client secret that is 
 *explicitly* passed to identify a client, but since we're passing the information in 
-the clear via javascript, we have to identify client "implicitly" by passing a 
-"redirect URI" from the client to IdentityServer4 (which tells where to redirect
+the clear via javascript, the client identifies itself *implicitly* by passing a 
+"redirect URI" to IdentityServer4 (which tells where to redirect
 the user after the authentication procedure is complete), and IdentityServer4 will check
 that URI against its list of allowed URIs.  There's a good explanation of this 
 [here](https://leastprivilege.com/2016/12/01/new-in-identityserver4-resource-based-configuration/). 
@@ -68,16 +76,16 @@ an **identity token** and an **access token**.  This is apparently for backward-
 reasons, but there are some slight differences---there are some extra security features 
 with Identity Tokens (e.g. nonce validation against cross-site request forgery), but it 
 will be the access tokens that get passed to our SignalR 
-server. [Here's a more complete explanation](http://www.thread-safe.com/2011/11/openid-connect-tale-of-two-tokens.html).
+server. [Here's a more complete explanation.](http://www.thread-safe.com/2011/11/openid-connect-tale-of-two-tokens.html).
   
 ## Set up IdentityServer4
 
 To start using IdentityServer4, you should download one of the 
 [examples](https://github.com/IdentityServer/IdentityServer4.Samples) and use that 
-as a starting point.  The suggested flow for an SPA application is _Implicit_.  If 
+as a starting point.  As I mentioned, the suggested flow for an SPA application is _Implicit_, so if 
 you're using ASP.Net Identity you may want to start with 
-[QuickStart 6](https://github.com/IdentityServer/IdentityServer4.Samples/tree/dev/Quickstarts/6_AspNetIdentity),
-but for this example we'll use [QuickStart 7](https://github.com/IdentityServer/IdentityServer4.Samples/tree/dev/Quickstarts/7_JavaScriptClient)
+[QuickStart 6](https://github.com/IdentityServer/IdentityServer4.Samples/tree/dev/Quickstarts/6_AspNetIdentity).
+But for this example we'll use [QuickStart 7](https://github.com/IdentityServer/IdentityServer4.Samples/tree/dev/Quickstarts/7_JavaScriptClient)
 which will allow us to implement our own backing store later.
 
 All you need from the example is 
