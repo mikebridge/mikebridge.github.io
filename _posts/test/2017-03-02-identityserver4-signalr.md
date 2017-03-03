@@ -1,10 +1,10 @@
 ---
 layout: article
-title: JWT Authentication, SignalR and Single Page Applications 
+title: JWT Tokens, SignalR and Single Page Applications 
 categories: articles
 tags: [dotnet-core spa jwt identityserver4 react signalr webapi openid-connect]
 comments: true
-excerpt: Configuring SignalR to authenticate via JWT and OpenID Connect
+excerpt: Configuring SignalR to authenticate with IdentityServer4 and OpenID Connect
 image: 
   teaser: signalr/token_400x250.png
 ads: true
@@ -17,10 +17,11 @@ There are many SaaS services such as [Auth0](https://auth0.com/), [Stormpath](ht
 [Login Radius](https://www.loginradius.com/) that are pretty easy to set up.  If you can use one of
 those in your organization, you should---it will save you a lot of time.  But if you're stuck hosting
 your data yourself you will need to look at a product like [IdentityServer4](https://identityserver.io/) or 
-[ForgeRock](https://www.forgerock.com/).  This blog is the result of my evaluation of 
-using OpenID Connect with [IdentityServer4](https://identityserver.io/) and integrating it with SignalR.  
+[ForgeRock](https://www.forgerock.com/).  Today's blog entry is the result of my evaluation of 
+integrating OpenID Connect and SignalR using [IdentityServer4](https://identityserver.io/).  
 
-**TL;DR** The code for this example is [here](https://github.com/mikebridge/IdentityServer4SignalR/).
+_**TL;DR** The code for this example is at 
+[https://github.com/mikebridge/IdentityServer4SignalR/](https://github.com/mikebridge/IdentityServer4SignalR/)_.
 
 <figure>
  	<img src="/images/signalr/whosonfirst.png">
@@ -35,11 +36,13 @@ maintainers don't do much hand-holding, so the learning curve is steep.  Caveat 
 
 The basic idea is this: we send a user from our JavaScript application to a web server 
 running IdentityServer4.  IdentityServer4 hands out two tokens to the user if he can 
-prove his identity somehow, and the user then sends one of those tokens to our API—in this 
-demo, a very simple [SignalR](https://www.asp.net/signalr) Chat App API.  Our API then 
-authenticates that token to determine whether the user should have access to a particular API call.
+prove his identity somehow (maybe via social media, maybe via password), and the user then 
+sends one of the tokens he receives to our API—in this demo, a very simple [SignalR](https://www.asp.net/signalr) Chat 
+App API.  Our API then authenticates that token to determine whether the user should have access 
+to a particular API call.
 
-This sounds simple, but there's a lot of configuration to do to get there.
+This sounds simple, but there's a lot of configuration to do to get there.  You may want to check
+out the [previous blog post](/articles/signalr-akka) about configuring SignalR with DotNet Core.
 
 **[JWT](https://jwt.io/introduction/)s**, or **JSON Web Tokens** is what connects everything 
 together.  JWT tokens can contain information about the identity of someone (like 
@@ -49,10 +52,11 @@ my name is "Mike" and I claim to have "admin" access, the issuing server claims 
 expires at midnight, and so on.
 
 Tokens are signed by IdentityServer4 and verified by any app that has access to the
-right info.  Because asymmetric keys have the advantage that there is no shared secret to protect 
+right information.  Because asymmetric keys have the advantage that there is no shared secret to protect 
 among all the clients that need to authenticate users, we'll be using them in this demo.
 So in our case, a IdentityServer has a private key, and any client that wishes to identify the
-token will have a public key.
+token will have the corresponding public 
+key.  (The installation of test keys is described [in the example project](https://github.com/mikebridge/IdentityServer4SignalR/#create-and-install-asymmetric-keys).)
 
 ### IdentityServer4
 
@@ -71,12 +75,12 @@ the user after the authentication procedure is complete), and IdentityServer4 wi
 that URI against its list of allowed URIs.  There's a good explanation of this 
 [here](https://leastprivilege.com/2016/12/01/new-in-identityserver4-resource-based-configuration/). 
 
-One confusing thing: OpenID Connect will generate two JWT tokens with overlapping information: 
+One confusing thing: OpenID Connect generates _two_ JWT tokens with overlapping information: 
 an **identity token** and an **access token**.  This is apparently for backward-compatibility 
-reasons, but there are some slight differences---there are some extra security features 
-with Identity Tokens (e.g. nonce validation against cross-site request forgery), but it 
-will be the access tokens that get passed to our SignalR 
-server. [Here's a more complete explanation.](http://www.thread-safe.com/2011/11/openid-connect-tale-of-two-tokens.html).
+reasons.  Both contain your claims, but there are some slight differences between the two 
+tokens---there are some extra security features with Identity Tokens (e.g. nonce validation against 
+cross-site request forgery), but it will be the access tokens that get passed to our SignalR 
+server. [Here's a more complete explanation](http://www.thread-safe.com/2011/11/openid-connect-tale-of-two-tokens.html).
   
 ## Set up IdentityServer4
 
@@ -106,12 +110,11 @@ that prevented claims from being included in the access token.
 In Visual Studio, create an empty Solution and add this new "IdentityServer" quickstart project to it.
 
 To secure an app, you need to identify the [**resources**](http://docs.identityserver.io/en/release/configuration/resources.html) 
-that you want to protect.  The terminology on this is exceptionally confusing---and 
+that you want to protect.  The terminology on this is somewhat confusing---and 
 [it changed recently from "**scopes**"](https://leastprivilege.com/2016/12/01/new-in-identityserver4-resource-based-configuration/).
-In this app ther are _Identity Resources_, because we will use the user's Id and Name,
-and we there are also _API Resources_.  
+In this app we need _Identity Resources_---the user's Id and Name, as well as _API Resources_---the name of our API.  
 
-For our application we'll use define the profile information we want to receive about the user in `[Config.cs](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Config.cs#L20-L35)` 
+For our application we'll use define the profile information we want to receive about the user in [`Config.cs`](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Config.cs#L20-L35) 
 like this:
 
 <script src="https://gist.github.com/mikebridge/aba639164fdcd09b464fc11815f53efb.js"></script>
@@ -137,14 +140,19 @@ We'll also define our own "IProfileService".  This is not described in the Ident
     
 <script src="https://gist.github.com/mikebridge/93b6fd429dcc71cc831e35dc617b5a34.js"></script>    
 
-Note that we're hardcoding the claims in this example.  Note that we've create a _scope_ called
+Note that we're hardcoding the claims in this example.  And we've create a _scope_ called
 `chatapi`, and a _role_ within that scope called `chatapi.user`.   A _scope_ is a custom set
 of claims, and we're defining a particular claim as a _role_.  The role name is what we'll use later in 
-the familiar [`[Authorize(Roles = "chatapi.user")]`](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/ChatAPI/Hub/EchoHub.cs#L13) 
+the familiar [`[Authorize(Roles="chatapi.user")]`](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/ChatAPI/Hub/EchoHub.cs#L13) 
 annotation in the SignalR Hub.
 
 We can wire all this up during initialization in 
-[Startup.cs](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Startup.cs#L19-L33):
+[Startup.cs](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Startup.cs#L19-L33).
+
+<script src="https://gist.github.com/mikebridge/a0e4f9c5381563d341615f16655ac38e.js"></script>
+
+You'll also have to [set up the key pair](https://github.com/mikebridge/IdentityServer4SignalR/#create-and-install-asymmetric-keys)
+if you haven't done that already.
 
 ## Single Page App
 
@@ -152,16 +160,14 @@ Interaction with IdentityServer4 is done with the [oidc-client JavaScript](https
 javascript library.  [My implementation](https://github.com/mikebridge/IdentityServer4SignalR/tree/master/src/Web/src/redux-oidc) 
 is React/Redux-specific so I won't go into it in too much detail.  
 
-<script src="https://gist.github.com/mikebridge/a0e4f9c5381563d341615f16655ac38e.js"></script>
-
 The oidc configuration in the JavaScript client has to match with our Client configuration
 in IdentityServer4.  [Here's](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/Web/src/config/oidcConfig.ts) how I set it up:
 
+<script src="https://gist.github.com/mikebridge/a748d73c689c9d60a7cfc4d719ccdf2e.js"></script>
+
 The "response_type" specifies that we want both an id token and an access token, as per the OpenID
 Connect specification.  The scope is "openid email profile chatapi", which reflects the
- resources that we [configured in the Config.cs](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Config.cs#L20-L43)
-
-<script src="https://gist.github.com/mikebridge/a748d73c689c9d60a7cfc4d719ccdf2e.js"></script>
+resources that we [configured in the Config.cs](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Config.cs#L20-L43)
 
 We will launch the login process here with the 
  
@@ -187,30 +193,30 @@ At the very least, you'll need to save the `user.access_token` to pass through t
 SignalR---this is the JWT access token.  You should have a look at the contents at 
 [http://jwt.io](http://jwt.io).  
  
- ## SignalR: Client-Side
+## SignalR: Client-Side
  
- SignalR wasn't built to interact with token-based authentication.  Your two options
- are: 1) pass the token in the query string or 2) pass the token as a parameter to
- a server-side call.  The first option is a little less yucky, so we'll do that.
+SignalR wasn't built to interact with token-based authentication.  Your two options
+are: 1) pass the token in the query string or 2) pass the token as a parameter to
+a server-side call.  The first option is a little less yucky, so we'll do that.
  
- I also won't describe how to use SignalR, except to note that you'll need
- to set the ".qs" on your HubConnection:
- 
- <pre>
- hubConnection.qs = token ? `authtoken=${user.access_token}` : "";
- </pre>
+I also won't describe how to use SignalR, except to note that you'll need
+to set the ".qs" on your HubConnection:
 
- Annoyingly, you have to disconnect and reconnect if your access_token changes, e.g. 
- it expires and you need to renew it.
+<pre>
+hubConnection.qs = token ? `authtoken=${user.access_token}` : "";
+</pre>
+
+Annoyingly, you have to disconnect and reconnect if your access_token changes, e.g. 
+it expires and you need to renew it.
  
 (My **demo-quality** react connector is [here](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/Web/src/react-signalr/signalrConnector.tsx).)
 
 ## SignalR: Server-Side
 
 If you've gotten this far the last thing to do is to translate the incoming request into 
-the native DotNet core authentication system can handle.  In a WebApi you can use
+something that the native DotNet core authentication system can handle.  In a WebApi you can use
 the [Microsoft.AspNetCore.Authentication.JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/)
-middleware, but to authenticate with SignalR we'll need a little help.
+middleware, but to authenticate with SignalR we'll need to add an extra middleware layer.
 
 My [ChatAPI package.json](https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/ChatAPI/project.json) 
 contains these dependencies:
@@ -268,12 +274,6 @@ add the incompatible WebAPI `Authorize` header by accident!)
     
 </pre>
    
-## Next Steps
-
-There are some complexities with managing expired tokens and unreachable servers that can be handled 
-in React---I'd like to address this in a future blog post.
-
-Also, this process is quite a bit simpler in Auth0.  I'll explain how to take what we have and switch
-it over.
+That's it!  Next up: simplifying this whole thing with _Auth0_.
 
 

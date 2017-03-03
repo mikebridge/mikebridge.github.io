@@ -1,12 +1,16 @@
 # Site navigation links
 
-- title:  JWT Authentication, SignalR and Single Page Applications
-  url: /articles/kinect-and-processing/
-  excerpt: "SignalR, OpenID Connect & IdentityServer4"
+- title:  IdentityServer4 & SPAs
+  url: /articles/identityserver4-signalr/
+  excerpt: "Using OpenId Connect with SPAs and SignalR"
   image: signalr/token_400x250.png
+
+- title:  SignalR & Akka.NET
+  url: /articles/signalr-akka/
+  excerpt: "Configure SignalR and Akka.NET on DotNet Core"
+  image: akka/signalr-400x250.png
 
 - title:  Kinect and Processing
   url: /articles/kinect-and-processing/
-  excerpt: "how to connect a MS Kinect with the Processing environment"
+  excerpt: "Connect a MS Kinect with the Processing environment"
   image: kinect/first_try_thumb_400x250.png
-
