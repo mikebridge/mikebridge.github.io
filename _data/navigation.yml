@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title:  Debugging React-Native
+  url: /articles/intellij-react-native/
+  excerpt: "React Native with IntelliJ for Windows"
+  image: intellij/react-native-400x250.png
+
 - title:  IdentityServer4 & SPAs
   url: /articles/identityserver4-signalr/
   excerpt: "Using OpenId Connect with SPAs and SignalR"

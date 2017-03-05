@@ -6,7 +6,7 @@ categories: articles
 comments: true
 excerpt: Configuring IntelliJ with a React Native Development Environment
 image:
-  teaser: akka/signalr-400x250.png
+  teaser: intellij/react-native-400x250.png
 ads: true
 ---
  
