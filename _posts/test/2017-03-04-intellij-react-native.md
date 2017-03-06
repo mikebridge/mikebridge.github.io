@@ -35,18 +35,17 @@ evaluation.  It's cheap to purchase and it's the best development tool anywhere.
 version is good, but it lacks some essential pieces like JavaScript/TypeScript 
 tools.
 
-### Install the Android SDK Tools
+### Install the Android SDK Tools and set up the Android Emulator
 
 Follow the [IntelliJ instructions for installing the Android SDK Tools](https://www.jetbrains.com/help/idea/2016.3/prerequisites-for-android-development.html).  You
 need to install specific versions of several libraries, so it's best to check there 
 for the most current requirements.  It isn't clear from the instructions—the 
 Android SDK site has changed recently, so it's out-of-synch with the IntelliJ site—but you need to download the 
 [SDK tools](https://developer.android.com/studio/index.html), (e.g. tools_r25.X.X-windows.zip) not the full Android 
-Studio.  This will take several hours.   Go watch Netflix for a while.  When it finally installs, unzip 
-it somewhere and run `tools/android.bat`.  This will launch the Android SDK manager.
-
-
-### Set up the Android Emulator
+Studio.  When it downloads, unzip it somewhere and run `tools/android.bat`.  The directory you create from the downloaded
+file (e.g. `C:\tools_r25.3.3`) will be your `ANDROID_HOME` environment variable.
+   
+From this directory, run `tools/android.bat` This will launch the Android SDK manager.   
 
 Set up [the Google emulator](https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html#alternative-create-a-stock-google-emulator)
 as per Facebook's Instructions. 
@@ -73,7 +72,13 @@ then select the "Dependencies" tab and select "Android 6.0 Google APIs" under "M
 
 Go to `File -> Project Structure -> Platform Settings => SDKs`
 
-- click the "+" sign to add a new sdk
+- click the "+" sign to add a new sdk.  It will prompt you for the location of the 
+"Android SDK Home Path", which is the same as the `ANDROID_HOME` variable you set.
+
+<figure>
+ 	<img src="/images/intellij/create_new_android_sdk.png">
+</figure>
+
 
 Now you should have some tools in `Tools -> Android`.  Turning on 
 `View -> Tool Buttons` is a quick way to enable the AVD 
@@ -83,6 +88,9 @@ Manager in the toolbar.
  	<img src="/images/intellij/avd_manager.png">
  	<figcaption>The Android Toolbar</figcaption>
 </figure>
+
+At this point I also added my `ANDROID_HOME/tools` and `ANDROID_HOME/platform-tools` to my `PATH` so that
+I can use the command line.
 
 ### Create a "Debug Configuration"
 
