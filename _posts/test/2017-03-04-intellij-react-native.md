@@ -13,14 +13,14 @@ ads: true
 Facebook's developers are mostly Apple People, so they don't waste many
 mental cycles fretting over React-Native developers who are on
 other platforms.  I don't like straying too much from the main path
-when it comes to deciding on which tools to uses, so I wondered if it was 
+when it comes to deciding on which tools to use, so I wondered if it was 
 advisable—or even possible—to debug React Native at all on Windows.  Google 
-Search is certainly tight-lipped on what Windows React-Native developers do
+Search didn't reveal much information about what Windows React-Native developers do
 when their app crashes with no error message.  I've read 
 that [debugging can be done from Visual Studio Code](https://github.com/Microsoft/vscode-react-native), but 
 I'd _much_ rather edit JavaScript with a JetBrains editor, so I first tried [Android 
 Studio](https://developer.android.com/studio/index.html).  Unfortunately, AS assumes
-you're developing in Java, and you can only install JavaScript highlighting 
+you're developing in Java, and you can only install basic JavaScript highlighting 
 features on AS, so that wasn't much help. 
 
 Fortunately it IntelliJ Ultimate can be configured to do 
@@ -35,6 +35,8 @@ evaluation.  It's cheap to purchase and it's the best development tool anywhere.
 version is good, but it lacks some essential pieces like JavaScript/TypeScript 
 tools.
 
+Go to `File -> Settings -> Plugins` and make sure the `Android Support` plugin is enabled.
+
 ### Install the Android SDK Tools and set up the Android Emulator
 
 Follow the [IntelliJ instructions for installing the Android SDK Tools](https://www.jetbrains.com/help/idea/2016.3/prerequisites-for-android-development.html).  You
@@ -43,18 +45,19 @@ for the most current requirements.  It isn't clear from the instructions—the
 Android SDK site has changed recently, so it's out-of-synch with the IntelliJ site—but you need to download the 
 [SDK tools](https://developer.android.com/studio/index.html), (e.g. tools_r25.X.X-windows.zip) not the full Android 
 Studio.  When it downloads, unzip it somewhere and run `tools/android.bat`.  The directory you create from the downloaded
-file (e.g. `C:\tools_r25.3.3`) will be your `ANDROID_HOME` environment variable.
+file (e.g. `C:\tools_r25.3.3-windows`) will be your `ANDROID_HOME` environment variable.
    
 From this directory, run `tools/android.bat` This will launch the Android SDK manager.   
 
 Set up [the Google emulator](https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html#alternative-create-a-stock-google-emulator)
 as per Facebook's Instructions.  The interface for this seems confusing—it didn't install everything I checked the first
- time, presumably because several libraries had different EULAs.  Keep clicking "Install X Files" until it's done.
+ time, presumably because several libraries had different EULAs.  Keep clicking the "install" button until 
+ there's nothing left in the queue.
 
 ### React-Native setup
 
 Do all the usual [Node/React-Native setup](https://facebook.github.io/react-native/docs/getting-started.html) if
-you haven't done it already
+you haven't done it already.
 
 ### Create a Project
 
@@ -65,7 +68,8 @@ Create a new project:
 ```
 
 Then open the project in IntelliJ.  It should tell you 
-"Android framework is detected in the project".  
+"Android framework is detected in the project".  If it isn't, you may have to go back and 
+make sure the Android Plugin is enabled.
 
 Go to `File -> Project Structure -> Project Settings -> Project` 
 then select the "Dependencies" tab and select "Android 6.0 Google APIs" under "Project SDK".
@@ -109,7 +113,7 @@ I can use the command line.
 
 Click on the "AVD manager" icon (or find it under `Tools -> Android`), and
 run the [image that you configured](https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html#alternative-create-a-stock-google-emulator)
-for React Native. 
+for React Native.  (I had to restart IntelliJ to enable the AVD manager button the first time.)
 
 When Android boots up, type **Ctrl + M** and select "Debug JS Remotely". (On Apple it's CMD-D).
 
