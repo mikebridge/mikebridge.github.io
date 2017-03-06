@@ -54,6 +54,10 @@ as per Facebook's Instructions.  The interface for this seems confusing—it did
  time, presumably because several libraries had different EULAs.  Keep clicking the "install" button until 
  there's nothing left in the queue.
 
+The second time I ran through this procedure, it told me I couldn't instantiate a virtual 
+device, because "HAXM" was not installed, but the button to install HAXM didn't work.  So I 
+set it up manually from the [Intel Site](https://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager).
+
 ### React-Native setup
 
 Do all the usual [Node/React-Native setup](https://facebook.github.io/react-native/docs/getting-started.html) if
