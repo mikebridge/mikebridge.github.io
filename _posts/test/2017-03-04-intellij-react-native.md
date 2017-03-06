@@ -59,6 +59,8 @@ as per Facebook's Instructions.  The interface for this seems confusing—it did
 Do all the usual [Node/React-Native setup](https://facebook.github.io/react-native/docs/getting-started.html) if
 you haven't done it already.
 
+You may want to install [yarn](https://www.npmjs.com/package/yarn) to speed things up: `npm install -g yarn`.
+
 ### Create a Project
 
 Create a new project:
