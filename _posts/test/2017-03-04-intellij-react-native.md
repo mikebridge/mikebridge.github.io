@@ -48,7 +48,8 @@ file (e.g. `C:\tools_r25.3.3`) will be your `ANDROID_HOME` environment variable.
 From this directory, run `tools/android.bat` This will launch the Android SDK manager.   
 
 Set up [the Google emulator](https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html#alternative-create-a-stock-google-emulator)
-as per Facebook's Instructions. 
+as per Facebook's Instructions.  The interface for this seems confusing—it didn't install everything I checked the first
+ time, presumably because several libraries had different EULAs.  Keep clicking "Install X Files" until it's done.
 
 ### React-Native setup
 
@@ -66,9 +67,11 @@ Create a new project:
 Then open the project in IntelliJ.  It should tell you 
 "Android framework is detected in the project".  
 
+Go to `File -> Project Structure -> Project Settings -> Project` 
+then select the "Dependencies" tab and select "Android 6.0 Google APIs" under "Project SDK".
+
 Go to `File -> Project Structure -> Project Settings -> Modules` 
 then select the "Dependencies" tab and select "Android 6.0 Google APIs" under "Module SDK".
-
 
 Go to `File -> Project Structure -> Platform Settings => SDKs`
 
