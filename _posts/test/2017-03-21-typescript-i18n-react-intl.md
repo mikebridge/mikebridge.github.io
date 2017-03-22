@@ -30,7 +30,7 @@ and the typescript-only library didn't extract the language strings in a format 
 could use.
 
 _**TL;DR** The code for this example is at 
-[https://github.com/mikebridge/articles/react-intl-ts-demo/](https://github.com/mikebridge/articles/react-intl-ts-demo/)_.
+[https://github.com/mikebridge/react-intl-ts-demo/](https://github.com/mikebridge/react-intl-ts-demo/)_.
 
 ## Setup
 
