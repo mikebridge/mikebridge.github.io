@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title:  I18N&colon; TypeScript and React
+  url: /articles/typescript-i18n-react-intl/
+  excerpt: "Using react-intl to internationalize a TypeScript App"
+  image: react-intl/globe-400x250.png
+
 - title:  Debugging React-Native
   url: /articles/intellij-react-native/
   excerpt: "React Native with IntelliJ for Windows"

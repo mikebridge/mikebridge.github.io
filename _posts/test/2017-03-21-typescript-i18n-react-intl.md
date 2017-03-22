@@ -6,7 +6,7 @@ categories: articles
 comments: true
 excerpt: Internationalization with TypeScript & React-Intl
 image:
-  teaser: intellij/react-native-400x250.png
+  teaser: react-intl/globe-400x250.png
 ads: true
 ---
  
@@ -178,10 +178,8 @@ to do with them so I put all these in a separate `.tsx` file:
 
 ## Conclusion
 
-That's what I've discovered so far.  The TypeScript workaround is a bit hacky, so I'm not sure 
-whether I'll use **react-intl** in production—I'll add more to this post as I get more practical experience 
-using it.
-
+I am going to use `react-intl` for a smaller project and see how it goes.   I'll add more info
+here as I get more practical experience with it.
    
    
    
