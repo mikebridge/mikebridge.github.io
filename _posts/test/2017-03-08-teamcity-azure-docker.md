@@ -1,19 +1,99 @@
 ---
 layout: article
-title: TeamCity Server on Azure & Docker, Part 1 
+title: Continuous Deployment for DotNet Core with TeamCity 
+subtitle: Set up TeamCity
 tags: [continuous integration, docker, teamcity, azure, containers, dotnet]
 categories: articles
 comments: true
-excerpt: Set up Continuous Integration on a Azure ACS
+excerpt: Set up CD for DotNet Core, React, TeamCity and Azure
 image:
   teaser: intellij/react-native-400x250.png
 ads: true
 ---
 
-Version 2
+> This is a multi-part blog post describing how to Continuous Deployment
+> for a DotNet Core/React Single Page App using TeamCity, deployed on Azure, and
+> using both Windows & Linux.
+
+## The Goal
+
+We use our own variant of [gitflow](http://nvie.com/posts/a-successful-git-branching-model/), 
+where we have a central "master" branch that always has a working copy of of the application, and
+from which we create small feature branches.  We will merge from "master" to "production" any
+time we want to do a deployment.  
+
+So the goals are:
+ 
+1. Any time a modification is pushed to any branch other than `production`, the test will run and notifications will be sent.
+2. Any time a modification is pushed to a the `production` branch, the web application will be deployed to Azure (and the 
+database migrations will be run).
+
+## Prerequisites
+
+To get this running you need:
+ 
+ - A free Linux machine or VM running Docker, and some basic Linux skills.
+ - An Azure account with an App Service 
+ - A React Single Page Application running on Node
+ - A C# WebApi App  
+ - SQL Server
+ - A GitHub project containing the source.
+ - Visual Studio 2015 or 2017.
+ - DotNet tools
+ - Node
+
+There's some example code on github... (todo)
+
+## Part 1: Set up TeamCity
+
+Here is the way I want this to work:
+
+- Every checkin to github will run all the C# Unit tests, C# Integration tests and JavaScript tests 
+and notify the team of the build status.
+- Every time the production branch is updated, a deployment to Azure is triggered.  This will
+update the C# Api, the Node front end code, and migrate the databases.
+
+So this will run tests:
+
+```
+$ git push origin master
+```
+
+And this will deploy the entire site:
+
+```
+$ git merge master production
+$ git push origin production
+```
+
+Currently, the easiest way to set up TeamCity is via Docker.  I originally set up docker on Azure 
+Container Services, but I could see that was going to be quite a bit more expensive than running
+it on unused hardware in the office.   So now the whole thing runs on an old Dell machine
+under my desk.  Although I'm running Linux containers on a Linux host, most of this will work 
+on Windows containers too without too much modification.  Scripting in Linux is much more 
+mature than on Windows.
+
+So here's a demo project that we'll use to get this running:
+
+__put github proejct here__
+
+This is a very minimal project I created using [https://github.com/wmonk/create-react-app-typescript]
+(the TypeScript fork of Facebook's create-react-app) and a very basic WebApi project.  The goal
+is to deploy the React front-end on Node in Azure, the C# backend on a separate VM in Azure,
+and using Azure SQL.
+
+TeamCity has a server and a set of agents.  There are many ways to set up the agents, but 
+in our simple case we'll run one server container, one agent container and one MSSQL container
+on our docker host.
+
+The server needs two things: a data directory, and an external database.  
+I provisioned a SQL database on Azure and pointed to it, and I created the directory $HOME/data 
+on the host.  I'm using [docker-compose](https://docs.docker.com/compose/), and the server setup 
+is simple enough that it doesn't require a separate Dockerfile.  It 
 
 
-Download from microsoft
+
+
 
 Your machine
 $ scp -i ~/.ssh/azure_rsa sqljdbc_6.0.8112.100_enu.tar.gz ci@teamcity.example.ca:/home/ci
