@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: Testing ReduxObservable Epics
+  url: /articles/typescript-redux-observable-epic-test/
+  excerpt: "Testing ReduxObservable Epics in TypeSCript"
+  image: typescript/redux-observable-400x250.png
+
 - title: Stateless Components in TypeScript
   url: /articles/typescript-react-stateless/
   excerpt: "Typing stateless React components in TypeScript"
