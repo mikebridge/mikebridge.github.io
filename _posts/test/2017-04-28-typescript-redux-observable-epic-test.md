@@ -4,7 +4,7 @@ title: Testing Redux-Observable Epics
 tags: [react typescript redux-observable epic test]
 categories: articles
 comments: true
-excerpt: Examples of Stateless Components in TypeScript
+excerpt: Creating Jest tests for Redux-ObservableAjax Epics
 image:
   teaser: typescript/redux-observable-400x250.png
 ads: true

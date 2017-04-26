@@ -1,8 +1,8 @@
 # Site navigation links
 
-- title: Testing ReduxObservable Epics
+- title: Testing Redux-Observable Epics
   url: /articles/typescript-redux-observable-epic-test/
-  excerpt: "Testing ReduxObservable Epics in TypeSCript"
+  excerpt: "Creating Jest tests for Redux-ObservableAjax Epics"
   image: typescript/redux-observable-400x250.png
 
 - title: Stateless Components in TypeScript
