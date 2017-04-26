@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: Stateless Components in TypeScript
+  url: /articles/typescript-react-stateless/
+  excerpt: "Typing stateless React components in TypeScript"
+  image: typescript/ts-400x250.png
+
 - title:  I18N&colon; TypeScript and React
   url: /articles/typescript-i18n-react-intl/
   excerpt: "Using react-intl to internationalize a TypeScript App"

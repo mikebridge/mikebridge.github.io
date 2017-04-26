@@ -1,7 +1,7 @@
 ---
 layout: article
 title: I18N in React with Typescript & React-Intl
-tags: [intellij react-native windows]
+tags: [intellij react typescript i18n]
 categories: articles
 comments: true
 excerpt: Internationalization with TypeScript & React-Intl
