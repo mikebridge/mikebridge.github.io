@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc73942b-67de-41ca-9b5e-66c0d4c9b06e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_data/navigation.yml" afterPath="$PROJECT_DIR$/_data/navigation.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-03-21-typescript-i18n-react-intl.md" afterPath="$PROJECT_DIR$/_posts/test/2017-03-21-typescript-i18n-react-intl.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md" />
     </list>
     <ignored path="mikebridge.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,12 +23,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="2017-03-21-typescript-i18n-react-intl.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="2017-03-21-typescript-i18n-react-intl.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-03-21-typescript-i18n-react-intl.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="119">
-                <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+              <first_editor relative-caret-position="98">
+                <caret line="61" column="72" lean-forward="false" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -85,12 +82,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2017-04-28-typescript-react-stateless.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="2017-04-28-typescript-react-stateless.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="272">
-                <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <first_editor relative-caret-position="186">
+                <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -207,7 +204,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>strucu</find>
       <find>view -</find>
       <find>google</find>
       <find>Google emulator</find>
@@ -227,7 +223,6 @@
       <find>i18n</find>
       <find>la</find>
       <find>latest</find>
-      <find>latest</find>
       <find>latest p</find>
       <find>latest po</find>
       <find>latest pos</find>
@@ -237,6 +232,8 @@
       <find>s</find>
       <find>site</find>
       <find>site.</find>
+      <find>stateless</find>
+      <find>react compone</find>
     </findStrings>
     <replaceStrings>
       <replace>inary</replace>
@@ -279,8 +276,8 @@
         <option value="$PROJECT_DIR$/_posts/test/2017-03-02-identityserver4-signalr.md" />
         <option value="$PROJECT_DIR$/_posts/test/2017-03-21-typescript-i18n-react-intl.md" />
         <option value="$PROJECT_DIR$/_site/atom.xml" />
-        <option value="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md" />
         <option value="$PROJECT_DIR$/_data/navigation.yml" />
+        <option value="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md" />
       </list>
     </option>
   </component>
@@ -1247,12 +1244,12 @@
       <workItem from="1490199271211" duration="129000" />
       <workItem from="1490199848256" duration="496000" />
       <workItem from="1493226089626" duration="2226000" />
-      <workItem from="1493228329306" duration="278000" />
+      <workItem from="1493228329306" duration="469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107366000" />
+    <option name="totallyTimeSpent" value="107557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="271" y="198" width="1550" height="694" extended-state="0" />
@@ -1729,17 +1726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="272">
-            <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_data/navigation.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1751,8 +1737,19 @@
     <entry file="file://$PROJECT_DIR$/_posts/test/2017-03-21-typescript-i18n-react-intl.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <first_editor relative-caret-position="98">
+            <caret line="61" column="72" lean-forward="false" selection-start-line="61" selection-start-column="72" selection-end-line="61" selection-end-column="72" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="186">
+            <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
             <folding />
           </first_editor>
           <second_editor />
