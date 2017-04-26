@@ -24,7 +24,8 @@ Testing is straightforward with ReduxObservable's
 [dependency injection](https://redux-observable.js.org/docs/recipes/InjectingDependenciesIntoEpics.html) 
 parameter.  In this case, I'm injecting the `ajax.getJSON` property into the epic.
 
-Mocking the AJAX call is easy—either wrap a plain JS object or an Error in an observable.
+Mocking the AJAX call involves either wrapping a plain JS object or a plain JS `Error` in an 
+`Observable`.
 
 <script src="https://gist.github.com/mikebridge/b27933835ddb87b9d859e37419b36801.js"></script>
 

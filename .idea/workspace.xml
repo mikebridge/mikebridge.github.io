@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc73942b-67de-41ca-9b5e-66c0d4c9b06e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_data/navigation.yml" afterPath="$PROJECT_DIR$/_data/navigation.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md" />
     </list>
     <ignored path="mikebridge.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,22 +24,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="navigation.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="navigation.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_data/navigation.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+            <state relative-caret-position="33">
+              <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2017-04-28-typescript-redux-observable-epic-test.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="2017-04-28-typescript-redux-observable-epic-test.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="136">
-                <caret line="8" column="49" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="49" />
+              <first_editor relative-caret-position="36">
+                <caret line="26" column="70" lean-forward="false" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -125,8 +124,8 @@
         <option value="$PROJECT_DIR$/_posts/test/2017-03-21-typescript-i18n-react-intl.md" />
         <option value="$PROJECT_DIR$/_site/atom.xml" />
         <option value="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md" />
-        <option value="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md" />
         <option value="$PROJECT_DIR$/_data/navigation.yml" />
+        <option value="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md" />
       </list>
     </option>
   </component>
@@ -1095,12 +1094,12 @@
       <workItem from="1490199848256" duration="496000" />
       <workItem from="1493226089626" duration="2226000" />
       <workItem from="1493228329306" duration="1682000" />
-      <workItem from="1493237546816" duration="1343000" />
+      <workItem from="1493237546816" duration="1633000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110113000" />
+    <option name="totallyTimeSpent" value="110403000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="271" y="198" width="1550" height="694" extended-state="0" />
@@ -1519,22 +1518,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="136">
-            <caret line="8" column="49" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="49" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/_data/navigation.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_data/navigation.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="36">
+            <caret line="26" column="70" lean-forward="false" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
