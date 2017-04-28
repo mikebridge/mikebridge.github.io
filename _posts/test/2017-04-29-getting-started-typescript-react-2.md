@@ -147,8 +147,10 @@ TypeScript makes [propTypes unnecessary](https://facebook.github.io/react/docs/t
 it will tell you at compile time—or *while you're typing it*, if you're using a TypeScript-aware editor—that you're missing something.  Or if you pass a function with the wrong signature (e.g.
 with missing parameters, or parameters of the wrong type), it will tell you that too.
 
-*Note: My `tslint.json` file is [slightly modified from the default](https://gist.github.com/mikebridge/18353edf15de7d874219bae3cc7c5599).*
+### More Reading
 
-*Coming soon: TypeScript with Redux, Stateless Components and HOCs, which is where things get more interesting.  
+* <a href="/articles/getting-started-typescript-react">Part 1: Getting Started with TypeScript and React</a>
+* Part 2: Simple React Components in TypeScript
+* Coming soon: TypeScript with Redux, Stateless Components and HOCs, which is where things get more interesting.  
 Also: Testing & Continuous Deployment in the cloud with React & TypeScript*
 

@@ -166,4 +166,9 @@ taken the easy road out by casting to `any`.  And I've found that some libraries
 happy to pollute the props of wrapped components---which isn't a big deal if you're working
 in plain JavaScript, but a real source of complexity in TypeScript.
 
-*Coming soon: Creating simple React components with TypeScript.*
+
+### More Reading:
+
+* Part 1: Getting Started with TypeScript and React
+* <a href="/articles/getting-started-typescript-react-2">Part 2: Simple React Components in TypeScript</a>
+* ... more to come

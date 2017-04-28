@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc73942b-67de-41ca-9b5e-66c0d4c9b06e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-01-19-kinect-and-processing.md" afterPath="$PROJECT_DIR$/_posts/test/2017-01-19-kinect-and-processing.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-02-13-signalr-akka.md" afterPath="$PROJECT_DIR$/_posts/test/2017-02-13-signalr-akka.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-03-02-identityserver4-signalr.md" afterPath="$PROJECT_DIR$/_posts/test/2017-03-02-identityserver4-signalr.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-03-04-intellij-react-native.md" afterPath="$PROJECT_DIR$/_posts/test/2017-03-04-intellij-react-native.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-03-21-typescript-i18n-react-intl.md" afterPath="$PROJECT_DIR$/_posts/test/2017-03-21-typescript-i18n-react-intl.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-04-25-typescript-react-stateless.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-25-typescript-react-stateless.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-04-26-typescript-redux-observable-epic-test.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-26-typescript-redux-observable-epic-test.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-04-29-getting-started-typescript-react-2.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-29-getting-started-typescript-react-2.md" />
     </list>
     <ignored path="mikebridge.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,7 +39,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="204">
-                <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+                <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -56,8 +51,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="204">
-                <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+              <first_editor relative-caret-position="643">
+                <caret line="173" column="18" lean-forward="true" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="18" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -70,7 +65,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="204">
-                <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+                <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -83,7 +78,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="204">
-                <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+                <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -96,7 +91,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="204">
-                <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="13" />
+                <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="13" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -109,7 +104,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="102">
-                <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="13" />
+                <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="13" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -122,7 +117,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
               <first_editor relative-caret-position="119">
-                <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+                <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -130,7 +125,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2017-01-19-kinect-and-processing.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="2017-01-19-kinect-and-processing.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-01-19-kinect-and-processing.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -143,12 +138,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2017-04-29-getting-started-typescript-react-2.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="2017-04-29-getting-started-typescript-react-2.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-29-getting-started-typescript-react-2.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="228">
-                <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
+              <first_editor relative-caret-position="575">
+                <caret line="149" column="7" lean-forward="false" selection-start-line="149" selection-start-column="7" selection-end-line="149" selection-end-column="7" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -231,7 +226,6 @@
         <option value="$PROJECT_DIR$/_posts/test/2017-05-01-getting-started-typescript-react.md" />
         <option value="$PROJECT_DIR$/_layouts/article.html" />
         <option value="$PROJECT_DIR$/_posts/test/2017-05-01-getting-started-typescript-react-2.md" />
-        <option value="$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md" />
         <option value="$PROJECT_DIR$/_sass/_layout.scss" />
         <option value="$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react-2.md" />
         <option value="$PROJECT_DIR$/_data/navigation.yml" />
@@ -242,6 +236,8 @@
         <option value="$PROJECT_DIR$/_posts/test/2017-03-02-identityserver4-signalr.md" />
         <option value="$PROJECT_DIR$/_posts/test/2017-02-13-signalr-akka.md" />
         <option value="$PROJECT_DIR$/_posts/test/2017-01-19-kinect-and-processing.md" />
+        <option value="$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md" />
+        <option value="$PROJECT_DIR$/_posts/test/2017-04-29-getting-started-typescript-react-2.md" />
       </list>
     </option>
   </component>
@@ -252,8 +248,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="368" />
-    <option name="y" value="54" />
+    <option name="x" value="344" />
+    <option name="y" value="11" />
     <option name="width" value="1550" />
     <option name="height" value="1149" />
   </component>
@@ -1240,15 +1236,15 @@
       <workItem from="1493228329306" duration="1682000" />
       <workItem from="1493237546816" duration="1654000" />
       <workItem from="1493243375633" duration="709000" />
-      <workItem from="1493391554794" duration="24463000" />
+      <workItem from="1493391554794" duration="24975000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135596000" />
+    <option name="totallyTimeSpent" value="136108000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="368" y="54" width="1550" height="1149" extended-state="0" />
+    <frame x="344" y="11" width="1550" height="1149" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1545,49 +1541,49 @@
         <state relative-caret-position="250">
           <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
           <folding>
-            <marker date="1493417552188" expanded="true" signature="6249:6306" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="6333:15618" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="6407:6989" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="6800:6852" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="6994:7221" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="7397:7612" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="7622:7719" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="7811:7968" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="7973:8407" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="8414:8477" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="8684:8802" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="8693:8795" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="9021:9208" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="9213:9362" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="9423:9998" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="9582:9680" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="10279:10398" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="10460:10756" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="10923:11382" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="11483:11969" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="12470:12746" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="12529:12533" ph="&amp;gt;" />
-            <marker date="1493417552188" expanded="true" signature="12539:12543" ph="&amp;gt;" />
-            <marker date="1493417552188" expanded="true" signature="12619:12623" ph="&amp;gt;" />
-            <marker date="1493417552188" expanded="true" signature="12629:12633" ph="&amp;gt;" />
-            <marker date="1493417552188" expanded="true" signature="12652:12656" ph="&amp;gt;" />
-            <marker date="1493417552188" expanded="true" signature="12751:13122" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="13164:13305" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="13310:13577" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="13684:14857" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="13718:13778" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="13830:13950" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="14005:14661" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="14712:14823" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="14886:15581" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="14961:15433" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="14964:15040" ph="/*...*/" />
-            <marker date="1493417552188" expanded="true" signature="15091:15131" ph="/*...*/" />
-            <marker date="1493417552188" expanded="true" signature="15146:15420" ph="{...}" />
-            <marker date="1493417552188" expanded="true" signature="15743:16134" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="15793:15876" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="15818:15868" ph="..." />
-            <marker date="1493417552188" expanded="true" signature="15922:15928" ph="&amp;##169;" />
+            <marker date="1493418071013" expanded="true" signature="6249:6306" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="6333:15618" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="6407:6989" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="6800:6852" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="6994:7221" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="7397:7612" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="7622:7719" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="7811:7968" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="7973:8407" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="8414:8477" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="8684:8802" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="8693:8795" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="9021:9208" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="9213:9362" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="9423:9998" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="9582:9680" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="10279:10398" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="10460:10756" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="10923:11382" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="11483:11969" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="12470:12746" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="12529:12533" ph="&amp;gt;" />
+            <marker date="1493418071013" expanded="true" signature="12539:12543" ph="&amp;gt;" />
+            <marker date="1493418071013" expanded="true" signature="12619:12623" ph="&amp;gt;" />
+            <marker date="1493418071013" expanded="true" signature="12629:12633" ph="&amp;gt;" />
+            <marker date="1493418071013" expanded="true" signature="12652:12656" ph="&amp;gt;" />
+            <marker date="1493418071013" expanded="true" signature="12751:13122" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="13164:13305" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="13310:13577" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="13684:14857" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="13718:13778" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="13830:13950" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="14005:14661" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="14712:14823" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="14886:15581" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="14961:15433" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="14964:15040" ph="/*...*/" />
+            <marker date="1493418071013" expanded="true" signature="15091:15131" ph="/*...*/" />
+            <marker date="1493418071013" expanded="true" signature="15146:15420" ph="{...}" />
+            <marker date="1493418071013" expanded="true" signature="15743:16134" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="15793:15876" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="15818:15868" ph="..." />
+            <marker date="1493418071013" expanded="true" signature="15922:15928" ph="&amp;##169;" />
           </folding>
         </state>
       </provider>
@@ -1632,41 +1628,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_data/navigation.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="49" lean-forward="false" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-29-getting-started-typescript-react-2.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="228">
-            <caret line="127" column="5" lean-forward="false" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="204">
-            <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-26-typescript-redux-observable-epic-test.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="204">
-            <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+            <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1677,7 +1643,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="204">
-            <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+            <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1688,7 +1654,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="204">
-            <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+            <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1699,7 +1665,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="204">
-            <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="13" />
+            <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="13" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1710,7 +1676,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="102">
-            <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="13" />
+            <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="13" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1721,7 +1687,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="119">
-            <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
+            <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="14" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1733,6 +1699,36 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="204">
             <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_data/navigation.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="49" lean-forward="false" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="643">
+            <caret line="173" column="18" lean-forward="true" selection-start-line="173" selection-start-column="18" selection-end-line="173" selection-end-column="18" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-29-getting-started-typescript-react-2.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="575">
+            <caret line="149" column="7" lean-forward="false" selection-start-line="149" selection-start-column="7" selection-end-line="149" selection-end-column="7" />
             <folding />
           </first_editor>
           <second_editor />
