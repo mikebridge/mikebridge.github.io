@@ -21,7 +21,8 @@ balance, do you gain more than you lose?
 
 > **TL;DR**
 > 
-> Although I've had a few problems, the experience has positive overall.
+> Although I've had a few problems, the experience has positive overall.  And frankly,
+> it's way easier to get started than many blog posts would have you believe.
 >
 > React + TypeScript work well together, but:
 > 
