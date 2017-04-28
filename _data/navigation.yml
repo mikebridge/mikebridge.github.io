@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: TypeScript & React Part 1
+  url: /articles/getting-started-typescript-react/
+  excerpt: "Getting Started with TypeScript and React"
+  image: typescript/ts-400x250.png
+
 - title: Testing Redux-Observable Epics
   url: /articles/typescript-redux-observable-epic-test/
   excerpt: "Creating Jest tests for Redux-ObservableAjax Epics"
