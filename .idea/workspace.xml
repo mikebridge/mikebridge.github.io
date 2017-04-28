@@ -50,8 +50,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="141">
-                <caret line="118" column="57" lean-forward="false" selection-start-line="118" selection-start-column="57" selection-end-line="118" selection-end-column="57" />
+              <first_editor relative-caret-position="476">
+                <caret line="31" column="71" lean-forward="false" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -1188,12 +1188,12 @@
       <workItem from="1493228329306" duration="1682000" />
       <workItem from="1493237546816" duration="1654000" />
       <workItem from="1493243375633" duration="709000" />
-      <workItem from="1493391554794" duration="12625000" />
+      <workItem from="1493391554794" duration="12705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123758000" />
+    <option name="totallyTimeSpent" value="123838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="142" y="47" width="1550" height="1149" extended-state="0" />
@@ -1478,7 +1478,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="795" lean-forward="false" selection-start-line="0" selection-start-column="795" selection-end-line="0" selection-end-column="795" />
-          <folding />
+          <folding>
+            <element signature="e#18747#18751#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1617,8 +1619,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="141">
-            <caret line="118" column="57" lean-forward="false" selection-start-line="118" selection-start-column="57" selection-end-line="118" selection-end-column="57" />
+          <first_editor relative-caret-position="476">
+            <caret line="31" column="71" lean-forward="false" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
             <folding />
           </first_editor>
           <second_editor />

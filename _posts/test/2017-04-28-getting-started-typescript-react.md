@@ -29,7 +29,7 @@ balance, do you gain more than you lose?
 > - Get a good understanding of TypeScript's [basic](https://www.typescriptlang.org/docs/handbook/basic-types.html) and
 [advanced](https://www.typescriptlang.org/docs/handbook/advanced-types.html) types.  You'll need most of them for React + Redux
 
-I identified several risks with switching to TypeScript:
+I identified several risks when evaluating whether to make the jump to TypeScript:
 
 ## 1) Are the development tools be hard to set up and maintain?  
 
