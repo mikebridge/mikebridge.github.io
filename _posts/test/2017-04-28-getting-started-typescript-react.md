@@ -43,7 +43,8 @@ webpack build-configuration hell, then more days in editor-configuration hell, t
 Facebook heard from developers that they found it difficult to start working with React because
 creating a decent development environment is so complicated.  So they created [create-react-app](https://github.com/facebookincubator/create-react-app) 
 as a way of getting started.  This gives developers the ability to run a web app, package it, test it, etc. with no configuration, 
-and it's maintained by Facebook, so you can future-proof your environment by allowing them to keep it up-to-date for you. 
+and it's maintained by Facebook, so a developer can stay up-to-date without having to spend time
+reconfiguring the build as libraries are updated.
 
 Fortunately Will Monk has [created a fork specifically designed to work with TypeScript](https://github.com/wmonk/create-react-app-typescript),
 which so far has been well maintained.  There's a bit of risk there because he's just one
