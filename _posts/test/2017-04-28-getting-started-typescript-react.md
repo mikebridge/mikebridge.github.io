@@ -115,7 +115,8 @@ however, [debug code via the web server](https://blog.jetbrains.com/webstorm/201
  like header files in languages like `C`, and they are maintained in a [huge github
  repository](https://github.com/DefinitelyTyped/DefinitelyTyped/), often by third-parties.  With 
  [TypeScript 2](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/) 
- these are now trivial to acquire with `npm` or `yarn`. 
+ these are now trivial to acquire with `npm` or `yarn`, and often you don't even realize the typing
+ files are there—they just show up with the main package.
  
  I only have anecdotal evidence, but I have not had many problems with missing type 
  definitions so far.  In one case (with [auth0-js](https://www.npmjs.com/package/@types/auth0-js) I've downloaded an outdated `.d.ts` file someone wrote 

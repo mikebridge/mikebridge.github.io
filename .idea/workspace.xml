@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc73942b-67de-41ca-9b5e-66c0d4c9b06e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-react-stateless.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-25-typescript-react-stateless.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/_posts/test/2017-04-28-typescript-redux-observable-epic-test.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-26-typescript-redux-observable-epic-test.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_data/navigation.yml" afterPath="$PROJECT_DIR$/_data/navigation.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md" afterPath="$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md" />
     </list>
     <ignored path="mikebridge.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,8 +50,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="651">
-                <caret line="157" column="53" lean-forward="false" selection-start-line="157" selection-start-column="53" selection-end-line="157" selection-end-column="53" />
+              <first_editor relative-caret-position="141">
+                <caret line="118" column="57" lean-forward="false" selection-start-line="118" selection-start-column="57" selection-end-line="118" selection-end-column="57" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -1192,12 +1188,12 @@
       <workItem from="1493228329306" duration="1682000" />
       <workItem from="1493237546816" duration="1654000" />
       <workItem from="1493243375633" duration="709000" />
-      <workItem from="1493391554794" duration="12503000" />
+      <workItem from="1493391554794" duration="12625000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123636000" />
+    <option name="totallyTimeSpent" value="123758000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="142" y="47" width="1550" height="1149" extended-state="0" />
@@ -1621,8 +1617,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="651">
-            <caret line="157" column="53" lean-forward="false" selection-start-line="157" selection-start-column="53" selection-end-line="157" selection-end-column="53" />
+          <first_editor relative-caret-position="141">
+            <caret line="118" column="57" lean-forward="false" selection-start-line="118" selection-start-column="57" selection-end-line="118" selection-end-column="57" />
             <folding />
           </first_editor>
           <second_editor />
