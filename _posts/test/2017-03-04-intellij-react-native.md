@@ -10,6 +10,8 @@ image:
 ads: true
 ---
  
+*Mar 4, 2017* 
+ 
 Facebook's developers are mostly Apple People, so they don't waste many
 mental cycles fretting over React-Native developers who are on
 other platforms.  I don't like straying too much from the main path

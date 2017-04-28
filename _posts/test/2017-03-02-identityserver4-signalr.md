@@ -10,6 +10,8 @@ image:
 ads: true
 ---
 
+*Mar 2, 2017*
+
 A new-ish alternative to session-based cookies that's well-suited to single page apps
 is **token-based authentication**.  
 

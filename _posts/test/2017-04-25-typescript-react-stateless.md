@@ -10,6 +10,8 @@ image:
 ads: true
 ---
 
+*Apr 25, 2017*
+
 I like using TypeScript with React, but sometimes it's confusing, especially
 when using the more advanced types.  For my own reference, here's an array of ways 
 I came up with to declare **Stateless React Components** in TypeScript, in varying levels 

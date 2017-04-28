@@ -10,6 +10,8 @@ image:
 ads: true
 ---
 
+*Apr 26, 2017*
+
 Here's a way to test a [redux-observable](https://redux-observable.js.org/) epic that 
 performs an ajax call.
 

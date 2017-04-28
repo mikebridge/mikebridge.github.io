@@ -10,6 +10,8 @@ image:
 ads: true
 ---
 
+*Jan 19, 2017*
+
 I fell into a discussion with another soccer-dad last weekend as we watched our own children 
 play indoor soccer about teaching kids to code.  I talked about my experiences 
 with [Raspberry Pi](https://www.raspberrypi.org/){:target="_blank"}, [Scratch](https://scratch.mit.edu/) and
