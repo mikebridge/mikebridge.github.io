@@ -36,14 +36,19 @@ I identified several risks when evaluating whether to make the jump to TypeScrip
 This was probably the biggest question for me.  I have no desire to waste several days in 
 webpack build-configuration hell, then more days in editor-configuration hell, test-configuration hell,
  continuous integration hell and deployment hell—and then to repeat the whole process every
- few months when all the tools get updated.
+ few months when all the tools get updated.  JavaScript fatigue is real, but JavaScipt  
 
 ### create-react-app-typescript 
  
-Facebook heard from developers that they found it difficult to start working with React because
+[JavaScript fatigue](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4) is still 
+real.  Facebook knew that developers were finding it difficult to start working with React because
 creating a decent development environment is so complicated.  So they created [create-react-app](https://github.com/facebookincubator/create-react-app) 
-as a way of getting started.  This gives developers the ability to run a web app, package it, test it, etc. with no configuration, 
-and it's maintained by Facebook, so a developer can stay up-to-date without having to spend time
+to help developers out.  Although yeoman-like code-generators and starter projects have been around
+for a while, `create-react-app` is an improvement over them because it automates the configuration and
+keeps it up to date but allows you to modify your own code independently.  In other words,
+you don't need to create one-time a hard fork of a starter application to use it.  It gives developers 
+the ability to run a web app, package it, test it, etc. with no configuration, and it's 
+maintained by Facebook, so a developer can stay up-to-date without having to spend time
 reconfiguring the build as libraries are updated.
 
 Fortunately Will Monk has [created a fork specifically designed to work with TypeScript](https://github.com/wmonk/create-react-app-typescript),
