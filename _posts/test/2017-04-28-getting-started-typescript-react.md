@@ -10,6 +10,8 @@ image:
 ads: true
 ---
 
+*Apr 28, 2017*
+
 TypeScript with React: is it worth it?  I started using them together a few 
 months ago with some hesitation.  I wanted the long-term benefits that strong typing 
 brings to a larger code-base, but I always hesitate before wandering off of the main 
