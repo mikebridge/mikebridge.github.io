@@ -50,8 +50,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="476">
-                <caret line="31" column="71" lean-forward="false" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
+              <first_editor relative-caret-position="276">
+                <caret line="43" column="42" lean-forward="false" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -141,7 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>plu</find>
       <find>tools</find>
       <find>avd manager</find>
       <find>detected</find>
@@ -171,6 +170,7 @@
       <find>build</find>
       <find>need</find>
       <find>auth0</find>
+      <find>create-react-app</find>
     </findStrings>
     <replaceStrings>
       <replace>inary</replace>
@@ -1188,12 +1188,12 @@
       <workItem from="1493228329306" duration="1682000" />
       <workItem from="1493237546816" duration="1654000" />
       <workItem from="1493243375633" duration="709000" />
-      <workItem from="1493391554794" duration="12705000" />
+      <workItem from="1493391554794" duration="12839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123838000" />
+    <option name="totallyTimeSpent" value="123972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="142" y="47" width="1550" height="1149" extended-state="0" />
@@ -1478,9 +1478,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="795" lean-forward="false" selection-start-line="0" selection-start-column="795" selection-end-line="0" selection-end-column="795" />
-          <folding>
-            <element signature="e#18747#18751#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1619,8 +1617,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/test/2017-04-28-getting-started-typescript-react.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="476">
-            <caret line="31" column="71" lean-forward="false" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
+          <first_editor relative-caret-position="276">
+            <caret line="43" column="42" lean-forward="false" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
             <folding />
           </first_editor>
           <second_editor />
