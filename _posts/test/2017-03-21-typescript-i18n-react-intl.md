@@ -18,6 +18,11 @@ experimenting with **[react-intl](https://github.com/yahoo/react-intl)**.  React
 and strings.  My impression is that *react-intl* is a fairly small, practical library that is written to make i18n 
 unobtrusive for developers.
 
+> *Edit, May 1, 2017*
+>
+> Today I'm unsure whether it was a good idea to
+adopt *react-intl*.  At the moment it appears to be in limbo after Yahoo's collapse.  
+
 But although React-intl has [type definitions](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/react-intl),
 it does not play particularly well with TypeScript.  It assumes there is a
 single default language which a developer will put directly into the source code, and 
