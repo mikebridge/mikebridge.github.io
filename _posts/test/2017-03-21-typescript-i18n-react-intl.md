@@ -20,8 +20,8 @@ unobtrusive for developers.
 
 > *Edit, May 1, 2017*
 >
-> Today I'm unsure whether it was a good idea to
-adopt *react-intl*.  At the moment it appears to be [in limbo](https://github.com/yahoo/react-intl/pull/918) after Yahoo's collapse.  
+> Today I'm wondering whether it may have been a mistake to adopt *react-intl* over the alternatives.  At the
+> moment it appears to be [in limbo](https://github.com/yahoo/react-intl/pull/918) after Yahoo's collapse.  
 
 But although React-intl has [type definitions](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/react-intl),
 it does not play particularly well with TypeScript.  It assumes there is a
