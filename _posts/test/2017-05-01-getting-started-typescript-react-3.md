@@ -60,6 +60,12 @@ on either an HTMLElement or a JSX.Element, or that I'm wrapping a div type:
 
 <script src="https://gist.github.com/mikebridge/9c01b5d703a245c209a29701b7822610.js"></script>
 
+**Tests**
+
+For completeness, here are the tests:
+
+<script src="https://gist.github.com/mikebridge/021db91e6524690512339c2c3e2df233.js"></script>
+
 ### More Reading
 
 * <a href="/articles/getting-started-typescript-react">Part 1: Getting Started with TypeScript and React</a>
