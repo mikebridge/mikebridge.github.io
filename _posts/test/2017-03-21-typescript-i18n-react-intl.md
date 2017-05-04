@@ -1,7 +1,7 @@
 ---
 layout: article
 title: I18N in React with Typescript & React-Intl
-tags: [intellij react-native windows]
+tags: [intellij react typescript i18n]
 categories: articles
 comments: true
 excerpt: Internationalization with TypeScript & React-Intl
@@ -10,11 +10,18 @@ image:
 ads: true
 ---
  
+*Mar 21, 2017*
+ 
 Earlier this week I went in search of a React-friendly i18n library and I spent some time
 experimenting with **[react-intl](https://github.com/yahoo/react-intl)**.  React-intl is based on 
 **[FormatJS](https://formatjs.io/)**, which is a library for localizing numbers, dates, 
 and strings.  My impression is that *react-intl* is a fairly small, practical library that is written to make i18n 
 unobtrusive for developers.
+
+> *Edit, May 1, 2017*
+>
+> Today I'm wondering whether it may have been a mistake to adopt *react-intl* over the alternatives.  At the
+> moment it appears to be [in limbo](https://github.com/yahoo/react-intl/pull/918) after Yahoo's collapse.  
 
 But although React-intl has [type definitions](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/react-intl),
 it does not play particularly well with TypeScript.  It assumes there is a

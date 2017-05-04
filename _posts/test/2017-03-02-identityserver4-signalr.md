@@ -10,6 +10,8 @@ image:
 ads: true
 ---
 
+*Mar 2, 2017*
+
 A new-ish alternative to session-based cookies that's well-suited to single page apps
 is **token-based authentication**.  
 
@@ -22,6 +24,12 @@ integrating OpenID Connect and SignalR using [IdentityServer4](https://identitys
 
 _**TL;DR** The code for this example is at 
 [https://github.com/mikebridge/IdentityServer4SignalR/](https://github.com/mikebridge/IdentityServer4SignalR/)_.
+
+
+> **Edit Apr 28, 2017:**
+>
+> Since writing this post I've switched from IdentityServer to [Auth0](https://auth0.com/).  It
+> has quite a few more features, requires less setup, and has friendly support.
 
 <figure>
  	<img src="/images/signalr/whosonfirst.png">

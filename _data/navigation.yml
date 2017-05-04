@@ -1,5 +1,25 @@
 # Site navigation links
 
+- title: TypeScript & React Part 3
+  url: /articles/getting-started-typescript-react-3/
+  excerpt: "Typing stateless React components in TypeScript"
+  image: typescript/ts-400x250.png
+
+- title: TypeScript & React Part 2
+  url: /articles/getting-started-typescript-react-2/
+  excerpt: "Simple React Components in TypeScript"
+  image: typescript/ts-400x250.png
+
+- title: TypeScript & React Part 1
+  url: /articles/getting-started-typescript-react/
+  excerpt: "Getting Started with TypeScript and React"
+  image: typescript/ts-400x250.png
+
+- title: Testing Redux-Observable Epics
+  url: /articles/typescript-redux-observable-epic-test/
+  excerpt: "Creating Jest tests for Redux-ObservableAjax Epics"
+  image: typescript/redux-observable-400x250.png
+
 - title:  I18N&colon; TypeScript and React
   url: /articles/typescript-i18n-react-intl/
   excerpt: "Using react-intl to internationalize a TypeScript App"
