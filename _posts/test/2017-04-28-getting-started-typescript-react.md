@@ -173,4 +173,5 @@ in plain JavaScript, but a real source of complexity in TypeScript.
 * Part 1: Getting Started with TypeScript and React
 * <a href="/articles/getting-started-typescript-react-2">Part 2: Simple React Components in TypeScript</a>
 * <a href="/articles/getting-started-typescript-react-3">Part 3: Stateless React Components in TypeScript</a>
-* ... more to come
+* <a href="/articles/getting-started-typescript-react-4">Part 4: React's Higher Order Controls in TypeScript</a>
+* Coming soon: TypeScript with Redux; Testing & Continuous Deployment

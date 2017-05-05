@@ -152,5 +152,5 @@ with missing parameters, or parameters of the wrong type), it will tell you that
 * <a href="/articles/getting-started-typescript-react">Part 1: Getting Started with TypeScript and React</a>
 * Part 2: Simple React Components in TypeScript
 * <a href="/articles/getting-started-typescript-react-3">Part 3: Stateless React Components in TypeScript</a>
-* Coming soon: TypeScript with Redux, HOCs, Testing & Continuous Deployment with React & TypeScript*
-
+* <a href="/articles/getting-started-typescript-react-4">Part 4: React's Higher Order Controls in TypeScript</a>
+* Coming soon: TypeScript with Redux; Testing & Continuous Deployment

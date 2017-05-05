@@ -71,5 +71,6 @@ For completeness, here are the tests:
 * <a href="/articles/getting-started-typescript-react">Part 1: Getting Started with TypeScript and React</a>
 * <a href="/articles/getting-started-typescript-react-2">Part 2: Simple React Components in TypeScript</a>
 * Part 3: Stateless React Components in TypeScript
-* Coming soon: TypeScript with Redux, HOCs, Testing & Continuous Deployment
+* <a href="/articles/getting-started-typescript-react-4">Part 4: React's Higher Order Controls in TypeScript</a>
+* Coming soon: TypeScript with Redux; Testing & Continuous Deployment
 
