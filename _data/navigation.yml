@@ -1,16 +1,21 @@
 # Site navigation links
 
-- title: TypeScript & React Part 3
+- title: TypeScript & React Part&nbsp;4
+  url: /articles/getting-started-typescript-react-4/
+  excerpt: "React HOCs in TypeScript"
+  image: typescript/ts-400x250.png
+
+- title: TypeScript & React Part&nbsp;3
   url: /articles/getting-started-typescript-react-3/
   excerpt: "Typing stateless React components in TypeScript"
   image: typescript/ts-400x250.png
 
-- title: TypeScript & React Part 2
+- title: TypeScript & React Part&nbsp;2
   url: /articles/getting-started-typescript-react-2/
   excerpt: "Simple React Components in TypeScript"
   image: typescript/ts-400x250.png
 
-- title: TypeScript & React Part 1
+- title: TypeScript & React Part&nbsp;1
   url: /articles/getting-started-typescript-react/
   excerpt: "Getting Started with TypeScript and React"
   image: typescript/ts-400x250.png
