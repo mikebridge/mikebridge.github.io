@@ -114,9 +114,15 @@ changes.
 JavaScript.  IntelliJ supports almost every major language, but if you don't do anything
 but JavaScript you could just stick with WebStorm.
 
-The one downside is that I have not been able to figure out how to run TypeScript jest
-tests in debugging mode from within IntelliJ.  (I can, 
+~~The one downside is that I have not been able to figure out how to run TypeScript jest
+tests in debugging mode from within IntelliJ.~~  (I can, 
 however, [debug code via the web server](https://blog.jetbrains.com/webstorm/2017/01/debugging-react-apps/)) 
+
+*Edit:* It's possible to debug TypeScript Jest tests created with create-react-app-typescript in IntelliJ (including setting breakpoints) by 
+creating a Jest task via `Run` -> `Edit Configurations` -> *Green Plus Sign* -> `Jest`.  Under "Before Launch", add "Compile TypeScript".
+Then add this to your profile.json file:
+
+<script src="https://gist.github.com/mikebridge/ebeaebb5470f4ed34adeb75ea4e93f0d.js"></script>
 
 ## 2) Will there be gnashing of teeth because a JS library has no TypeScript type definition files? 
  
