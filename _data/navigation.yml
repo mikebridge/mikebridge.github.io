@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: Query String Extraction
+  url: /articles/react-router-4-query-string-hoc/
+  excerpt: "A Query String HOC in TypeScript"
+  image: typescript/ts-400x250.png
+
 - title: TypeScript & React Part&nbsp;4
   url: /articles/getting-started-typescript-react-4/
   excerpt: "React HOCs in TypeScript"

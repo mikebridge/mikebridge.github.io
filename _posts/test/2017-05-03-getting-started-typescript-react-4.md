@@ -195,6 +195,9 @@ The last line is where all the pieces come together.  You can pull in the new `<
 correctly when I stacked the HOCs together unless I included an empty "OwnProps" declaration. That's where 
 the `interface IWelcomeOwnProps {}` declaration comes from.*
 
+* Edit: [Here's an example](/react-router-4-query-string-hoc) of replacing react-router's missing QueryString
+parsing using an HOC.
+
 ### Conclusion
 
 Placing functionality into separate HOCs makes it much easier to reuse React components.  Here we have
