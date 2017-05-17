@@ -4,30 +4,28 @@ title:  Auth0 with DotNet Core & React
 tags: [auth0 openid-connect react typescript C# dotnet-core]
 categories: articles
 comments: true
-excerpt: Authentication on a React SPA with Auth0 and DotNet Core 
+excerpt: OpenId Connect Auth on a React SPA with Auth0 and DotNet Core 
 image:
   teaser: typescript/ts-400x250.png
 ads: true
 ---
 
-## React's Higher Order Components in TypeScript
+*May 17, 2017*
 
-*May 11, 2017*
-
-I think my least favourite part of web development is Authentication and Authorization.  It's always one
-of the first things you have to do and it's generally tedious and obscure, and if you screw it up your company
+One of my least favourite parts of web development is Authentication and Authorization.  It's usually one
+of the first things you have to do and it's generally tedious and obscure, and if you screw it up your CEO's face
 may end up on CNN.  Reading up on cryptography last year made me a little paranoid, so I now try to offload
 as much of this stuff as I can to experts---in this case, [auth0](https://auth0.com/).
 
-The goal of this example app is to allow a user to sign up/log in in a React Single Page App, and 
-power the SPA with a DotNet Core API.  We'll also implement some simple role-based authentication---all without even
-bothering with a database.
+The goal of this example app is to allow a user to sign up/log in in a React Single Page App, which is
+ powered by a DotNet Core API back-end.  We'll also implement some simple role-based authentication, all
+ creating any databases on our server.
 
-So there are several distinct parts here:
+There are several distinct parts:
 
-- A React login dialogue
-- Some React/Redux infrastructure to handle JWT tokens
-- Some server-side configuration
+- A React login dialogue (we'll use [auth0-lock](https://github.com/auth0/lock)
+- Some React/Redux infrastructure to wrangle JWT tokens
+- Some server-side configuration in DotNet Core (very little, thankfully!)
 - Some configuration on Auth0
 
 ## Auth0
@@ -47,7 +45,9 @@ framework somewhere and an authentication standard, there's probably a blog post
  
  Next, click on "Clients".   In the ambiguous terminolog in the World of Authentication, a "Client" refers 
  to the software that accesses Auth0---in our case this will be our TypeScript SPA.  Click on "Create Client", 
-then "Single Page Web Applications".  Ok, we're done here for now.
+then "Single Page Web Applications". 
+
+We'll come back to this to configure the roles later.
 
 # DotNet Core
 
@@ -72,7 +72,14 @@ Just to be clear, *don't* screw around with trying to configure webpack to get T
 # Auth0-Lock
 
 Ok, the first coding part will be to get the user logging in.  This is probably the most complex part, so we'll
-get it out of the way first.
+get it out of the way first.  There is an [official example](https://auth0.com/docs/quickstart/spa/react/00-getting-started) for 
+react---you may just want to ignore this and use that.  My example is based on theirs, but emphasizes Redux.
+
+# Roles in Auth0
+
+There are many ways you can manage roles, but for this example we'll just do it via 
+a [Rule](https://auth0.com/docs/rules).  The rule says "any time a user is authenticated and requests an 'api' scope,
+determine whether the user is in the "admin" or "user" role, and return the role in the access_token."
 
 
 
