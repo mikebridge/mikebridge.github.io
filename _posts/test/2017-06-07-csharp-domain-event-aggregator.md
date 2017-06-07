@@ -10,6 +10,8 @@ image:
 ads: true
 ---
 
+*June 7, 2017*
+
 I have a web project that is made up of several modules, each of which generates DDD 
 [domain events](http://codebetter.com/gregyoung/2010/04/11/what-is-a-domain-event/).  Right now
 my C# project is small and divided into well-defined modules which run in a single process, so
