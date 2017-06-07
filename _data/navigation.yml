@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: An Rx Event Aggregator in C#
+  url: /articles/csharp-domain-event-aggregator/
+  excerpt: "An Aggregator for DDD Domain Events in C#"
+  image: rx/reactive-extensions-400x250.png
+
 - title: Query String Extraction
   url: /articles/react-router-4-query-string-hoc/
   excerpt: "A Query String HOC in TypeScript"
