@@ -39,8 +39,8 @@ I identified several risks when evaluating whether to make the jump to TypeScrip
 This was probably the biggest question for me.  I have no desire to waste several days in 
 webpack build-configuration hell, then more days in editor-configuration hell, test-configuration hell,
  continuous integration hell and deployment hell—and then to repeat the whole process every
- few months when all the tools get updated.  JavaScript fatigue is real, but JavaScipt  
-
+ few months when all the tools get updated.  
+ 
 ### create-react-app-typescript 
  
 [JavaScript fatigue](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4) is still 
