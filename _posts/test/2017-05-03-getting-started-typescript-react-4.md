@@ -62,7 +62,7 @@ should be *Closed to Modification but Open to Extension*—we don't want to dig 
 time we need to add a new feature.
 
 Let's say our software already puts the user information in the Redux store under the `user` key.  A HOC wrapper might
-grab that object if it exists and inject it (hey, there's [D](https://en.wikipedia.org/wiki/Dependency_inversion_principle) too!) 
+grab that object if it exists and inject it (hey, there's the [D](https://en.wikipedia.org/wiki/Dependency_inversion_principle) in SOLID too!) 
 into the subcomponent.  I would describe this functionality as "personalization", so I'll call this HOC 
 `withPersonalization`.  Here's a first step, where the personalization is hardcoded (later we'll introduce Redux):
 
@@ -71,8 +71,10 @@ into the subcomponent.  I would describe this functionality as "personalization"
 There are some type declarations there that hurt the eyes (*Disclaimer: if you're a Rails dev they may 
 land you in the hospital*), so let's remember what we're trying to accomplish with this first iteration:
 
-- When a developer includes our `<Welcome />` component, we would like to make it clear to him that `onClick` the
-`onClick` function is available (e.g via autosuggest), but we also need to ensure that the the `name` is hidden.  
+- The goal is to provide an interface to props that a developer can see, but also have another interface
+ to props that is only used internally (e.g. by redux).  So when a developer includes our `<Welcome />` component, we 
+ would like to make it clear to him that the `onClick` function is available (e.g via autosuggest), 
+ but we also need to ensure that the the `name` is hidden from him, but visible to redux's `connect`.  
 - When we wrap a component in `withPersonalization`, we want to ensure that the underlying component is aware of how
 personalization works.  Or in other words, it needs to implement a contract that indicates it can accept 
 personalization data---no lazy duck typing!  In vanilla JS React, this contract is sort-of provided by propTypes, but 
@@ -125,7 +127,7 @@ understands `IWithPersonalizationProps`.
 This wrapper accomplishes something analogous to what [destructuring assignment](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) syntax does
 for variables—except that it operates on types.  We've created a type that merges `PWrapped` and a `PHoc` into
 one props type, then we extracted the wrapped component's prop type AND the HOC prop type back into their
-original types again. Gimme an [I](https://en.wikipedia.org/wiki/Interface_segregation_principle)!
+original types again.  Gimme an [I](https://en.wikipedia.org/wiki/Interface_segregation_principle)!
 
 So I said I wouldn't modify the `Welcome` component, but I guess that's not the case.  We won't change functionality
 though---just solidify its communication with other components.  We need to make sure it 
