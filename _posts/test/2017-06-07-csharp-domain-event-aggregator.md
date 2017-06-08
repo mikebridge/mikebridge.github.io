@@ -1,6 +1,6 @@
 ---
 layout: article
-title: An Event Aggregator in C#
+title: An Rx Event Aggregator in C#
 tags: [c# ddd]
 categories: articles
 comments: true
