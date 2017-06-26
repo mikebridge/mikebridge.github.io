@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: Throttling in ReactJS with RxJS
+  url: /articles/csharp-domain-event-aggregator/
+  excerpt: "Using RxJS Observables to throttle events in React"
+  image: typescript/redux-observable-400x250.png
+
 - title: An Rx Event Aggregator in C#
   url: /articles/csharp-domain-event-aggregator/
   excerpt: "An Aggregator for DDD Domain Events in C#"
