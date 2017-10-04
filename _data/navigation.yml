@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: Wormhole! Reverse SSH Tunnel
+  url: /articles/autossh-azure-teamcity
+  excerpt: "Tunnel a Firewalled Machine onto the Web via Azure"
+  image: teamcity/wormhole-400x250.png
+
 - title: An Rx Event Aggregator in C#
   url: /articles/csharp-domain-event-aggregator/
   excerpt: "An Aggregator for DDD Domain Events in C#"
