@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc73942b-67de-41ca-9b5e-66c0d4c9b06e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_data/navigation.yml" afterPath="$PROJECT_DIR$/_data/navigation.yml" />
-    </list>
+    <list default="true" id="fc73942b-67de-41ca-9b5e-66c0d4c9b06e" name="Default" comment="" />
     <ignored path="mikebridge.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -1134,12 +1132,12 @@
       <workItem from="1493419744999" duration="131000" />
       <workItem from="1493652443986" duration="4837000" />
       <workItem from="1493908985409" duration="25734000" />
-      <workItem from="1507136598694" duration="11709000" />
+      <workItem from="1507136598694" duration="12164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185003000" />
+    <option name="totallyTimeSpent" value="185458000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="24" width="1598" height="1052" extended-state="0" />
