@@ -31,11 +31,18 @@ TeamCity interacts with Azure in three ways:
 
 A "slot" can be used like a separate non-production web site that you can copy files to, then
 "warm up", then swap with the production site when you're satisfied that the update went successful.
-I use SFTP to copy the whole site up, though you could easily use some other method.
+I use raw SFTP to copy the whole site, though you could also use Web Platform Installer.  (I looked
+for an equivalent to unix's `rsync` but couldn't find an obvious replacement.)
+
 
 You first need to create a slot.
 
 ... describe setup
+
+- Create a "User" ? For deploying to a machine
+
+You need to go to "Subscriptions => Access Control (IAM)"
+And add the "Contributor" Role to that user.
 
 ## Warm up the web site
 
