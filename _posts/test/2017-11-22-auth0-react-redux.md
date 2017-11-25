@@ -16,7 +16,9 @@ ads: true
 > This is part of a series of posts on **.Net Core Core**, **TypeScript** and **React**.
 >
 
-Using [JWT](https://jwt.io/) can simplify several ...
+Using [JWT](https://jwt.io/) can simplify several aspects of web development, but 
+it isn't really easier to set up, even with a third-party authentication service.  Here's
+an example of 
 
 This post assumes knowledge of what a Json Web Token is, and
 some understanding of React/Redux.  The goal is to authenticate a user
@@ -89,7 +91,6 @@ component, but ensure that a user is logged in first, we want it to
 look something like this:
 
 <pre>
-
    class Chat extends React.Component<IChatProps> {
        public render(): JSX.Element {
            return (
@@ -148,6 +149,9 @@ token_type
 state=bnVsbA%3D%3D
 id_token
 
+### Setup
+Set these variables
 
+ 
 
 
