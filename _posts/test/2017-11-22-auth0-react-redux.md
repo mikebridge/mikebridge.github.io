@@ -152,6 +152,13 @@ id_token
 ### Setup
 Set these variables
 
+## Nonce:
+
+        // generate a random nonce value and get the current route
+        // and save it.  This will be used in the callback to verify
+        // the information.  The purpose of this is to mitigate replay
+        // attacks (see: https://auth0.com/docs/api-auth/tutorials/nonce).
+
  
 
 
