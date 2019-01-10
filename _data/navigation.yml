@@ -1,5 +1,10 @@
 # Site navigation links
 
+- title: Akka.NET & WebApi on .Net Core in Docker
+  url: /articles/azure-active-directory-elastic-pool
+  excerpt: "Set up Akka.Net and WebApi on .Net Core in Docker Compose"
+  image: akka/akkadotnet-400x250.png
+
 - title: Azure Active Directory with Azure SQL
   url: /articles/azure-active-directory-elastic-pool
   excerpt: "Access Azure SQL Server in Elastic Pool via Azure AD"
