@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Owin on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/tags/owin/</link>
+    <description>Recent content in Owin on Mike Bridge - Dev Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
+    <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
+    <lastBuildDate>Mon, 13 Feb 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mikebridge.github.io/tags/owin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SignalR and Akka.NET on DotNet Core</title>
+      <link>https://mikebridge.github.io/post/signalr-akka/</link>
+      <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/signalr-akka/</guid>
+      <description>Note: this post is out-of-date&amp;mdash;Akka.NET now runs on Dotnet Core
+ Currently there is no DotNet Core runtime support for Akka.NET or SignalR. I was about resign myself to the idea of waiting for another year or so to try them out together in the new environment, but I randomly came across a blog that mentions that you can run non-core libraries on ASP.Net Core — if you target .</description>
+    </item>
+    
+  </channel>
+</rss>

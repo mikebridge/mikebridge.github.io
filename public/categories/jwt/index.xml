@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jwt on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/jwt/</link>
+    <description>Recent content in Jwt on Mike Bridge - Dev Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
+    <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
+    <lastBuildDate>Thu, 02 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mikebridge.github.io/categories/jwt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JWT Tokens, SignalR and Single Page Applications</title>
+      <link>https://mikebridge.github.io/post/identityserver4-signalr/</link>
+      <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/identityserver4-signalr/</guid>
+      <description>A new-ish alternative to session-based cookies that&amp;rsquo;s well-suited to single page apps is token-based authentication.
+There are many SaaS services such as Auth0, Stormpath and Login Radius that are pretty easy to set up. If you can use one of those in your organization, you should&amp;mdash;it will save you a lot of time. But if you&amp;rsquo;re stuck hosting your data yourself you will need to look at a product like IdentityServer4 or ForgeRock.</description>
+    </item>
+    
+  </channel>
+</rss>

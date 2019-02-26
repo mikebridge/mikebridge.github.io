@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Intellij on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/intellij/</link>
+    <description>Recent content in Intellij on Mike Bridge - Dev Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
+    <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
+    <lastBuildDate>Tue, 21 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mikebridge.github.io/categories/intellij/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>I18N in React with Typescript &amp; React-Intl</title>
+      <link>https://mikebridge.github.io/post/typescript-i18n-react-intl/</link>
+      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/typescript-i18n-react-intl/</guid>
+      <description>Earlier this week I went in search of a React-friendly i18n library and I spent some time experimenting with react-intl. React-intl is based on FormatJS, which is a library for localizing numbers, dates, and strings. My impression is that react-intl is a fairly small, practical library that is written to make i18n unobtrusive for developers.
+ Edit, May 1, 2017
+Today I&amp;rsquo;m wondering whether it may have been a mistake to adopt react-intl over the alternatives.</description>
+    </item>
+    
+    <item>
+      <title>Debugging React Native/Android with IntelliJ on Windows</title>
+      <link>https://mikebridge.github.io/post/intellij-react-native/</link>
+      <pubDate>Sat, 04 Mar 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/intellij-react-native/</guid>
+      <description>Facebook&amp;rsquo;s developers are mostly Apple People, so they don&amp;rsquo;t waste many mental cycles fretting over React-Native developers who are on other platforms. I don&amp;rsquo;t like straying too much from the main path when it comes to deciding on which tools to use, so I wondered if it was advisable—or even possible—to debug React Native at all on Windows. Google Search didn&amp;rsquo;t reveal much information about what Windows React-Native developers do when their app crashes with no error message.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/react/</link>
+    <description>Recent content in React on Mike Bridge - Dev Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
+    <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
+    <lastBuildDate>Tue, 16 May 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mikebridge.github.io/categories/react/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TypeScript and React, Part 5</title>
+      <link>https://mikebridge.github.io/post/react-router-4-query-string-hoc/</link>
+      <pubDate>Tue, 16 May 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/react-router-4-query-string-hoc/</guid>
+      <description>This is part of this series of blog posts introducing TypeScript and React. Here&amp;rsquo;s Part 1.
+ React-router 4 removed the query string parsing feature that was present in past versions. This is a good example of where a React higher order control would make a good substitute. Instead of forcing Components to take dependencies on both the location and a query-string parser, making things hard to test and refactor, it&amp;rsquo;d be much easier to create a wrapper that does the boring parsing work for you and DRYs out your code.</description>
+    </item>
+    
+    <item>
+      <title>TypeScript and React, Part 4</title>
+      <link>https://mikebridge.github.io/post/getting-started-typescript-react-4/</link>
+      <pubDate>Thu, 04 May 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/getting-started-typescript-react-4/</guid>
+      <description>This is part of this series of blog posts introducing TypeScript and React. Here&amp;rsquo;s Part 1.
+Edit, Feb 26, 2019: Nobody on the team liked this approach as much as Render Props, so we&amp;rsquo;ve switched to that. Our experience was that HOCs can create mind-bending types.
+ React&amp;rsquo;s Higher Order Component pattern is a technique to help developers design better components and component interactions. Refactoring out cross-cutting concerns from a complex component with HOCs touches on at least three or four of the SOLID principles, but creating a cohesive design can be difficult without proper typing.</description>
+    </item>
+    
+    <item>
+      <title>TypeScript and React, Part 3</title>
+      <link>https://mikebridge.github.io/post/getting-started-typescript-react-3/</link>
+      <pubDate>Mon, 01 May 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/getting-started-typescript-react-3/</guid>
+      <description>This is part of this series of blog posts introducing TypeScript and React. Here&amp;rsquo;s Part 1.
+ TypeScript&amp;rsquo;s inferred typing gives you some flexibility on how you declare &amp;ldquo;Stateless Function Components&amp;rdquo;. Here are some examples.
+Simple:
+ If you are wondering what the extra curly braces are for in the parameters of the three examples, myvar and onClick are extracted from props via destructuring assignment. This next one is a little strange, because the types are declared inline.</description>
+    </item>
+    
+    <item>
+      <title>TypeScript and React, Part 2</title>
+      <link>https://mikebridge.github.io/post/getting-started-typescript-react-2/</link>
+      <pubDate>Sat, 29 Apr 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/getting-started-typescript-react-2/</guid>
+      <description>Part One of this series of blog posts introducing TypeScript and React is here.  It&amp;rsquo;s not too hard (any more) to get started with TypeScript and React. This post assumes that you know a little about JavaScript and a little about React—if you haven&amp;rsquo;t created an app already you can do it with create-react-app-typescript:
+1 2 3 4  &amp;gt; npm install -g create-react-app &amp;gt; create-react-app my-app --scripts-version=react-scripts-ts &amp;gt; cd my-app &amp;gt; npm start    The Component Here&amp;rsquo;s an example component called, well, exampleComponent.</description>
+    </item>
+    
+    <item>
+      <title>TypeScript and React, Part 1</title>
+      <link>https://mikebridge.github.io/post/getting-started-typescript-react/</link>
+      <pubDate>Fri, 28 Apr 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/getting-started-typescript-react/</guid>
+      <description>TypeScript with React: is it worth it? I started using them together a few months ago with some hesitation. I wanted the long-term benefits that strong typing brings to a larger code-base, but I always hesitate before wandering off of the main path. When it comes to mainstream software development, it&amp;rsquo;s usually best to stick with the group rather than struggling to survive in the woods on your own. So, on balance, do you gain more than you lose?</description>
+    </item>
+    
+    <item>
+      <title>Testing Redux-Observable Epics</title>
+      <link>https://mikebridge.github.io/post/typescript-redux-observable-epic-test/</link>
+      <pubDate>Wed, 26 Apr 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/typescript-redux-observable-epic-test/</guid>
+      <description>Here&amp;rsquo;s a way to test a redux-observable epic that performs an ajax call.
+This simplified TypeScript example has three actions: USER_LOAD_REQUEST is the result of a request to load a user, USER_LOAD_RESULT indicates a successful response, and USER_LOAD_ERROR holds an ajax error.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51  import {ActionsObservable} from &amp;#34;redux-observable&amp;#34;; import {AjaxError} from &amp;#34;rxjs/Rx&amp;#34;; import &amp;#34;rxjs/Rx&amp;#34;; export const USER_LOAD_REQUEST = &amp;#34;example/USER_LOAD_REQUEST&amp;#34;; export const USER_LOAD_RESULT = &amp;#34;example/USER_LOAD_RESULT&amp;#34;; export const USER_LOAD_ERROR = &amp;#34;example/USER_LOAD_ERROR&amp;#34;; export interface IUserResult { id: string; name: string; } export interface ICustomAjaxError { type: string; message: string; } export const loadUser = (userid: string) =&amp;gt; ({ type: USER_LOAD_REQUEST, userid }); export const loadUserResult = (results: IUserResult) =&amp;gt; ({ type: USER_LOAD_RESULT, results }); export const loadFailure = (message: string): ICustomAjaxError =&amp;gt; ({ type: USER_LOAD_ERROR, message }); export const loadUserEpic = (action$: ActionsObservable&amp;lt;any&amp;gt;, store, {getJSON}) =&amp;gt; { return action$.</description>
+    </item>
+    
+    <item>
+      <title>I18N in React with Typescript &amp; React-Intl</title>
+      <link>https://mikebridge.github.io/post/typescript-i18n-react-intl/</link>
+      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/typescript-i18n-react-intl/</guid>
+      <description>Earlier this week I went in search of a React-friendly i18n library and I spent some time experimenting with react-intl. React-intl is based on FormatJS, which is a library for localizing numbers, dates, and strings. My impression is that react-intl is a fairly small, practical library that is written to make i18n unobtrusive for developers.
+ Edit, May 1, 2017
+Today I&amp;rsquo;m wondering whether it may have been a mistake to adopt react-intl over the alternatives.</description>
+    </item>
+    
+    <item>
+      <title>JWT Tokens, SignalR and Single Page Applications</title>
+      <link>https://mikebridge.github.io/post/identityserver4-signalr/</link>
+      <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/identityserver4-signalr/</guid>
+      <description>A new-ish alternative to session-based cookies that&amp;rsquo;s well-suited to single page apps is token-based authentication.
+There are many SaaS services such as Auth0, Stormpath and Login Radius that are pretty easy to set up. If you can use one of those in your organization, you should&amp;mdash;it will save you a lot of time. But if you&amp;rsquo;re stuck hosting your data yourself you will need to look at a product like IdentityServer4 or ForgeRock.</description>
+    </item>
+    
+  </channel>
+</rss>

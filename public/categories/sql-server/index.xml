@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sql Server on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/sql-server/</link>
+    <description>Recent content in Sql Server on Mike Bridge - Dev Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
+    <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
+    <lastBuildDate>Mon, 04 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mikebridge.github.io/categories/sql-server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Azure Active Directory with Azure SQL</title>
+      <link>https://mikebridge.github.io/post/azure-active-directory-elastic-pool/</link>
+      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/azure-active-directory-elastic-pool/</guid>
+      <description>This post describes how to set up user access to Azure SQL Server within an Elastic Pool via Azure Active Directory. Specifically, I want to allow an AD user to connect to an Azure-hosted database with his own Connection String.
+ So you&amp;rsquo;ve got users and groups in Azure Active Directory, and you have one or more Azure SQL Servers in an Elastic Pool. How can you grant those AD Users access to your SQL Server databases?</description>
+    </item>
+    
+  </channel>
+</rss>

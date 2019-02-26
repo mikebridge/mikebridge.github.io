@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redux on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/redux/</link>
+    <description>Recent content in Redux on Mike Bridge - Dev Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
+    <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
+    <lastBuildDate>Sat, 29 Apr 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mikebridge.github.io/categories/redux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TypeScript and React, Part 2</title>
+      <link>https://mikebridge.github.io/post/getting-started-typescript-react-2/</link>
+      <pubDate>Sat, 29 Apr 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/getting-started-typescript-react-2/</guid>
+      <description>Part One of this series of blog posts introducing TypeScript and React is here.  It&amp;rsquo;s not too hard (any more) to get started with TypeScript and React. This post assumes that you know a little about JavaScript and a little about React—if you haven&amp;rsquo;t created an app already you can do it with create-react-app-typescript:
+1 2 3 4  &amp;gt; npm install -g create-react-app &amp;gt; create-react-app my-app --scripts-version=react-scripts-ts &amp;gt; cd my-app &amp;gt; npm start    The Component Here&amp;rsquo;s an example component called, well, exampleComponent.</description>
+    </item>
+    
+    <item>
+      <title>TypeScript and React, Part 1</title>
+      <link>https://mikebridge.github.io/post/getting-started-typescript-react/</link>
+      <pubDate>Fri, 28 Apr 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/getting-started-typescript-react/</guid>
+      <description>TypeScript with React: is it worth it? I started using them together a few months ago with some hesitation. I wanted the long-term benefits that strong typing brings to a larger code-base, but I always hesitate before wandering off of the main path. When it comes to mainstream software development, it&amp;rsquo;s usually best to stick with the group rather than struggling to survive in the woods on your own. So, on balance, do you gain more than you lose?</description>
+    </item>
+    
+  </channel>
+</rss>

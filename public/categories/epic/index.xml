@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Epic on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/epic/</link>
+    <description>Recent content in Epic on Mike Bridge - Dev Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
+    <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
+    <lastBuildDate>Wed, 26 Apr 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mikebridge.github.io/categories/epic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Testing Redux-Observable Epics</title>
+      <link>https://mikebridge.github.io/post/typescript-redux-observable-epic-test/</link>
+      <pubDate>Wed, 26 Apr 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/typescript-redux-observable-epic-test/</guid>
+      <description>Here&amp;rsquo;s a way to test a redux-observable epic that performs an ajax call.
+This simplified TypeScript example has three actions: USER_LOAD_REQUEST is the result of a request to load a user, USER_LOAD_RESULT indicates a successful response, and USER_LOAD_ERROR holds an ajax error.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51  import {ActionsObservable} from &amp;#34;redux-observable&amp;#34;; import {AjaxError} from &amp;#34;rxjs/Rx&amp;#34;; import &amp;#34;rxjs/Rx&amp;#34;; export const USER_LOAD_REQUEST = &amp;#34;example/USER_LOAD_REQUEST&amp;#34;; export const USER_LOAD_RESULT = &amp;#34;example/USER_LOAD_RESULT&amp;#34;; export const USER_LOAD_ERROR = &amp;#34;example/USER_LOAD_ERROR&amp;#34;; export interface IUserResult { id: string; name: string; } export interface ICustomAjaxError { type: string; message: string; } export const loadUser = (userid: string) =&amp;gt; ({ type: USER_LOAD_REQUEST, userid }); export const loadUserResult = (results: IUserResult) =&amp;gt; ({ type: USER_LOAD_RESULT, results }); export const loadFailure = (message: string): ICustomAjaxError =&amp;gt; ({ type: USER_LOAD_ERROR, message }); export const loadUserEpic = (action$: ActionsObservable&amp;lt;any&amp;gt;, store, {getJSON}) =&amp;gt; { return action$.</description>
+    </item>
+    
+  </channel>
+</rss>
