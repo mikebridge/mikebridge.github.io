@@ -1,6 +1,6 @@
 +++
 title = "TypeScript and React, Part 1"
-categories = ["react", "redux", :typescript"]
+categories = ["react", "redux", "typescript"]
 description = "Getting Started with TypeScript and React, Part 1"
 date = "2017-04-28"
 aliases = ["articles/getting-started-typescript-react"]

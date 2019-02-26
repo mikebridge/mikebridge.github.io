@@ -1,7 +1,7 @@
 +++
 title = "TypeScript and React, Part 2"
-subtitle = "A Simple React Component in TypeScript:
-categories = ["react", "redux", :typescript"]
+subtitle = "A Simple React Component in TypeScript"
+categories = ["react", "redux", "typescript"]
 description = "Simple React Components in TypeScript"
 date = "2017-04-29"
 aliases = ["articles/getting-started-typescript-react-2"]
