@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>TypeScript and React, Part 4 - Mike Bridge - Dev Notes</title>
+  <meta property="og:title" content="TypeScript and React, Part 4" />
+  <meta name="twitter:title" content="TypeScript and React, Part 4" />
+  <meta name="description" content="React Higher Order Controls in TypeScript">
+  <meta property="og:description" content="React Higher Order Controls in TypeScript">
+  <meta name="twitter:description" content="React Higher Order Controls in TypeScript">
+  <meta name="author" content="Mike Bridge"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Mike Bridge - Dev Notes",
+    
+    "url": "https://mikebridge.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https://mikebridge.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://mikebridge.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https://mikebridge.github.io/post/getting-started-typescript-react-4/",
+          "name": "Type script and react, part 4"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Mike Bridge"
+  },
+  "headline": "TypeScript and React, Part 4",
+  "description" : "React Higher Order Controls in TypeScript",
+  "inLanguage" : "en",
+  "wordCount": 1596,
+  "datePublished" : "2017-05-04T00:00:00",
+  "dateModified" : "2017-05-04T00:00:00",
+  "image" : "https://mikebridge.github.io/images/avatar.jpg",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https://mikebridge.github.io/post/getting-started-typescript-react-4/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https://mikebridge.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https://mikebridge.github.io/images/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="TypeScript and React, Part 4" />
+<meta property="og:description" content="React Higher Order Controls in TypeScript">
+<meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+<meta property="og:url" content="https://mikebridge.github.io/post/getting-started-typescript-react-4/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Mike Bridge - Dev Notes" />
+  <meta name="twitter:title" content="TypeScript and React, Part 4" />
+  <meta name="twitter:description" content="React Higher Order Controls in TypeScript">
+  <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@michaelbridge" />
+  <meta name="twitter:creator" content="@michaelbridge" />
+  <link href='https://mikebridge.github.io/images/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@michaelbridge" />
+  <meta name="twitter:creator" content="@michaelbridge" />
+  <meta property="og:url" content="https://mikebridge.github.io/post/getting-started-typescript-react-4/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
+
+  <meta name="generator" content="Hugo 0.54.0" />
+  <link rel="alternate" href="https://mikebridge.github.io/index.xml" type="application/rss+xml" title="Mike Bridge - Dev Notes">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mikebridge.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://mikebridge.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://mikebridge.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-48293065-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://mikebridge.github.io">Mike Bridge - Dev Notes</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Mike Bridge - Dev Notes" href="https://mikebridge.github.io">
+            <img class="avatar-img" src="https://mikebridge.github.io/images/avatar.jpg" alt="Mike Bridge - Dev Notes" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>TypeScript and React, Part 4</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">React Higher Order Components in TypeScript</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on May 4, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1596&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<blockquote>
+<p>This is part of this series of blog posts introducing <strong>TypeScript</strong> and <strong>React</strong>. Here&rsquo;s <a href="/articles/getting-started-typescript-react/">Part 1</a>.</p>
+
+<p><em>Edit, Feb 26, 2019</em>: Nobody on the team liked this approach as much as <a href="https://reactjs.org/docs/render-props.html">Render Props</a>, so we&rsquo;ve switched to that.
+Our experience was that HOCs can create mind-bending types.</p>
+</blockquote>
+
+<p>React&rsquo;s <a href="https://facebook.github.io/react/docs/higher-order-components.html">Higher Order Component</a> pattern
+is a technique to help developers design better components and component interactions.  Refactoring out cross-cutting
+concerns from a complex component with HOCs touches on at least three or four of
+the <a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)">SOLID principles</a>, but creating a cohesive
+design can be difficult without proper typing.  And it&rsquo;s can be especially difficult in React when using
+plain, old untyped JavaScript because most of the data that goes into a component gets mashed into a single
+untyped Props object.  The more interaction there is, the harder it gets to keep track of, especially as
+the code changes over time.  Fortunately, TypeScript provides some tools and some structure that can help keep
+our component design and architecture clean as our software evolves and changes.</p>
+
+<p>Say, for example, that you want to create a component that displays the message &ldquo;Welcome {username}&rdquo; and sends the
+user to a &ldquo;User Settings&rdquo; page when that message is clicked.</p>
+
+<p>The first iteration might be to write a simple component that displays the logged-in user&rsquo;s information:</p>
+
+<script src="https://gist.github.com/mikebridge/e6dc04180f9a1cd42410d961d1971ccf.js"></script>
+
+<p>And here are some tests:</p>
+
+<script src="https://gist.github.com/mikebridge/b9bb34e9a2f60c871ab7e38e812c7c12.js"></script>
+
+<p>That&rsquo;s straightforward enough.   But there&rsquo;s still some logic to implement:</p>
+
+<ol>
+<li>If the user is not logged in, we want to hide this component.</li>
+<li>If the user <em>is</em> logged in, we need to access his or her name, e.g. from Redux.</li>
+<li>We need to trigger navigation when the component is clicked, e.g. via <a href="https://github.com/ReactTraining/react-router">react-router</a>.</li>
+</ol>
+
+<p>Where should all that functionality go?  It would be <a href="https://www.youtube.com/watch?v=rI8tNMsozo0">easy</a> to spew all
+this logic right into the Welcome component by <a href="https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options"><code>connect</code>-ing</a> it to
+our Redux store and then also referencing the router directly.  However, there are a few good reasons that this might not be a
+ good idea:</p>
+
+<ul>
+<li>We&rsquo;ll likely need to personalize other components later, so this is probably a cross-cutting concern</li>
+<li>The <code>Welcome</code> component is a <strong><a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">dumb / presentational</a></strong>
+component, and this extra logic probably belongs in a separate <strong>smart / container</strong> component.  Our simple component shouldn&rsquo;t
+know about datastores or site navigation&mdash;it should just display data.<br /></li>
+</ul>
+
+<p>In terms of SOLID principles, we want to avoid adding this logic to our <code>Welcome</code> component because a) it would
+compromise its *Single Responsibility*—it&rsquo;s just supposed to display a personalized link—and b) it
+should be *Closed to Modification but Open to Extension*—we don&rsquo;t want to dig around in this component every
+time we need to add a new feature.</p>
+
+<p>Let&rsquo;s say our software already puts the user information in the Redux store under the <code>user</code> key.  A HOC wrapper might
+grab that object if it exists and inject it (hey, there&rsquo;s the <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">D</a> from SOLID too!)
+into the subcomponent.  I would describe this functionality as &ldquo;personalization&rdquo;, so I&rsquo;ll call this HOC
+<code>withPersonalization</code>.  Here&rsquo;s a first step, where the personalization is hardcoded (later we&rsquo;ll introduce Redux):</p>
+
+<script src="https://gist.github.com/mikebridge/93dbc41f1afc2dd4ce64f08106eefbab.js"></script>
+
+<p>There are some type declarations there that hurt the eyes (<em>Disclaimer: if you&rsquo;re a Rails dev they may
+land you in the hospital</em>), so let&rsquo;s remember what we&rsquo;re trying to accomplish with this first iteration:</p>
+
+<ul>
+<li><p>The goal is to provide an interface to props that a developer can see, but also have another interface
+to props that is only used internally (e.g. by redux).  So when a developer includes our <code>&lt;Welcome /&gt;</code>
+component, we would like to make it clear to him that the <code>onClick</code> function is available (e.g via autosuggest),
+but we also need to ensure that the the <code>name</code> is hidden from him, but visible to redux&rsquo;s <code>connect</code>.</p></li>
+
+<li><p>When we wrap a component in <code>withPersonalization</code>, we want to ensure that the underlying component is aware of how
+personalization works.  Or in other words, it needs to implement a contract that indicates it can accept
+personalization data&mdash;no lazy duck typing!  In vanilla JS React, this contract is sort-of provided by propTypes, but
+in TypeScript we can accomplish a lot more.</p></li>
+</ul>
+
+<p>The most important part in this code is the first type declaration.  I created
+a <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-aliases">type alias</a> called <code>HOCWrapped</code> because I
+intend to reuse this, and I don&rsquo;t really want to have to look a this ugly code more than once:</p>
+
+<p><code>type HOCWrapped React.ComponentClass&lt;PWrapped &amp; PHoc&gt; | React.SFC&lt;PWrapped &amp; PHoc&gt;;</code></p>
+
+<p>This type alias includes two different types, <code>React.ComponentClass</code> and <code>React.SFC</code>.  Those two types are separated
+by a vertical bar, so taken together it is a <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types">union type</a>
+meaning our <code>withPersonalization</code> HOC will work with <em>either</em> a <a href="https://facebook.github.io/react/docs/components-and-props.html#functional-and-class-components">traditional React Component Class <em>or</em> a Stateless Functional Component</a>.</p>
+
+<p>The powerful part of this is the ampersand: <code>PWrapped &amp; PHoc</code>.  <code>PWrapped</code> represents the <em>type of the props that the wrapped
+component uses, and that we ultimately want to expose to the caller</em>.  <code>PHoc</code>, on the other hand, is <em>the props type that the HOC wrapper will
+implement, but will hide from the caller</em>.  The two types, joined together with an ampersand, is an <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#intersection-types">intersection type</a>,
+meaning you pass as props an object that implements <em>both</em> the type <code>PWrapped</code> and the type <code>PHoc</code>.</p>
+
+<p>The angle brackets around the union type indicate that we&rsquo;re creating a generic type.  So <code>React.ComponentClass&lt;PWrapped &amp; PHoc&gt;</code>
+means &ldquo;A React Component that takes props which implements PWrapped and PHoc&rdquo;.</p>
+
+<p>This is indeed complex and confusing, especially if you haven&rsquo;t worked in typed languages like C#, Java or Scala.  So
+let&rsquo;s convert this declaration&hellip;</p>
+
+<pre>
+    type HOCWrapped&lt;PWrapped, PHoc> = React.ComponentClass&lt;PWrapped & PHoc> | React.SFC&lt;PWrapped & PHoc>;
+
+    export function withPersonalization&lt;P, S>(
+           Component: HOCWrapped&lt;P, IWithPersonalizationProps>): React.ComponentClass&lt;P> {
+       ...
+    }
+</pre>
+
+<p>&hellip; into a paragraph in English:</p>
+
+<blockquote>
+<p><em>withPersonalization</em> is a function that takes a component class or a higher order function as an argument,
+and we&rsquo;ll call this argument the &ldquo;wrapped component&rdquo;.  The wrapped component takes properties of type
+P-merged-together-with-IWithPersonalizationProps (i.e. a props object that&rsquo;s passed in must implement both
+types), and the wrapped component uses a state of type S.  The output of this function is another
+component class that accepts only objects of type P as props (and does not accept props with attributes
+appearing in IWithPersonalizationProps).</p>
+</blockquote>
+
+<p>React wants us to stuff most everything into a component via props, so that&rsquo;s why we&rsquo;re going through this
+complex typing exercise.  We want to make sure we only accept props of type <code>P</code> from a caller, and reject
+props that are of type <code>IWithPersonalizationProps</code>.  But we also want to make sure that the wrapped component
+understands <code>IWithPersonalizationProps</code>.</p>
+
+<p>This wrapper accomplishes something analogous to what <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">destructuring assignment</a> syntax does
+for variables—except that it operates on types.  We&rsquo;ve created a type that merges <code>PWrapped</code> and a <code>PHoc</code> into
+one props type, then we extracted the wrapped component&rsquo;s prop type AND the HOC prop type back into their
+original types again. Gimme an <a href="https://en.wikipedia.org/wiki/Interface_segregation_principle">I</a>!</p>
+
+<p>So I said I wouldn&rsquo;t modify the <code>Welcome</code> component, but I guess that&rsquo;s not the case.  We won&rsquo;t change functionality
+though&mdash;just solidify its communication with other components.  We need to make sure it
+is expecting the personalization, so it should know about <code>IWithPersonalizationProps</code>.  (Notice that I&rsquo;m exporting the
+unwrapped component as well as the wrapped component as a default export, so it&rsquo;s easier to test without elaborate
+mocking.)  Here&rsquo;s the second iteration of our component:</p>
+
+<script src="https://gist.github.com/mikebridge/fa76d40ac7a0fc90530a669455d7eda5.js"></script>
+
+<p>Let&rsquo;s do a sanity check.  When we use this thing, does it accept <code>onClick</code>, but not <code>name</code>?  Here&rsquo;s what it looks
+like in IntelliJ:</p>
+
+
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/typescript/typecheck1.png" alt="&#39;name&#39; is not supposed to be there: check!"/>
+    </div>
+    <a href="/images/typescript/typecheck1.png" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>&#39;name&#39; is not supposed to be there: check!</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/typescript/typecheck2.png" alt="Fixed before we even left the editor!"/>
+    </div>
+    <a href="/images/typescript/typecheck2.png" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Fixed before we even left the editor!</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<blockquote>
+<p>TypeScript makes <code>propTypes</code> obsolete.</p>
+</blockquote>
+
+<p>So let&rsquo;s take the next step&mdash;let&rsquo;s take the user data from Redux:</p>
+
+<script src="https://gist.github.com/mikebridge/9abd8407a6f022c8f9d213d15c1c0426.js"></script>
+
+<p>In order for Redux to type the returned connected component correctly, we need to explicitly declare the ownProps,
+even though we don&rsquo;t use it.  This allows TypeScript to infer the types correctly in <code>connect</code> without requiring
+explicit definitions.  (&ldquo;ownProps&rdquo; seems to be the standard term distinguishing the props that are
+defined locally by a component from props that are defined elsewhere, like redux.)</p>
+
+<pre>
+const mapStateToProps = (state: any, ownProps: P): IWithPersonalizationProps => ({
+     name: state.user.name
+});
+</pre>
+
+<p>Here are my tests:</p>
+
+<script src="https://gist.github.com/mikebridge/3bb614064da11f1c85f4a13dc09105d0.js"></script>
+
+<p>All tests pass: great!</p>
+
+<p>There&rsquo;s still one more thing to do, which is connect to the router, so that we satisfy our last use-case.  This
+is essentially the same strategy as our <code>withPersonalization</code> HOC, but we&rsquo;ll also pass a second <code>routeWhenClicked</code>
+property:</p>
+
+<script src="https://gist.github.com/mikebridge/96a4487aa185343c13bfba5fcc3b431b.js"></script>
+
+<p>Here&rsquo;s the final version of the welcome control, with the cross-cutting concerns factored out into HOCs:</p>
+
+<script src="https://gist.github.com/mikebridge/0c30a19f8c6653c07349e901e97689bc.js"></script>
+
+<p>The last line is where all the pieces come together.  You can pull in the new <code>&lt;Welcome /&gt;</code> component like this:</p>
+
+<pre>
+   import Welcome from "./welcome";
+</pre>
+
+<p><em>Side note: I moved the intersection type into a type alias.  However, there&rsquo;s one oddity&mdash;type destructuring didn&rsquo;t work
+correctly when I stacked the HOCs together unless I included an empty &ldquo;OwnProps&rdquo; declaration. That&rsquo;s where
+the <code>interface IWelcomeOwnProps {}</code> declaration comes from.</em></p>
+
+<ul>
+<li>Edit: <a href="/react-router-4-query-string-hoc">Here&rsquo;s an example</a> of replacing react-router&rsquo;s missing QueryString
+parsing using an HOC.</li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Placing functionality into separate HOCs makes it much easier to reuse React components.  Here we have
+two reusable HOCs and a very simple base &ldquo;Welcome&rdquo; component, all of which are simple to comprehend
+and modify.  TypeScript&rsquo;s compile-time (and edit-time) checks helped us separate out the concerns
+confidently, with the knowledge that it will be much easier to modify clean code like this in the future.  And
+TypeScript didn&rsquo;t clutter up our code, either&mdash;many of the types were inferred rather than explicitly declared.</p>
+
+<h3 id="more-reading">More Reading:</h3>
+
+<ul>
+<li><a href="/articles/getting-started-typescript-react">Part 1: Getting Started with TypeScript and React</a></li>
+<li><a href="/articles/getting-started-typescript-react-2">Part 2: Simple React Components in TypeScript</a></li>
+<li><a href="/articles/getting-started-typescript-react-3">Part 3: Stateless React Components in TypeScript</a></li>
+<li>Part 4: React&rsquo;s Higher Order Controls in TypeScript</li>
+<li>Coming soon: TypeScript with Redux; Testing &amp; Continuous Deployment</li>
+</ul>
+
+
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-4%2f&amp;text=TypeScript%20and%20React%2c%20Part%204&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-4%2f" target="_blank" title="Share on Google Plus">
+          <i class="fab fa-google-plus"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-4%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-4%2f&amp;title=TypeScript%20and%20React%2c%20Part%204" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-4%2f&amp;title=TypeScript%20and%20React%2c%20Part%204" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-4%2f&amp;title=TypeScript%20and%20React%2c%20Part%204" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-4%2f&amp;description=TypeScript%20and%20React%2c%20Part%204" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+
+        
+          
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://mikebridge.github.io/post/getting-started-typescript-react-3/" data-toggle="tooltip" data-placement="top" title="TypeScript and React, Part 3">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://mikebridge.github.io/post/react-router-4-query-string-hoc/" data-toggle="tooltip" data-placement="top" title="TypeScript and React, Part 5">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">                  
+            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/getting-started-typescript-react-4">comments</span></button>
+            <div id="disqus_thread"></div>
+
+            <script type="text/javascript">
+              var disqus_config = function () {
+              this.page.url = 'https:\/\/mikebridge.github.io\/post\/getting-started-typescript-react-4';
+            };
+
+          </script>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:mike@bridgecanada.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/mikebridge" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/michaelbridge" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/mikelbridge" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/267280/mikebridge" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/mikebridge70" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/user/mikelbridge" title="Spotify">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-spotify fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            
+            <a href="https://mikebridge.github.io/index.xml" title="RSS">
+            
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Mike Bridge
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2017
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://mikebridge.github.io">Mike Bridge - Dev Notes</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.54.0</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://mikebridge.github.io/js/main.js"></script>
+<script src="https://mikebridge.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="https://mikebridge.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(function(){
+  $('#show-comments').on('click', function(){
+    var disqus_shortname = 'mikebridge-github-io';
+      
+    (function() {
+      var disqus = document.createElement('script'); 
+      disqus.type = 'text/javascript'; 
+      disqus.async = true;
+      disqus.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(disqus);
+    })();
+      
+    $(this).hide(); 
+    });
+  });
+      
+</script>
+<script id="dsq-count-scr" src="//mikebridge-github-io.disqus.com/count.js" async></script>
+
+
+
+
+  </body>
+</html>
+

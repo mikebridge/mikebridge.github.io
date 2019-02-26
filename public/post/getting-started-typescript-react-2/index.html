@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>TypeScript and React, Part 2 - Mike Bridge - Dev Notes</title>
+  <meta property="og:title" content="TypeScript and React, Part 2" />
+  <meta name="twitter:title" content="TypeScript and React, Part 2" />
+  <meta name="description" content="Simple React Components in TypeScript">
+  <meta property="og:description" content="Simple React Components in TypeScript">
+  <meta name="twitter:description" content="Simple React Components in TypeScript">
+  <meta name="author" content="Mike Bridge"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Mike Bridge - Dev Notes",
+    
+    "url": "https://mikebridge.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https://mikebridge.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://mikebridge.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https://mikebridge.github.io/post/getting-started-typescript-react-2/",
+          "name": "Type script and react, part 2"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Mike Bridge"
+  },
+  "headline": "TypeScript and React, Part 2",
+  "description" : "Simple React Components in TypeScript",
+  "inLanguage" : "en",
+  "wordCount": 765,
+  "datePublished" : "2017-04-29T00:00:00",
+  "dateModified" : "2017-04-29T00:00:00",
+  "image" : "https://mikebridge.github.io/images/avatar.jpg",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https://mikebridge.github.io/post/getting-started-typescript-react-2/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https://mikebridge.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https://mikebridge.github.io/images/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="TypeScript and React, Part 2" />
+<meta property="og:description" content="Simple React Components in TypeScript">
+<meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+<meta property="og:url" content="https://mikebridge.github.io/post/getting-started-typescript-react-2/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Mike Bridge - Dev Notes" />
+  <meta name="twitter:title" content="TypeScript and React, Part 2" />
+  <meta name="twitter:description" content="Simple React Components in TypeScript">
+  <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@michaelbridge" />
+  <meta name="twitter:creator" content="@michaelbridge" />
+  <link href='https://mikebridge.github.io/images/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@michaelbridge" />
+  <meta name="twitter:creator" content="@michaelbridge" />
+  <meta property="og:url" content="https://mikebridge.github.io/post/getting-started-typescript-react-2/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
+
+  <meta name="generator" content="Hugo 0.54.0" />
+  <link rel="alternate" href="https://mikebridge.github.io/index.xml" type="application/rss+xml" title="Mike Bridge - Dev Notes">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mikebridge.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://mikebridge.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://mikebridge.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-48293065-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://mikebridge.github.io">Mike Bridge - Dev Notes</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Mike Bridge - Dev Notes" href="https://mikebridge.github.io">
+            <img class="avatar-img" src="https://mikebridge.github.io/images/avatar.jpg" alt="Mike Bridge - Dev Notes" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>TypeScript and React, Part 2</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">A Simple React Component in TypeScript</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 29, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;765&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<ul>
+<li>Part One of this series of blog posts introducing <strong>TypeScript</strong> and <strong>React</strong> is <a href="/articles/getting-started-typescript-react/">here</a>.</li>
+</ul>
+
+<p>It&rsquo;s not too hard (any more) to get started with TypeScript and React.  This post assumes
+that you know a little about JavaScript and a little about React—if you haven&rsquo;t created
+an app already you can do it with <a href="`https://github.com/wmonk/create-react-app-typescript`">create-react-app-typescript</a>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">&gt;</span> <span class="n">npm</span> <span class="n">install</span> <span class="n">-g</span> <span class="n">create-react-app</span>
+<span class="p">&gt;</span> <span class="n">create-react-app</span> <span class="n">my-app</span> <span class="p">-</span><span class="n">-scripts-version</span><span class="p">=</span><span class="n">react-scripts-ts</span>    
+<span class="p">&gt;</span> <span class="n">cd</span> <span class="n">my-app</span>    
+<span class="p">&gt;</span> <span class="n">npm</span> <span class="n">start</span>    </code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="the-component">The Component</h2>
+
+<p>Here&rsquo;s an example component called, well, <code>exampleComponent.tsx</code>:</p>
+
+<script src="https://gist.github.com/mikebridge/b1d4f195dfa7b6fc8f0ae31682c8fcf8.js"></script>  
+
+<p>You&rsquo;ll notice that this is almost the same as it would be in vanilla JavaScript, except
+for those type definitions.</p>
+
+<p>Include it in <code>App.tsx</code> with this code:</p>
+
+<pre>
+   import ExampleComponent from "./example/exampleComponent"; // use the "default" export
+   // OR: import {ExampleComponent} from "./example/exampleComponent"; // use the explicit export
+   // ...
+   
+   <ExampleComponent onCounterIncrease={(count) => console.log(count)} />
+</pre>
+
+<p>If you open the console and click on the button, you should see the counter increase.</p>
+
+<p><strong>Typing Props and State</strong></p>
+
+<p>When you create a <code>Component</code> class, you should create types for the props and the
+state.  Here we&rsquo;re requiring that the caller provide the function <code>onCounterIncrease</code>, which takes the
+current count number and returns nothing.  The <code>text</code> variable is a string, and it&rsquo;s
+optional (hence the &ldquo;?&rdquo; in the type).</p>
+
+<p>You can define a type as a TypeScript <a href="https://www.typescriptlang.org/docs/handbook/interfaces.html"><code>interface</code></a>:</p>
+
+<pre>
+    interface IMyProps {
+        text?: string; // an optional text field
+        myFunc: (count: number) => void; // a required function
+        myObj: ISomeClass; // an object whose type is defined by the inteface ISomeClass
+    }
+</pre>
+ 
+
+<p>The nice thing about the <a href="https://www.typescriptlang.org/docs/handbook/functions.html#function-types">function declaration</a> for <code>myFunc</code>
+is that the caller has to match the signature of the definition. Passing zero parameters to <code>myFunc</code> will result in a compile-time
+error.  If you decide you don&rsquo;t care about the function signature, you could also
+declare <code>myFunc</code> as a <code>Function</code>.  Or even <code>any</code>, if you were really lazy.</p>
+
+<blockquote>
+<p>Although Bob Martin is usually a <a href="https://www.amazon.ca/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">great</a> source of advice on most things coding-related,
+he <a href="http://stackoverflow.com/questions/5816951/prefixing-interfaces-with-i#answer-5817904">doesn&rsquo;t like &ldquo;I&rsquo;s&rdquo; in interfaces</a>.  Nor
+does he like <a href="http://blog.cleancoder.com/uncle-bob/2015/01/08/InterfaceConsideredHarmful.html">interfaces in general</a>.  I
+happen to like both.</p>
+</blockquote>
+
+<p>React uses <a href="https://www.typescriptlang.org/docs/handbook/generics.html">a generic type</a> to
+define a <code>ReactComponent</code> class which uses the props and static types that you create.  If you haven&rsquo;t
+used generic types before, they are a way of reusing one type definition with different
+subtypes. For example, an <code>Array</code> type might be able to hold any kind of object, but
+an <code>Array&lt;string&gt;</code> can only hold strings—and nothing else.  A React Component
+that&rsquo;s defined like the following can only accept props that conform to <code>IMyProps</code> and use a state that
+conforms to <code>IMyState</code>:</p>
+
+<pre>
+    import * as React from "react";
+    
+    class MyComponent extends React.Component<IMyProps, IMyState> {
+        // ...
+    }    
+</pre>
+        
+
+<p>Sometimes you&rsquo;ll see definitions like <strong><code>class MyComponent extends React.Component&lt;{}, {}&gt;</code></strong>. This
+means that this component doesn&rsquo;t use props or state—they must be empty.  <strong><code>class MyComponent extends React.Component&lt;any, any&gt;</code></strong> says
+that you can pass anything for props and state and it will do no type checking.</p>
+
+<p><strong>Static, Private, Public</strong></p>
+
+<p>In TypeScript, <code>propTypes</code>, <code>contextTypes</code>, and <code>defaultProps</code> are a <a href="https://www.typescriptlang.org/docs/handbook/classes.html#static-properties">static properties</a>,
+meaning they&rsquo;re created within the class definition, instead of on the prototype as in ES2015.</p>
+
+<p>JavaScript still requires <a href="http://javascript.crockford.com/private.html">contortions</a> to define
+private and public members.  Fortunately these are <a href="https://www.typescriptlang.org/docs/handbook/classes.html#public-private-and-protected-modifiers">first-class parts of TypeScript</a>.  In
+  this example, <code>onClick()</code> is invisible outside the component.</p>
+
+<p><strong>Type Inference</strong></p>
+
+<p>It sounds like the word &ldquo;Type&rdquo; in TypeScript refers to the amount of extra typing to get all those
+ type definitions in place.  Fortunately, TypeScript is smart enough to <a href="https://www.typescriptlang.org/docs/handbook/type-inference.html">infer</a> a lot
+ of the types so that you don&rsquo;t have to explicitly provide them all the time.  This is why when you pass
+ in the console logging function, you can type this:</p>
+
+<pre>
+    (count) => console.log(count)
+</pre>
+     
+
+<p>&hellip;instead of this:</p>
+
+<pre>
+    (count: number) => console.log(count)
+</pre>
+
+<h2 id="testing">Testing</h2>
+
+<p>I use <a href="https://github.com/airbnb/enzyme">airbnb&rsquo;s enzyme</a> for testing react components:</p>
+
+<pre>
+    > yarn add enzyme --dev 
+    # OR
+    > npm install enzyme --save-dev
+</pre>
+
+<p>Here are a couple tests.  Note that nothing here is really TypeScript-specific.  You can run them by typing <strong><code>yarn test</code></strong> (or <strong><code>npm test</code></strong>).</p>
+
+<script src="https://gist.github.com/mikebridge/ae7dafd955f2f3e206d9648a99649c82.js"></script>
+
+<p>Here&rsquo;s the thing: notice what happens if we forget to include our callback function—<a href="https://www.jetbrains.com/idea/">IntelliJ</a> gives us a warning that
+it&rsquo;s missing:</p>
+
+
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/typescript/error.png" alt="&#39;onCounterIncrease&#39; is missing"/>
+    </div>
+    <a href="/images/typescript/error.png" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>&#39;onCounterIncrease&#39; is missing</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>TypeScript makes <a href="https://facebook.github.io/react/docs/typechecking-with-proptypes.html">propTypes unnecessary</a>, because
+it will tell you at compile time—or <em>while you&rsquo;re typing it</em>, if you&rsquo;re using a TypeScript-aware editor—that you&rsquo;re missing something.  Or if you pass a function with the wrong signature (e.g.
+with missing parameters, or parameters of the wrong type), it will tell you that too.</p>
+
+<h3 id="more-reading">More Reading</h3>
+
+<ul>
+<li><a href="/articles/getting-started-typescript-react">Part 1: Getting Started with TypeScript and React</a></li>
+<li>Part 2: Simple React Components in TypeScript</li>
+<li><a href="/articles/getting-started-typescript-react-3">Part 3: Stateless React Components in TypeScript</a></li>
+<li><a href="/articles/getting-started-typescript-react-4">Part 4: React&rsquo;s Higher Order Controls in TypeScript</a></li>
+<li>Coming soon: TypeScript with Redux; Testing &amp; Continuous Deployment</li>
+</ul>
+
+
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-2%2f&amp;text=TypeScript%20and%20React%2c%20Part%202&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-2%2f" target="_blank" title="Share on Google Plus">
+          <i class="fab fa-google-plus"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-2%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-2%2f&amp;title=TypeScript%20and%20React%2c%20Part%202" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-2%2f&amp;title=TypeScript%20and%20React%2c%20Part%202" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-2%2f&amp;title=TypeScript%20and%20React%2c%20Part%202" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react-2%2f&amp;description=TypeScript%20and%20React%2c%20Part%202" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+
+        
+          
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://mikebridge.github.io/post/getting-started-typescript-react/" data-toggle="tooltip" data-placement="top" title="TypeScript and React, Part 1">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://mikebridge.github.io/post/getting-started-typescript-react-3/" data-toggle="tooltip" data-placement="top" title="TypeScript and React, Part 3">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">                  
+            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/getting-started-typescript-react-2">comments</span></button>
+            <div id="disqus_thread"></div>
+
+            <script type="text/javascript">
+              var disqus_config = function () {
+              this.page.url = 'https:\/\/mikebridge.github.io\/post\/getting-started-typescript-react-2';
+            };
+
+          </script>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:mike@bridgecanada.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/mikebridge" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/michaelbridge" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/mikelbridge" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/267280/mikebridge" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/mikebridge70" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/user/mikelbridge" title="Spotify">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-spotify fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            
+            <a href="https://mikebridge.github.io/index.xml" title="RSS">
+            
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Mike Bridge
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2017
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://mikebridge.github.io">Mike Bridge - Dev Notes</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.54.0</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://mikebridge.github.io/js/main.js"></script>
+<script src="https://mikebridge.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="https://mikebridge.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(function(){
+  $('#show-comments').on('click', function(){
+    var disqus_shortname = 'mikebridge-github-io';
+      
+    (function() {
+      var disqus = document.createElement('script'); 
+      disqus.type = 'text/javascript'; 
+      disqus.async = true;
+      disqus.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(disqus);
+    })();
+      
+    $(this).hide(); 
+    });
+  });
+      
+</script>
+<script id="dsq-count-scr" src="//mikebridge-github-io.disqus.com/count.js" async></script>
+
+
+
+
+  </body>
+</html>
+

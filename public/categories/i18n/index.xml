@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>I18n on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/i18n/</link>
+    <description>Recent content in I18n on Mike Bridge - Dev Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
+    <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
+    <lastBuildDate>Tue, 21 Mar 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://mikebridge.github.io/categories/i18n/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>I18N in React with Typescript &amp; React-Intl</title>
+      <link>https://mikebridge.github.io/post/typescript-i18n-react-intl/</link>
+      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/typescript-i18n-react-intl/</guid>
+      <description>Earlier this week I went in search of a React-friendly i18n library and I spent some time experimenting with react-intl. React-intl is based on FormatJS, which is a library for localizing numbers, dates, and strings. My impression is that react-intl is a fairly small, practical library that is written to make i18n unobtrusive for developers.
+ Edit, May 1, 2017
+Today I&amp;rsquo;m wondering whether it may have been a mistake to adopt react-intl over the alternatives.</description>
+    </item>
+    
+  </channel>
+</rss>

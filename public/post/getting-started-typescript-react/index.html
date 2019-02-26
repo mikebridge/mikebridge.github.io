@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>TypeScript and React, Part 1 - Mike Bridge - Dev Notes</title>
+  <meta property="og:title" content="TypeScript and React, Part 1" />
+  <meta name="twitter:title" content="TypeScript and React, Part 1" />
+  <meta name="description" content="Getting Started with TypeScript and React, Part 1">
+  <meta property="og:description" content="Getting Started with TypeScript and React, Part 1">
+  <meta name="twitter:description" content="Getting Started with TypeScript and React, Part 1">
+  <meta name="author" content="Mike Bridge"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Mike Bridge - Dev Notes",
+    
+    "url": "https://mikebridge.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https://mikebridge.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://mikebridge.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https://mikebridge.github.io/post/getting-started-typescript-react/",
+          "name": "Type script and react, part 1"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Mike Bridge"
+  },
+  "headline": "TypeScript and React, Part 1",
+  "description" : "Getting Started with TypeScript and React, Part 1",
+  "inLanguage" : "en",
+  "wordCount": 1296,
+  "datePublished" : "2017-04-28T00:00:00",
+  "dateModified" : "2017-04-28T00:00:00",
+  "image" : "https://mikebridge.github.io/images/avatar.jpg",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https://mikebridge.github.io/post/getting-started-typescript-react/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https://mikebridge.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https://mikebridge.github.io/images/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="TypeScript and React, Part 1" />
+<meta property="og:description" content="Getting Started with TypeScript and React, Part 1">
+<meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+<meta property="og:url" content="https://mikebridge.github.io/post/getting-started-typescript-react/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Mike Bridge - Dev Notes" />
+  <meta name="twitter:title" content="TypeScript and React, Part 1" />
+  <meta name="twitter:description" content="Getting Started with TypeScript and React, Part 1">
+  <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@michaelbridge" />
+  <meta name="twitter:creator" content="@michaelbridge" />
+  <link href='https://mikebridge.github.io/images/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@michaelbridge" />
+  <meta name="twitter:creator" content="@michaelbridge" />
+  <meta property="og:url" content="https://mikebridge.github.io/post/getting-started-typescript-react/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
+
+  <meta name="generator" content="Hugo 0.54.0" />
+  <link rel="alternate" href="https://mikebridge.github.io/index.xml" type="application/rss+xml" title="Mike Bridge - Dev Notes">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://mikebridge.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://mikebridge.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://mikebridge.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-48293065-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://mikebridge.github.io">Mike Bridge - Dev Notes</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Mike Bridge - Dev Notes" href="https://mikebridge.github.io">
+            <img class="avatar-img" src="https://mikebridge.github.io/images/avatar.jpg" alt="Mike Bridge - Dev Notes" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>TypeScript and React, Part 1</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 28, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1296&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<p>TypeScript with React: is it worth it?  I started using them together a few
+months ago with some hesitation.  I wanted the long-term benefits that strong typing
+brings to a larger code-base, but I always hesitate before wandering off of the main
+path.  When it comes to mainstream software development, it&rsquo;s usually best to stick
+with the group rather than struggling to survive in the woods on your own.  So, on
+balance, do you gain more than you lose?</p>
+
+<blockquote>
+<p><strong>TL;DR</strong></p>
+
+<p>Although I&rsquo;ve had a few problems, the experience has positive overall.  And frankly,
+it&rsquo;s way easier to get started than many blog posts would have you believe.</p>
+
+<p>React + TypeScript work well together, but:</p>
+
+<ul>
+<li>Start out with <a href="https://github.com/wmonk/create-react-app-typescript">the TypeScript fork of create-react-app</a></li>
+<li>Use an editor that does TypeScript code analysis well, like <a href="https://www.jetbrains.com/idea/">IntelliJ Ultimate</a></li>
+<li>Use <a href="https://palantir.github.io/tslint/">TSLint</a> religiously.</li>
+<li>Get a good understanding of TypeScript&rsquo;s <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html">basic</a> and
+<a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html">advanced</a> types.  You&rsquo;ll need most of them for React + Redux</li>
+</ul>
+</blockquote>
+
+<p>I identified several risks when evaluating whether to make the jump to TypeScript:</p>
+
+<h2 id="1-are-the-development-tools-be-hard-to-set-up-and-maintain">1) Are the development tools be hard to set up and maintain?</h2>
+
+<p>This was probably the biggest question for me.  I have no desire to waste several days in
+webpack build-configuration hell, then more days in editor-configuration hell, test-configuration hell,
+ continuous integration hell and deployment hell—and then to repeat the whole process every
+ few months when all the tools get updated.</p>
+
+<h3 id="create-react-app-typescript">create-react-app-typescript</h3>
+
+<p><a href="https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4">JavaScript fatigue</a> is still
+real.  Facebook knew that developers were finding it difficult to start working with React because
+creating a decent development environment is so complicated.  So they created <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a>
+to help developers out.  Although yeoman-like code-generators and starter projects have been around
+for a while, <code>create-react-app</code> is an improvement over them because it automates the configuration and
+keeps it up to date but allows you to modify your own code independently.  In other words,
+you don&rsquo;t need to create one-time a hard fork of a starter application to use it.  It gives developers
+the ability to run a web app, package it, test it, etc. with no configuration, and it&rsquo;s
+maintained by Facebook, so a developer can stay up-to-date without having to spend time
+reconfiguring the build as libraries are updated.</p>
+
+<p>Fortunately Will Monk has <a href="https://github.com/wmonk/create-react-app-typescript">created a fork specifically designed to work with TypeScript</a>,
+which so far has been well maintained.  There&rsquo;s a bit of risk there because he&rsquo;s just one
+person, but it seems to have some decent adoption so I hope it will continue
+to be a going concern.</p>
+
+<p>So to get started with TypeScript and React, this is all you need to do:</p>
+
+<pre>
+    > npm install -g create-react-app
+
+    > create-react-app my-app --scripts-version=react-scripts-ts
+    
+    > cd my-app/
+    
+    > npm start
+</pre>
+
+<p>Now you have a working React/TypeScript web site.  And the build process is taken care of:</p>
+
+<pre>
+    # start the server on port 4000, with hot-reloading enabled
+    > npm start
+
+    # run jest tests continuously
+    > npm test
+
+    # package a build for deployment
+    > npm run build
+
+    # heck, generate the test coverage report
+    > npm test -- --coverage
+</pre>
+
+<p>&hellip; plus <a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#updating-to-new-releases">lots more</a>.
+This works for me on both Linux and Windows. With <code>create-react-app</code> you can delegate the
+unpleasant task of build-script maintenance to Facebook, but if you should decide some day
+that you need some special configuration on your own, you can take over the configuration
+by &ldquo;<a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#npm-run-eject">ejecting</a>&ldquo;
+and maintaining the scripts yourself.</p>
+
+<h3 id="intellij-webstorm">IntelliJ / WebStorm</h3>
+
+<p>I can&rsquo;t say enough good things about the <a href="https://www.jetbrains.com/">JetBrains</a> family of
+editors.  I&rsquo;ve used most of the mainstream editors over the years and <a href="https://www.jetbrains.com/idea/">IntelliJ Ultimate</a> is
+the most powerful—certainly for editing TypeScript.  It <a href="https://palantir.github.io/tslint/">TSLint</a>s
+your code in real time, gives you coding suggestions, provides <em>real</em> autocompletion/intellisense (not just suggestions
+from a dictionary), and automates code refactoring (decently, though not perfectly), among
+many other things.  If you don&rsquo;t use an editor that takes full advantage of the kinds of code analysis that TypeScript makes available, you&rsquo;re leaving
+money on the table.  Getting real-time feedback on your code as you type is invaluable.</p>
+
+<p>I don&rsquo;t actually compile TypeScript from within IntelliJ, though that&rsquo;s an option.  Instead I let
+<code>create-react-app</code> do all the heavy lifting.  Usually run <code>npm test</code> in one terminal to
+run tests continuously, and <code>npm start</code> in another to update my browser whenever code
+changes.</p>
+
+<p><a href="https://www.jetbrains.com/webstorm/">WebStorm</a> is a subset of IntelliJ optimized for
+JavaScript.  IntelliJ supports almost every major language, but if you don&rsquo;t do anything
+but JavaScript you could just stick with WebStorm.</p>
+
+<p><del>The one downside is that I have not been able to figure out how to run TypeScript jest
+tests in debugging mode from within IntelliJ.</del>  (I can,
+however, <a href="https://blog.jetbrains.com/webstorm/2017/01/debugging-react-apps/">debug code via the web server</a>)</p>
+
+<p><em>Edit:</em> It&rsquo;s possible to debug TypeScript Jest tests created with create-react-app-typescript in IntelliJ (including setting breakpoints) by
+creating a Jest task via <code>Run</code> -&gt; <code>Edit Configurations</code> -&gt; <em>Green Plus Sign</em> -&gt; <code>Jest</code>.  Under &ldquo;Before Launch&rdquo;, add &ldquo;Compile TypeScript&rdquo;.
+Then add this to your profile.json file:</p>
+
+<script src="https://gist.github.com/mikebridge/ebeaebb5470f4ed34adeb75ea4e93f0d.js"></script>
+
+<h2 id="2-will-there-be-gnashing-of-teeth-because-a-js-library-has-no-typescript-type-definition-files">2) Will there be gnashing of teeth because a JS library has no TypeScript type definition files?</h2>
+
+<p>You need type definition files in TypeScript to use plain javascript libraries.  These work
+ like header files in languages like <code>C</code>, and they are maintained in a <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/">huge github
+ repository</a>, often by third-parties.  With
+ <a href="https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files/">TypeScript 2</a>
+ these are now trivial to acquire with <code>npm</code> or <code>yarn</code>, and often you don&rsquo;t even realize the typing
+ files are there—they just show up with the main package.</p>
+
+<p>I only have anecdotal evidence, but I have not had many problems with missing type
+ definitions so far.  In one case (with <a href="https://www.npmjs.com/package/@types/auth0-js">auth0-js</a> I&rsquo;ve downloaded an outdated <code>.d.ts</code> file someone wrote
+ and modified it myself.  I also had difficulty with
+ adding <code>react-intl</code> to the tool chain, but I eventually <a href="https://mikebridge.github.io/articles/typescript-i18n-react-intl/">came up with a solution</a>.</p>
+
+<p>I&rsquo;ve also rewritten a few open-source JavaScript excerpts into TypeScript rather than write a type definition file for them.  Since
+ TypeScript is a superset of JavaScript, this has always been an easy task.</p>
+
+<p>For the most part, the React-Redux environment&rsquo;s types have been fairly well maintained and
+ done in a very sophisticated manner.  The
+ issue is that the types that are superimposed on them can be complex.  Figuring out how
+ these advanced types interact has been the most time consuming for me, but I&rsquo;ll provide more
+ information on how this works in react &amp; redux in future blog posts.</p>
+
+<h2 id="3-is-it-a-headache-to-impose-types-on-third-parties-untyped-npm-hairballs">3) Is it a headache to impose types on third-parties&rsquo; untyped npm hairballs?</h2>
+
+<p>Everyone&rsquo;s pulled in nightmare JavaScript code from npm that accepts just about anything and
+can return who-knows-what.  TypeScript has two things going for it&mdash;a very powerful type system
+and an escape hatch.</p>
+
+<p>The TypeScript type system is a brilliant piece of work, but it requires some investment to understand
+how it works.  A good starting point is <a href="https://basarat.gitbooks.io/typescript/">Basarat Ali Syed&rsquo;s online book</a>
+I&rsquo;ve found that in most cases, union types, intersection types and generic types will make
+sense out of most <a href="https://www.youtube.com/watch?v=rI8tNMsozo0">hairballs</a>, but sometimes these can get complex,
+especially when wrapping Components in HOCs or using Redux.  I&rsquo;ll provide some example in later blog posts on how
+this can work smoothly.</p>
+
+<p>Fortunately, there&rsquo;s always an escape hatch: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html#any"><code>any</code></a>.
+If you can&rsquo;t figure a type out, you can always cast an object to any:</p>
+
+<pre>
+    const monkeyDoo = (someObj as any).monkeyPatchedFunction();
+</pre>
+
+<p>I admit that I&rsquo;ve encountered situations
+where I&rsquo;ve been flummoxed by nested type definitions or protean return objects and I&rsquo;ve
+taken the easy road out by casting to <code>any</code>.  And I&rsquo;ve found that some libraries are quite
+happy to pollute the props of wrapped components&mdash;which isn&rsquo;t a big deal if you&rsquo;re working
+in plain JavaScript, but a real source of complexity in TypeScript.</p>
+
+<h3 id="more-reading">More Reading:</h3>
+
+<ul>
+<li>Part 1: Getting Started with TypeScript and React</li>
+<li><a href="/articles/getting-started-typescript-react-2">Part 2: Simple React Components in TypeScript</a></li>
+<li><a href="/articles/getting-started-typescript-react-3">Part 3: Stateless React Components in TypeScript</a></li>
+<li><a href="/articles/getting-started-typescript-react-4">Part 4: React&rsquo;s Higher Order Controls in TypeScript</a></li>
+<li>Coming soon: TypeScript with Redux; Testing &amp; Continuous Deployment</li>
+</ul>
+
+
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react%2f&amp;text=TypeScript%20and%20React%2c%20Part%201&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react%2f" target="_blank" title="Share on Google Plus">
+          <i class="fab fa-google-plus"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react%2f&amp;title=TypeScript%20and%20React%2c%20Part%201" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react%2f&amp;title=TypeScript%20and%20React%2c%20Part%201" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react%2f&amp;title=TypeScript%20and%20React%2c%20Part%201" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fgetting-started-typescript-react%2f&amp;description=TypeScript%20and%20React%2c%20Part%201" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+
+        
+          
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://mikebridge.github.io/post/typescript-redux-observable-epic-test/" data-toggle="tooltip" data-placement="top" title="Testing Redux-Observable Epics">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://mikebridge.github.io/post/getting-started-typescript-react-2/" data-toggle="tooltip" data-placement="top" title="TypeScript and React, Part 2">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">                  
+            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/getting-started-typescript-react">comments</span></button>
+            <div id="disqus_thread"></div>
+
+            <script type="text/javascript">
+              var disqus_config = function () {
+              this.page.url = 'https:\/\/mikebridge.github.io\/post\/getting-started-typescript-react';
+            };
+
+          </script>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:mike@bridgecanada.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/mikebridge" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/michaelbridge" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/mikelbridge" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/267280/mikebridge" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/mikebridge70" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/user/mikelbridge" title="Spotify">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-spotify fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            
+            <a href="https://mikebridge.github.io/index.xml" title="RSS">
+            
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Mike Bridge
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2017
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://mikebridge.github.io">Mike Bridge - Dev Notes</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.54.0</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://mikebridge.github.io/js/main.js"></script>
+<script src="https://mikebridge.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="https://mikebridge.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(function(){
+  $('#show-comments').on('click', function(){
+    var disqus_shortname = 'mikebridge-github-io';
+      
+    (function() {
+      var disqus = document.createElement('script'); 
+      disqus.type = 'text/javascript'; 
+      disqus.async = true;
+      disqus.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(disqus);
+    })();
+      
+    $(this).hide(); 
+    });
+  });
+      
+</script>
+<script id="dsq-count-scr" src="//mikebridge-github-io.disqus.com/count.js" async></script>
+
+
+
+
+  </body>
+</html>
+
