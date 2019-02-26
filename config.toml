@@ -1,0 +1,86 @@
+baseurl = "https://mikebridge.github.io"
+DefaultContentLanguage = "en"
+title = "Mike Bridge - Dev Notes"
+theme = "beautifulhugo"
+metaDataFormat = "yaml"
+pygmentsStyle = "trac"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsOptions="linenos=table"
+#pygmentsUseClassic = true
+#pygmentsOptions = "linenos=inline"
+disqusShortname = "mikebridge-github-io"
+googleAnalytics = "UA-48293065-1"
+
+[Params]
+  homeTitle = "Dev Notes" # Set a different text for the header on the home page
+#  subtitle = "Various "
+  #logo = "img/avatar-icon.png" # Expecting square dimensions
+  logo = "images/avatar.jpg" # Expecting square dimensions
+  favicon = "images/favicon.ico"
+  dateFormat = "January 2, 2006"
+  commit = false
+  rss = true
+  comments = true
+  readingTime = true
+  wordCount = true
+  useHLJS = true
+  socialShare = true
+  delayDisqus = true
+  showRelatedPosts = true
+#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+
+#[[Params.bigimg]]
+#  src = "img/triangle.jpg"
+#  desc = "Triangle"
+#[[Params.bigimg]]
+#  src = "img/sphere.jpg"
+#  desc = "Sphere"
+#  # position: see values of CSS background-position.
+#  position = "center top"
+#[[Params.bigimg]]
+#  src = "img/hexagon.jpg"
+#  desc = "Hexagon"
+
+[Author]
+  name = "Mike Bridge"
+#  website = "yourwebsite.com"
+  email = "mike@bridgecanada.com"
+#  facebook = "username"
+#  googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
+  github = "mikebridge"
+#  gitlab = "username"
+#  bitbucket = "username"
+  twitter = "michaelbridge"
+#  reddit = "username"
+  linkedin = "mikelbridge"
+#  xing = "username"
+  stackoverflow = "users/267280/mikebridge"
+#  snapchat = "username"
+  instagram = "mikebridge70"
+#  youtube = "user/username" # or channel/channelname
+#  soundcloud = "username"
+  spotify = "mikelbridge"
+#  bandcamp = "username"
+#  itchio = "username"
+#  vk = "username"
+#  paypal = "username"
+#  telegram = "username"
+#  500px = "username"
+
+[[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = ""
+    weight = 1
+
+#[[menu.main]]
+#    name = "About"
+#    url = "page/about/"
+#    weight = 3
+
+#[[menu.main]]
+#    name = "Tags"
+#    url = "tags"
+#    weight = 3
