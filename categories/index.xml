@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Android</title>
+      <link>https://mikebridge.github.io/categories/android/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Autossh</title>
       <link>https://mikebridge.github.io/categories/autossh/</link>
       <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
@@ -177,7 +186,7 @@
     <item>
       <title>React Native</title>
       <link>https://mikebridge.github.io/categories/react-native/</link>
-      <pubDate>Sat, 04 Mar 2017 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/categories/react-native/</guid>
       <description></description>

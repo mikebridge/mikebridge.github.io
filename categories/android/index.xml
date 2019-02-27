@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>React Native on Mike Bridge - Dev Notes</title>
-    <link>https://mikebridge.github.io/categories/react-native/</link>
-    <description>Recent content in React Native on Mike Bridge - Dev Notes</description>
+    <title>Android on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/android/</link>
+    <description>Recent content in Android on Mike Bridge - Dev Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
     <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
     <lastBuildDate>Fri, 15 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://mikebridge.github.io/categories/react-native/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mikebridge.github.io/categories/android/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <guid>https://mikebridge.github.io/post/clear-react-native-caches/</guid>
       <description>Unable to resolve module `@blah/whatever` from `whatever.js`: Module `@blah/whatever` does not exist in the Haste module map  What?
 ReactNative development is an endless stream of inscrutable, never-before-seen errors. The promise of RN is that a developer can stay in the TypeScript or JavaScript zone and ignore the ugly details of mobile development, but that rarely lasts for long. Those brief, lovely stretches of productive coding are frequently interrupted by long stretches of dealing with compilation errors, gradle configuration and Java or Swift dependency conflicts.</description>
-    </item>
-    
-    <item>
-      <title>Debugging React Native/Android with IntelliJ on Windows</title>
-      <link>https://mikebridge.github.io/post/intellij-react-native/</link>
-      <pubDate>Sat, 04 Mar 2017 00:00:00 +0000</pubDate>
-      <author>mike@bridgecanada.com (Mike Bridge)</author>
-      <guid>https://mikebridge.github.io/post/intellij-react-native/</guid>
-      <description>Facebook&amp;rsquo;s developers are mostly Apple People, so they don&amp;rsquo;t waste many mental cycles fretting over React-Native developers who are on other platforms. I don&amp;rsquo;t like straying too much from the main path when it comes to deciding on which tools to use, so I wondered if it was advisable—or even possible—to debug React Native at all on Windows. Google Search didn&amp;rsquo;t reveal much information about what Windows React-Native developers do when their app crashes with no error message.</description>
     </item>
     
   </channel>

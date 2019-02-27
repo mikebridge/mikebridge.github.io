@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
     <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
-    <lastBuildDate>Mon, 04 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mikebridge.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Clearing React Native Caches</title>
+      <link>https://mikebridge.github.io/post/clear-react-native-caches/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/clear-react-native-caches/</guid>
+      <description>Unable to resolve module `@blah/whatever` from `whatever.js`: Module `@blah/whatever` does not exist in the Haste module map  What?
+ReactNative development is an endless stream of inscrutable, never-before-seen errors. The promise of RN is that a developer can stay in the TypeScript or JavaScript zone and ignore the ugly details of mobile development, but that rarely lasts for long. Those brief, lovely stretches of productive coding are frequently interrupted by long stretches of dealing with compilation errors, gradle configuration and Java or Swift dependency conflicts.</description>
+    </item>
     
     <item>
       <title>Azure Active Directory with Azure SQL</title>

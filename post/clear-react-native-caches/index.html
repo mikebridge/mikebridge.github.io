@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>I18N in React with Typescript &amp; React-Intl - Mike Bridge - Dev Notes</title>
-  <meta property="og:title" content="I18N in React with Typescript &amp; React-Intl" />
-  <meta name="twitter:title" content="I18N in React with Typescript &amp; React-Intl" />
-  <meta name="description" content="Internationalization with TypeScript &amp; React-Intl">
-  <meta property="og:description" content="Internationalization with TypeScript &amp; React-Intl">
-  <meta name="twitter:description" content="Internationalization with TypeScript &amp; React-Intl">
+  <title>Clearing React Native Caches - Mike Bridge - Dev Notes</title>
+  <meta property="og:title" content="Clearing React Native Caches" />
+  <meta name="twitter:title" content="Clearing React Native Caches" />
+  <meta name="description" content="Clear caches in React Native on Windows">
+  <meta property="og:description" content="Clear caches in React Native on Windows">
+  <meta name="twitter:description" content="Clear caches in React Native on Windows">
   <meta name="author" content="Mike Bridge"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -48,8 +48,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https://mikebridge.github.io/post/typescript-i18n-react-intl/",
-          "name": "I18 n in react with typescript &amp; react intl"
+          "@id": "https://mikebridge.github.io/post/clear-react-native-caches/",
+          "name": "Clearing react native caches"
         }
     }]
 }
@@ -60,15 +60,15 @@
   "author": {
     "name" : "Mike Bridge"
   },
-  "headline": "I18N in React with Typescript &amp; React-Intl",
-  "description" : "Internationalization with TypeScript &amp; React-Intl",
+  "headline": "Clearing React Native Caches",
+  "description" : "Clear caches in React Native on Windows",
   "inLanguage" : "en",
-  "wordCount": 768,
-  "datePublished" : "2017-03-21T00:00:00",
-  "dateModified" : "2017-03-21T00:00:00",
+  "wordCount": 275,
+  "datePublished" : "2019-02-15T00:00:00",
+  "dateModified" : "2019-02-15T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
   "keywords" : [ "" ],
-  "mainEntityOfPage" : "https://mikebridge.github.io/post/typescript-i18n-react-intl/",
+  "mainEntityOfPage" : "https://mikebridge.github.io/post/clear-react-native-caches/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https://mikebridge.github.io",
@@ -82,14 +82,14 @@
 }
 </script>
 
-<meta property="og:title" content="I18N in React with Typescript &amp; React-Intl" />
-<meta property="og:description" content="Internationalization with TypeScript &amp; React-Intl">
+<meta property="og:title" content="Clearing React Native Caches" />
+<meta property="og:description" content="Clear caches in React Native on Windows">
 <meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
-<meta property="og:url" content="https://mikebridge.github.io/post/typescript-i18n-react-intl/" />
+<meta property="og:url" content="https://mikebridge.github.io/post/clear-react-native-caches/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
-  <meta name="twitter:title" content="I18N in React with Typescript &amp; React-Intl" />
-  <meta name="twitter:description" content="Internationalization with TypeScript &amp; React-Intl">
+  <meta name="twitter:title" content="Clearing React Native Caches" />
+  <meta name="twitter:description" content="Clear caches in React Native on Windows">
   <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@michaelbridge" />
@@ -100,7 +100,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@michaelbridge" />
   <meta name="twitter:creator" content="@michaelbridge" />
-  <meta property="og:url" content="https://mikebridge.github.io/post/typescript-i18n-react-intl/" />
+  <meta property="og:url" content="https://mikebridge.github.io/post/clear-react-native-caches/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
 
@@ -240,7 +240,7 @@ if (!doNotTrack) {
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>I18N in React with Typescript &amp; React-Intl</h1>
+                <h1>Clearing React Native Caches</h1>
               
               
               
@@ -248,13 +248,13 @@ if (!doNotTrack) {
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on March 21, 2017
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 15, 2019
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;768&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;275&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -277,203 +277,74 @@ if (!doNotTrack) {
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        
+        <pre>
+Unable to resolve module `@blah/whatever` from `whatever.js`: Module `@blah/whatever` does not exist in the Haste module map
+</pre>
 
-<p>Earlier this week I went in search of a React-friendly i18n library and I spent some time
-experimenting with <strong><a href="https://github.com/yahoo/react-intl">react-intl</a></strong>.  React-intl is based on
-<strong><a href="https://formatjs.io/">FormatJS</a></strong>, which is a library for localizing numbers, dates,
-and strings.  My impression is that <em>react-intl</em> is a fairly small, practical library that is written to make i18n
-unobtrusive for developers.</p>
+<p>What?</p>
 
-<blockquote>
-<p><em>Edit, May 1, 2017</em></p>
+<p>ReactNative development is an endless stream of inscrutable, never-before-seen errors.  The promise of
+RN is that a developer can stay in the TypeScript or JavaScript zone and ignore the ugly details of
+mobile development, but that rarely lasts for long.  Those brief, lovely stretches of productive coding are
+frequently interrupted by long stretches of dealing with compilation errors, gradle configuration and
+Java or Swift dependency conflicts.  And it&rsquo;s worse if you&rsquo;re a JS developer thrown into the world of Java
+or Swift.</p>
 
-<p>Today I&rsquo;m wondering whether it may have been a mistake to adopt <em>react-intl</em> over the alternatives.  At the
-moment it appears to be <a href="https://github.com/yahoo/react-intl/pull/918">in limbo</a> after Yahoo&rsquo;s collapse.</p>
-</blockquote>
+<div>&nbsp;</div>
 
-<p>But although React-intl has <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/react-intl">type definitions</a>,
-it does not play particularly well with TypeScript.  It assumes there is a
-single default language which a developer will put directly into the source code, and
-those strings will later be auto-extracted from the JavaScript code and handed off to
-translators.  Unfortunately, it&rsquo;s a <a href="https://github.com/yahoo/babel-plugin-react-intl">babel plugin</a> that does
-the extraction, so TypeScripters will either have to use a <a href="https://github.com/bang88/typescript-react-intl">separate library</a>
-to extract strings, or else they&rsquo;ll need to create a parallel TypeScript-to-ES2015 compilation
-step to use the native libraries.  I went with the latter, inspired
-by <a href="https://github.com/yahoo/babel-plugin-react-intl/issues/48#issuecomment-254477940">this github thread</a>,
-because I wanted to use <a href="https://github.com/GertjanReynaert/react-intl-translations-manager">react-intl-translations-manager</a>,
-and the typescript-only library didn&rsquo;t extract the language strings in a format that the translation manager
-could use.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/p85xwZ_OLX0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
 
-<p><em><strong>TL;DR</strong> The code for this example is at
-<a href="https://github.com/mikebridge/react-intl-ts-demo/">https://github.com/mikebridge/react-intl-ts-demo/</a></em>.</p>
 
-<h2 id="setup">Setup</h2>
+<div>&nbsp;</div>
 
-<p>Create a new project with the <a href="https://github.com/wmonk/create-react-app-typescript">TypeScript fork of create-react-app</a>:</p>
+<p>The ReactNative equivalent to Turning it Off and On Again is Clearing the Caches.  But <em>Haste Module Map</em>?
+What&rsquo;s that?  And just <a href="https://github.com/facebook/react-native/issues/4968">how many caches are there</a>?</p>
+
+<p>Here&rsquo;s the suggestion the error message gives you:</p>
+
+<pre>
+# To resolve try the following:
+#  1. Clear watchman watches: `watchman watch-del-all`.
+#  2. Delete the `node_modules` folder: `rm -rf node_modules && npm install`.
+#  3. Reset Metro Bundler cache: `rm -rf /tmp/metro-bundler-cache-*` or `npm start -- --reset-cache`.
+#  4. Remove haste cache: `rm -rf /tmp/haste-map-react-native-packager-*`.
+</pre>
+
+<p>Here&rsquo;s a way of clearing these out on Windows in PowerShell.  I put this in a file
+called <code>clearCaches.ps1</code> in a directory beside <code>build</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ create-react-app react-intl-ts-demo --scripts-version react-scripts-ts</code></pre></td></tr></table>
-</div>
-</div>
-<p>Then add <strong>babel</strong> with the react plugins, <strong>react-intl</strong> and the <strong>react-intl-translations-manager</strong>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ npm install --save-dev  babel-cli babel-plugin-react-intl babel-preset-es2015 babel-preset-react
-$ npm install --save react-intl
-$ npm install --save-dev react-intl-translations-manager  </code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Write-Output</span> <span class="s2">&#34;Clearing the Haste Module Map...&#34;</span>
+<span class="nb">Remove-Item</span> <span class="nv">$env:TEMP</span><span class="p">\</span><span class="n">haste-map</span><span class="p">*</span>
+<span class="nb">Write-Output</span> <span class="s2">&#34;Clearing the Metro Cache...&#34;</span>
+<span class="nb">Remove-Item</span> <span class="n">-Recurse</span> <span class="n">-Force</span>  <span class="n">-ErrorAction</span> <span class="n">Ignore</span> <span class="nv">$env:TEMP</span><span class="p">\</span><span class="n">metro-cache</span>
+<span class="nb">Write-Output</span> <span class="s2">&#34;Removing /build/dist...&#34;</span>
+<span class="nb">Remove-Item</span> <span class="n">-Recurse</span> <span class="n">-Force</span>  <span class="n">-ErrorAction</span> <span class="n">Ignore</span> <span class="s2">&#34;$PSScriptRoot\..\build\dist&#34;</span>
+<span class="nb">Write-Output</span> <span class="s2">&#34;Removing node_modules...&#34;</span>
+<span class="nb">Remove-Item</span> <span class="n">-Recurse</span> <span class="n">-Force</span>  <span class="n">-ErrorAction</span> <span class="n">Ignore</span> <span class="s2">&#34;$PSScriptRoot\..\node_modules&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>So at this point the <a href="https://github.com/mikebridge/react-intl-ts-demo/blob/master/package.json"><code>package.json</code></a> file should look something like this:</p>
-
-<script src="https://gist.github.com/mikebridge/722823800a09493158c0214c20ff4d16.js"></script>
-
-<p>Add a <a href="https://github.com/mikebridge/react-intl-ts-demo/blob/master/.babelrc"><code>.babelrc</code></a> file to compile <code>JSX</code> files:</p>
-
-<script src="https://gist.github.com/mikebridge/fa3de45095fb8488f55efeb62275dc24.js"></script>
-
-<h2 id="usage">Usage</h2>
-
-<p>Open up the <code>index.tsx</code> file and add in the <code>IntlProvider</code>.  The <code>IntlProvider</code> makes
-the <code>react-intl</code> functionality available to components via the <a href="https://facebook.github.io/react/docs/context.html">React Context</a>:</p>
-
-<p>Here we&rsquo;re hardcoding the locale to &ldquo;en&rdquo; for the time being:</p>
-
-<script src="https://gist.github.com/mikebridge/61aad4b029ad7403ec4139a24286c5ed.js"></script>
-
-<p>Now we can localize the strings in <a href="https://github.com/mikebridge/react-intl-ts-demo/blob/master/src/App.tsx"><code>App.tsx</code></a>
-file.  Import <code>FormattedMessage</code> and wrap the text:</p>
-
-<script src="https://gist.github.com/mikebridge/af70bf14cab15525e98b8eabbc19c2a0.js"></script>
-
-<h2 id="translation">Translation</h2>
-
-<p>I added these three scripts to <a href="https://github.com/mikebridge/react-intl-ts-demo/blob/master/package.json"><code>package.json</code></a>.  In
-production I&rsquo;ll probably write a bash script to clean up the artifacts, but in the meantime:</p>
+<p>Here are some other miscellaneous incantations to clear out stuff:</p>
 
 <pre>
-    "trans:compile": "tsc -p .  --target ES6 --module es6 --jsx preserve --outDir extracted",
-    "trans:extract": "babel  \"extracted/**/*.jsx\"",
-    "trans:manage": "node scripts/translationRunner.js"
+yarn cache clean
+yarn start --reset-cache
+watchman watch-del-all
 </pre>
 
-<p><strong>1)</strong>  The first script compiles the <code>tsx</code> files to ES2015 in a temporary directory called <code>extracted</code>.  (Make sure you also add
-this to &ldquo;exclude&rdquo; in your <a href="https://github.com/mikebridge/react-intl-ts-demo/blob/master/package.json"><code>package.json</code></a>
-and to <code>.gitignore</code>)</p>
-
-<pre>
-    $ npm run trans:compile
-</pre>
- 
-
-<p><strong>2)</strong> The next one extracts all the default strings into the <code>src/translations/extracted</code> directory.</p>
-
-<pre>
-    $ npm run trans:extract
-</pre>
-
-<p>You should now see a file <code>App.json</code> that contains your extracted resource metadata:</p>
-
-<script src="https://gist.github.com/mikebridge/b0ab0954f71b8148e5cfc1ddf52d95b6.js"></script>
-
-<p><strong>3)</strong> Lastly, <a href="https://github.com/GertjanReynaert/react-intl-translations-manager">react-intl-translations-manager</a>
-generates the stub files.  I copied their <a href="https://github.com/mikebridge/react-intl-ts-demo/blob/master/scripts/translationRunner.js"><code>scripts/translationRunner.js</code></a> script:</p>
-
-<script src="https://gist.github.com/mikebridge/6a07527d3e15b7b44755645866238a6a.js"></script>
-
-<p>Then you can run <code>node scripts/translationRunner.js</code> directly, or via the npm script:</p>
-
-<pre>
-$ npm run trans:manage
-
-Duplicate ids:
-
-  No duplicate ids found, great!
-
-Maintaining fr.json:
-
-Added keys:
-  app.to_get_started: To get started, edit {filename} and save to reload.
-  app.welcome: Welcome to React
-
-Maintaining zh.json:
-
-Added keys:
-  app.to_get_started: To get started, edit {filename} and save to reload.
-  app.welcome: Welcome to React
-</pre>
-
-<p>This creates two <code>.json</code> files per language&mdash;one for the translations, and one for whitelisting
-messages that are causing <a href="https://github.com/GertjanReynaert/react-intl-translations-manager#usage">invalid warnings</a>.</p>
-
-<p>Modify the French file to look like this (disclaimer: these come from Google Translate):</p>
-
-<script src="https://gist.github.com/mikebridge/cdbe03985dddc2ad421b1c7399bde8dd.js"></script>
-
-<p>For this demo, I just hardcoded a different locale to see it working.  But to change the locale in real code, you&rsquo;ll
-need to set the <code>key</code> on IntlProvider.  (See <a href="https://github.com/yahoo/react-intl/issues/243">this</a> for
-more information&mdash;redux would be a good solution.)</p>
-
-<p>The French locale data will come from the <a href="https://github.com/yahoo/react-intl/wiki/API#addlocaledata">react-intl package</a>.</p>
-
-<p>To hardcode the French locale, modify index.tsx to look like this:</p>
-
-<script src="https://gist.github.com/mikebridge/b5fc53ec62e52f2cb9c67c2ec251ae0f.js"></script>
-
-<p>Before we check our page, let&rsquo;s add in a date component to <code>index.tsx</code>:</p>
-
-<pre>
-   <FormattedDate value={new Date()}
-       year='numeric'
-       month='long'
-       day='2-digit'/>
-</pre>
-
-<p>Here&rsquo;s how it looks:</p>
-
-
-<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
-  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="img">
-      <img itemprop="thumbnail" src="/images/react-intl/react-i18n.png" alt="create-react-app-ts in French."/>
-    </div>
-    <a href="/images/react-intl/react-i18n.png" itemprop="contentUrl"></a>
-      <figcaption>
-          <p>create-react-app-ts in French.</p>
-      </figcaption>
-  </figure>
-</div>
-
-
-<h2 id="injecting-react-intl-into-components">Injecting react-intl into Components</h2>
-
-<p>Although you can use one of react-intl&rsquo;s &ldquo;Formatted*&rdquo; controls much of the time, some
-text will occur inside TypeScript code or in JSX attributes.  Then you&rsquo;ll need to access the API
-directly. For this you can inject the <code>intl</code> object into the props of your control:</p>
-
-<script src="https://gist.github.com/mikebridge/728b3263aa878439b1d84876d23bdada.js"></script>
-
-<p>Those strings that don&rsquo;t appear in <code>Formatted*</code> controls still need to exist somewhere so that they can be
-located during resource extraction.  There&rsquo;s a call <code>defineMessages</code> for this purpose—I wasn&rsquo;t sure what
-to do with them so I put all these in a separate <code>.tsx</code> file:</p>
-
-<script src="https://gist.github.com/mikebridge/6a83c7fa6a0a3682e8897fb7116a432c.js"></script>
-
-<p>(I&rsquo;m not sure what the object key here is for—I don&rsquo;t see it being used anywhere.)</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>I am going to use <code>react-intl</code> for a smaller project and see how it goes.   I&rsquo;ll add more info
-here as I get more practical experience with it.</p>
+<p>Anything else I&rsquo;m missing?</p>
 
 
         
@@ -488,49 +359,49 @@ here as I get more practical experience with it.</p>
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2ftypescript-i18n-react-intl%2f&amp;text=I18N%20in%20React%20with%20Typescript%20%26%20React-Intl&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fclear-react-native-caches%2f&amp;text=Clearing%20React%20Native%20Caches&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2ftypescript-i18n-react-intl%2f" target="_blank" title="Share on Google Plus">
+        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fclear-react-native-caches%2f" target="_blank" title="Share on Google Plus">
           <i class="fab fa-google-plus"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2ftypescript-i18n-react-intl%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fclear-react-native-caches%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2ftypescript-i18n-react-intl%2f&amp;title=I18N%20in%20React%20with%20Typescript%20%26%20React-Intl" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fclear-react-native-caches%2f&amp;title=Clearing%20React%20Native%20Caches" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2ftypescript-i18n-react-intl%2f&amp;title=I18N%20in%20React%20with%20Typescript%20%26%20React-Intl" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fclear-react-native-caches%2f&amp;title=Clearing%20React%20Native%20Caches" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2ftypescript-i18n-react-intl%2f&amp;title=I18N%20in%20React%20with%20Typescript%20%26%20React-Intl" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fclear-react-native-caches%2f&amp;title=Clearing%20React%20Native%20Caches" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2ftypescript-i18n-react-intl%2f&amp;description=I18N%20in%20React%20with%20Typescript%20%26%20React-Intl" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fclear-react-native-caches%2f&amp;description=Clearing%20React%20Native%20Caches" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -551,13 +422,9 @@ here as I get more practical experience with it.</p>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://mikebridge.github.io/post/intellij-react-native/" data-toggle="tooltip" data-placement="top" title="Debugging React Native/Android with IntelliJ on Windows">&larr; Previous Post</a>
+              <a href="https://mikebridge.github.io/post/azure-active-directory-elastic-pool/" data-toggle="tooltip" data-placement="top" title="Azure Active Directory with Azure SQL">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://mikebridge.github.io/post/typescript-redux-observable-epic-test/" data-toggle="tooltip" data-placement="top" title="Testing Redux-Observable Epics">Next Post &rarr;</a>
-            </li>
           
         </ul>
       
@@ -567,12 +434,12 @@ here as I get more practical experience with it.</p>
         
           
           <div class="disqus-comments">                  
-            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/typescript-i18n-react-intl">comments</span></button>
+            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/clear-react-native-caches">comments</span></button>
             <div id="disqus_thread"></div>
 
             <script type="text/javascript">
               var disqus_config = function () {
-              this.page.url = 'https:\/\/mikebridge.github.io\/post\/typescript-i18n-react-intl';
+              this.page.url = 'https:\/\/mikebridge.github.io\/post\/clear-react-native-caches';
             };
 
           </script>
