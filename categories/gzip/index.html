@@ -241,12 +241,14 @@ if (!doNotTrack) {
               </p>
               <div class="post-entry">
                 
-                  I wasted quite a bit of time trying to find the correct way to zip a folder in PowerShell so that it could later be extracted in a Linux docker container.
-TLDR; Turns out the standard unix tar command is now standard-issue in Windows—no need to use PowerShell functions at all:
-&nbsp;  tar -cvzf myfile.tgz mydir 
-Microsoft added this in 2017—nice!
-These didn&rsquo;t work for me:
- PowerShell&rsquo;s Compress-Archive generates Windows path-separators, which Alpine/BusyBox&rsquo;s version of unzip can&rsquo;t handle (though Debian&rsquo;s unzip can).
+                  <p><img src="/images/windows/fresh-tar.gif" alt="Fresh Tar" /></p>
+
+<p>I wasted quite a bit of time trying to find the correct way to zip a folder
+in PowerShell so that it could later be extracted in a Linux docker
+container.</p>
+
+<p><strong>TLDR;</strong> Turns out the standard unix tar command is now standard-issue in
+Windows—no need to use PowerShell functions at all.</p>
                   <a href="https://mikebridge.github.io/post/windows-tar-gzip-for-linux/" class="post-read-more">[Read More]</a>
                 
               </div>

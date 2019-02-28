@@ -216,12 +216,14 @@ if (!doNotTrack) {
 
               <div class="post-entry">
                 
-                  I wasted quite a bit of time trying to find the correct way to zip a folder in PowerShell so that it could later be extracted in a Linux docker container.
-TLDR; Turns out the standard unix tar command is now standard-issue in Windows—no need to use PowerShell functions at all:
-&nbsp;  tar -cvzf myfile.tgz mydir 
-Microsoft added this in 2017—nice!
-These didn&rsquo;t work for me:
- PowerShell&rsquo;s Compress-Archive generates Windows path-separators, which Alpine/BusyBox&rsquo;s version of unzip can&rsquo;t handle (though Debian&rsquo;s unzip can).
+                  <p><img src="/images/windows/fresh-tar.gif" alt="Fresh Tar" /></p>
+
+<p>I wasted quite a bit of time trying to find the correct way to zip a folder
+in PowerShell so that it could later be extracted in a Linux docker
+container.</p>
+
+<p><strong>TLDR;</strong> Turns out the standard unix tar command is now standard-issue in
+Windows—no need to use PowerShell functions at all.</p>
                   <a href="https://mikebridge.github.io/post/windows-tar-gzip-for-linux/" class="post-read-more">[Read More]</a>
                 
               </div>
@@ -525,8 +527,13 @@ Simple:
 
               <div class="post-entry">
                 
-                  Part One of this series of blog posts introducing TypeScript and React is here.  It&rsquo;s not too hard (any more) to get started with TypeScript and React. This post assumes that you know a little about JavaScript and a little about React—if you haven&rsquo;t created an app already you can do it with create-react-app-typescript:
-1 2 3 4  &gt; npm install -g create-react-app &gt; create-react-app my-app --scripts-version=react-scripts-ts &gt; cd my-app &gt; npm start    The Component Here&rsquo;s an example component called, well, exampleComponent.
+                  <ul>
+<li>Part One of this series of blog posts introducing <strong>TypeScript</strong> and <strong>React</strong> is <a href="/articles/getting-started-typescript-react/">here</a>.</li>
+</ul>
+
+<p>It&rsquo;s not too hard (any more) to get started with TypeScript and React.  This post assumes
+that you know a little about JavaScript and a little about React—if you haven&rsquo;t created
+an app already you can do it with <a href="`https://github.com/wmonk/create-react-app-typescript`">create-react-app-typescript</a>:</p>
                   <a href="https://mikebridge.github.io/post/getting-started-typescript-react-2/" class="post-read-more">[Read More]</a>
                 
               </div>

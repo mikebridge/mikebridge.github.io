@@ -284,7 +284,7 @@ in PowerShell so that it could later be extracted in a Linux docker
 container.</p>
 
 <p><strong>TLDR;</strong> Turns out the standard unix tar command is now standard-issue in
-Windows—no need to use PowerShell functions at all:</p>
+Windows—no need to use PowerShell functions at all.</p>
 
 <p><div>&nbsp;</div>
 <pre>
@@ -311,7 +311,6 @@ and move them to the right location (<a href="https://stackoverflow.com/question
 <pre>
 for file in <em>\*; do target=&ldquo;${file//\//}&ldquo;; mkdir -p &ldquo;${target%/</em>}&ldquo;; mv -v &ldquo;$file&rdquo; &ldquo;$target&rdquo;; done
 </pre></p>
-
 
         
 

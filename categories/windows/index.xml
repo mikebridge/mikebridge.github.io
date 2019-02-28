@@ -18,12 +18,14 @@
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/post/windows-tar-gzip-for-linux/</guid>
-      <description>I wasted quite a bit of time trying to find the correct way to zip a folder in PowerShell so that it could later be extracted in a Linux docker container.
-TLDR; Turns out the standard unix tar command is now standard-issue in Windows—no need to use PowerShell functions at all:
-&amp;nbsp;  tar -cvzf myfile.tgz mydir 
-Microsoft added this in 2017—nice!
-These didn&amp;rsquo;t work for me:
- PowerShell&amp;rsquo;s Compress-Archive generates Windows path-separators, which Alpine/BusyBox&amp;rsquo;s version of unzip can&amp;rsquo;t handle (though Debian&amp;rsquo;s unzip can).</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://mikebridge.github.io/images/windows/fresh-tar.gif&#34; alt=&#34;Fresh Tar&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I wasted quite a bit of time trying to find the correct way to zip a folder
+in PowerShell so that it could later be extracted in a Linux docker
+container.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TLDR;&lt;/strong&gt; Turns out the standard unix tar command is now standard-issue in
+Windows—no need to use PowerShell functions at all.&lt;/p&gt;</description>
     </item>
     
     <item>

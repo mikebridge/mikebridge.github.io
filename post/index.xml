@@ -18,12 +18,14 @@
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/post/windows-tar-gzip-for-linux/</guid>
-      <description>I wasted quite a bit of time trying to find the correct way to zip a folder in PowerShell so that it could later be extracted in a Linux docker container.
-TLDR; Turns out the standard unix tar command is now standard-issue in Windows—no need to use PowerShell functions at all:
-&amp;nbsp;  tar -cvzf myfile.tgz mydir 
-Microsoft added this in 2017—nice!
-These didn&amp;rsquo;t work for me:
- PowerShell&amp;rsquo;s Compress-Archive generates Windows path-separators, which Alpine/BusyBox&amp;rsquo;s version of unzip can&amp;rsquo;t handle (though Debian&amp;rsquo;s unzip can).</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://mikebridge.github.io/images/windows/fresh-tar.gif&#34; alt=&#34;Fresh Tar&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I wasted quite a bit of time trying to find the correct way to zip a folder
+in PowerShell so that it could later be extracted in a Linux docker
+container.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TLDR;&lt;/strong&gt; Turns out the standard unix tar command is now standard-issue in
+Windows—no need to use PowerShell functions at all.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -103,8 +105,13 @@ Simple:
       <pubDate>Sat, 29 Apr 2017 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/post/getting-started-typescript-react-2/</guid>
-      <description>Part One of this series of blog posts introducing TypeScript and React is here.  It&amp;rsquo;s not too hard (any more) to get started with TypeScript and React. This post assumes that you know a little about JavaScript and a little about React—if you haven&amp;rsquo;t created an app already you can do it with create-react-app-typescript:
-1 2 3 4  &amp;gt; npm install -g create-react-app &amp;gt; create-react-app my-app --scripts-version=react-scripts-ts &amp;gt; cd my-app &amp;gt; npm start    The Component Here&amp;rsquo;s an example component called, well, exampleComponent.</description>
+      <description>&lt;ul&gt;
+&lt;li&gt;Part One of this series of blog posts introducing &lt;strong&gt;TypeScript&lt;/strong&gt; and &lt;strong&gt;React&lt;/strong&gt; is &lt;a href=&#34;https://mikebridge.github.io/articles/getting-started-typescript-react/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It&amp;rsquo;s not too hard (any more) to get started with TypeScript and React.  This post assumes
+that you know a little about JavaScript and a little about React—if you haven&amp;rsquo;t created
+an app already you can do it with &lt;a href=&#34;`https://github.com/wmonk/create-react-app-typescript`&#34;&gt;create-react-app-typescript&lt;/a&gt;:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -122,9 +129,8 @@ Simple:
       <pubDate>Wed, 26 Apr 2017 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/post/typescript-redux-observable-epic-test/</guid>
-      <description>Here&amp;rsquo;s a way to test a redux-observable epic that performs an ajax call.
-This simplified TypeScript example has three actions: USER_LOAD_REQUEST is the result of a request to load a user, USER_LOAD_RESULT indicates a successful response, and USER_LOAD_ERROR holds an ajax error.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51  import {ActionsObservable} from &amp;#34;redux-observable&amp;#34;; import {AjaxError} from &amp;#34;rxjs/Rx&amp;#34;; import &amp;#34;rxjs/Rx&amp;#34;; export const USER_LOAD_REQUEST = &amp;#34;example/USER_LOAD_REQUEST&amp;#34;; export const USER_LOAD_RESULT = &amp;#34;example/USER_LOAD_RESULT&amp;#34;; export const USER_LOAD_ERROR = &amp;#34;example/USER_LOAD_ERROR&amp;#34;; export interface IUserResult { id: string; name: string; } export interface ICustomAjaxError { type: string; message: string; } export const loadUser = (userid: string) =&amp;gt; ({ type: USER_LOAD_REQUEST, userid }); export const loadUserResult = (results: IUserResult) =&amp;gt; ({ type: USER_LOAD_RESULT, results }); export const loadFailure = (message: string): ICustomAjaxError =&amp;gt; ({ type: USER_LOAD_ERROR, message }); export const loadUserEpic = (action$: ActionsObservable&amp;lt;any&amp;gt;, store, {getJSON}) =&amp;gt; { return action$.</description>
+      <description>&lt;p&gt;Here&amp;rsquo;s a way to test a &lt;a href=&#34;https://redux-observable.js.org/&#34;&gt;redux-observable&lt;/a&gt; epic that
+performs an ajax call.&lt;/p&gt;</description>
     </item>
     
     <item>

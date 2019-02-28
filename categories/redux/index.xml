@@ -18,8 +18,13 @@
       <pubDate>Sat, 29 Apr 2017 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/post/getting-started-typescript-react-2/</guid>
-      <description>Part One of this series of blog posts introducing TypeScript and React is here.  It&amp;rsquo;s not too hard (any more) to get started with TypeScript and React. This post assumes that you know a little about JavaScript and a little about React—if you haven&amp;rsquo;t created an app already you can do it with create-react-app-typescript:
-1 2 3 4  &amp;gt; npm install -g create-react-app &amp;gt; create-react-app my-app --scripts-version=react-scripts-ts &amp;gt; cd my-app &amp;gt; npm start    The Component Here&amp;rsquo;s an example component called, well, exampleComponent.</description>
+      <description>&lt;ul&gt;
+&lt;li&gt;Part One of this series of blog posts introducing &lt;strong&gt;TypeScript&lt;/strong&gt; and &lt;strong&gt;React&lt;/strong&gt; is &lt;a href=&#34;https://mikebridge.github.io/articles/getting-started-typescript-react/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It&amp;rsquo;s not too hard (any more) to get started with TypeScript and React.  This post assumes
+that you know a little about JavaScript and a little about React—if you haven&amp;rsquo;t created
+an app already you can do it with &lt;a href=&#34;`https://github.com/wmonk/create-react-app-typescript`&#34;&gt;create-react-app-typescript&lt;/a&gt;:&lt;/p&gt;</description>
     </item>
     
     <item>
