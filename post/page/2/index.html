@@ -195,7 +195,7 @@ if (!doNotTrack) {
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on March 21, 2017
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 26, 2017
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;0&nbsp;minutes
@@ -225,6 +225,46 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="https://mikebridge.github.io/post/typescript-redux-observable-epic-test/">
+                <h2 class="post-title">Testing Redux-Observable Epics</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 26, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;460&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  Here&rsquo;s a way to test a redux-observable epic that performs an ajax call.
+This simplified TypeScript example has three actions: USER_LOAD_REQUEST is the result of a request to load a user, USER_LOAD_RESULT indicates a successful response, and USER_LOAD_ERROR holds an ajax error.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51  import {ActionsObservable} from &#34;redux-observable&#34;; import {AjaxError} from &#34;rxjs/Rx&#34;; import &#34;rxjs/Rx&#34;; export const USER_LOAD_REQUEST = &#34;example/USER_LOAD_REQUEST&#34;; export const USER_LOAD_RESULT = &#34;example/USER_LOAD_RESULT&#34;; export const USER_LOAD_ERROR = &#34;example/USER_LOAD_ERROR&#34;; export interface IUserResult { id: string; name: string; } export interface ICustomAjaxError { type: string; message: string; } export const loadUser = (userid: string) =&gt; ({ type: USER_LOAD_REQUEST, userid }); export const loadUserResult = (results: IUserResult) =&gt; ({ type: USER_LOAD_RESULT, results }); export const loadFailure = (message: string): ICustomAjaxError =&gt; ({ type: USER_LOAD_ERROR, message }); export const loadUserEpic = (action$: ActionsObservable&lt;any&gt;, store, {getJSON}) =&gt; { return action$.
+                  <a href="https://mikebridge.github.io/post/typescript-redux-observable-epic-test/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+
+            </article>
           
             <article class="post-preview">
               <a href="https://mikebridge.github.io/post/typescript-i18n-react-intl/">

@@ -67,6 +67,15 @@
     </item>
     
     <item>
+      <title>Docker</title>
+      <link>https://mikebridge.github.io/categories/docker/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Dotnet Core</title>
       <link>https://mikebridge.github.io/categories/dotnet-core/</link>
       <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
@@ -108,6 +117,15 @@
       <pubDate>Thu, 19 Jan 2017 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/categories/graphics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gzip</title>
+      <link>https://mikebridge.github.io/categories/gzip/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/categories/gzip/</guid>
       <description></description>
     </item>
     
@@ -265,6 +283,15 @@
     </item>
     
     <item>
+      <title>Tar</title>
+      <link>https://mikebridge.github.io/categories/tar/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/categories/tar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Teamcity</title>
       <link>https://mikebridge.github.io/categories/teamcity/</link>
       <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
@@ -303,7 +330,7 @@
     <item>
       <title>Windows</title>
       <link>https://mikebridge.github.io/categories/windows/</link>
-      <pubDate>Sat, 04 Mar 2017 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/categories/windows/</guid>
       <description></description>

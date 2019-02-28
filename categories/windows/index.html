@@ -10,9 +10,9 @@
   <title>Overview of all pages with the category #Windows - Mike Bridge - Dev Notes</title>
   <meta property="og:title" content="Overview of all pages with the category #Windows" />
   <meta name="twitter:title" content="Overview of all pages with the category #Windows" />
-  <meta name="description" content="Overview of all pages with the category #Windows, such as: Debugging React Native/Android with IntelliJ on Windows">
-  <meta property="og:description" content="Overview of all pages with the category #Windows, such as: Debugging React Native/Android with IntelliJ on Windows">
-  <meta name="twitter:description" content="Overview of all pages with the category #Windows, such as: Debugging React Native/Android with IntelliJ on Windows">
+  <meta name="description" content="Overview of all pages with the category #Windows, such as: Compress a Folder in PowerShell for use in Linux">
+  <meta property="og:description" content="Overview of all pages with the category #Windows, such as: Compress a Folder in PowerShell for use in Linux">
+  <meta name="twitter:description" content="Overview of all pages with the category #Windows, such as: Compress a Folder in PowerShell for use in Linux">
   <meta name="author" content="Mike Bridge"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -211,6 +211,49 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="https://mikebridge.github.io/post/windows-tar-gzip-for-linux/">
+                <h2 class="post-title">Compress a Folder in PowerShell for use in Linux</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 28, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;169&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  I wasted quite a bit of time trying to find the correct way to zip a folder in PowerShell so that it could later be extracted in a Linux docker container.
+TLDR; Turns out the standard unix tar command is now standard-issue in Windows—no need to use PowerShell functions at all:
+&nbsp;  tar -cvzf myfile.tgz mydir 
+Microsoft added this in 2017—nice!
+These didn&rsquo;t work for me:
+ PowerShell&rsquo;s Compress-Archive generates Windows path-separators, which Alpine/BusyBox&rsquo;s version of unzip can&rsquo;t handle (though Debian&rsquo;s unzip can).
+                  <a href="https://mikebridge.github.io/post/windows-tar-gzip-for-linux/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+
+            </article>
           
             <article class="post-preview">
               <a href="https://mikebridge.github.io/post/intellij-react-native/">
