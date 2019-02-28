@@ -63,7 +63,7 @@
   "headline": "Compress a Folder in PowerShell for use in Linux",
   "description" : "Compress a folder using Tar/Gzip in Powershell for use in Linux",
   "inLanguage" : "en",
-  "wordCount": 169,
+  "wordCount": 170,
   "datePublished" : "2019-02-28T00:00:00",
   "dateModified" : "2019-02-28T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -254,7 +254,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;169&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;170&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -307,10 +307,15 @@ does not currently install cleanly on the most recent PowerShell without <a href
 <p><div>&nbsp;</div>
 But if you&rsquo;re stuck with zip file with windows paths, this one-liner will rename the extracted files, create the directories
 and move them to the right location (<a href="https://stackoverflow.com/questions/44490413/how-to-rename-file-name-contains-backslash-in-bash#answer-44490964">credit</a>):
-<div>&nbsp;</div>
-<pre>
-for file in <em>\*; do target=&ldquo;${file//\//}&ldquo;; mkdir -p &ldquo;${target%/</em>}&ldquo;; mv -v &ldquo;$file&rdquo; &ldquo;$target&rdquo;; done
-</pre></p>
+<div>&nbsp;</div></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">for</span> file in *<span class="se">\\</span>*<span class="p">;</span> <span class="k">do</span> <span class="nv">target</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">file</span><span class="p">//</span><span class="se">\\</span><span class="p">//</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> mkdir -p <span class="s2">&#34;</span><span class="si">${</span><span class="nv">target</span><span class="p">%/*</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> mv -v <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$target</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">done</span></code></pre></td></tr></table>
+</div>
+</div>
 
         
 
