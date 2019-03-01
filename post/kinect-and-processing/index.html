@@ -63,7 +63,7 @@
   "headline": "Kinect and Processing",
   "description" : "Set up the graphical programming environment Processing to import motion data from a Microsoft Kinect.",
   "inLanguage" : "en",
-  "wordCount": 639,
+  "wordCount": 615,
   "datePublished" : "2017-01-19T00:00:00",
   "dateModified" : "2017-01-19T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -254,7 +254,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;639&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;615&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -363,35 +363,8 @@ I didn&rsquo;t try <strong><a href="https://github.com/chungbwc/Kinect4WinSDK">K
 <h3 id="code">Code</h3>
 
 <p>Open up Processing, copy-and-paste the following code in the window, and click the &ldquo;Run&rdquo; icon:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-processing" data-lang="processing"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-processing" data-lang="processing">// Adapted from https://github.com/ThomasLengeling/KinectPV2/blob/master/KinectPV2/examples/PointCloudDepth/PointCloudDepth.pde
+
+<pre><code class="language-processing">// Adapted from https://github.com/ThomasLengeling/KinectPV2/blob/master/KinectPV2/examples/PointCloudDepth/PointCloudDepth.pde
 
 KinectPV2 kinect;
 
@@ -414,9 +387,9 @@ void draw() {
 
   kinect.setLowThresholdPC(minD);
   kinect.setHighThresholdPC(maxD);
-}</code></pre></td></tr></table>
-</div>
-</div>
+}
+</code></pre>
+
 <p>If everything went well, you should see a depth map image and a point cloud image side-by-side like the following:</p>
 
 <figure>

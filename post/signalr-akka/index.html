@@ -63,7 +63,7 @@
   "headline": "SignalR and Akka.NET on DotNet Core",
   "description" : "Configure SignalR and Akka.NET on DotNet Core",
   "inLanguage" : "en",
-  "wordCount": 998,
+  "wordCount": 859,
   "datePublished" : "2017-02-13T00:00:00",
   "dateModified" : "2017-02-13T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -254,7 +254,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;998&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;859&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -322,20 +322,13 @@ add an empty DotNet core Web Application project inside that.</p>
 <p>Since we can&rsquo;t target for <code>netcoreapp1.0</code> yet, open
 <a href="https://github.com/mikebridge/AkkaSignalR/blob/master/src/EchoAPI/project.json#L24-L26"><code>package.json</code></a> in the project and replace <code>netcoreapp1.0</code>
 under <code>frameworks</code> with <code>net461</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json">    <span class="s2">&#34;frameworks&#34;</span><span class="err">:</span> <span class="p">{</span>
-        <span class="nt">&#34;net461&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="p">}</span>
-    <span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-json">    &quot;frameworks&quot;: {
+        &quot;net461&quot;: {
+        }
+    }
+</code></pre>
+
 <p>You&rsquo;ll also need to remove these lines from <code>dependencies</code>, since <code>Microsoft.NETCore.App</code> is incompatible with 4.6.1:</p>
 
 <pre>
@@ -369,88 +362,48 @@ I adapted the official Microsoft
 This is just a temporary solution until the new pipeline is supported in SignalR.</p>
 
 <p><a href="https://github.com/mikebridge/AkkaSignalR/blob/master/src/EchoAPI/Startup.cs"><code>Startup.cs</code></a> will look something like this:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
-<span class="p">{</span> 
-   <span class="k">public</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
-   <span class="p">{</span>
-       <span class="n">services</span><span class="p">.</span><span class="n">AddCors</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
-       <span class="p">{</span>
-           <span class="n">options</span><span class="p">.</span><span class="n">AddPolicy</span><span class="p">(</span><span class="s">&#34;default&#34;</span><span class="p">,</span> <span class="n">policy</span> <span class="p">=&gt;</span>
-           <span class="p">{</span>
-                <span class="n">policy</span><span class="p">.</span><span class="n">WithOrigins</span><span class="p">(</span><span class="s">&#34;http://localhost:3000&#34;</span><span class="p">)</span>
-                    <span class="p">.</span><span class="n">AllowAnyHeader</span><span class="p">()</span>
-                    <span class="p">.</span><span class="n">AllowAnyMethod</span><span class="p">();</span>
-           <span class="p">});</span>
-       <span class="p">});</span>
-   <span class="p">}</span>
-   
-   <span class="k">public</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
-   <span class="p">{</span>
-       <span class="n">app</span><span class="p">.</span><span class="n">UseCors</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span>
-       <span class="p">{</span>
-            <span class="n">policy</span><span class="p">.</span><span class="n">WithOrigins</span><span class="p">(</span><span class="s">&#34;http://localhost:3000&#34;</span><span class="p">);</span>
-            <span class="n">policy</span><span class="p">.</span><span class="n">AllowAnyHeader</span><span class="p">();</span>
-            <span class="n">policy</span><span class="p">.</span><span class="n">AllowAnyMethod</span><span class="p">();</span>
-            <span class="n">policy</span><span class="p">.</span><span class="n">AllowCredentials</span><span class="p">();</span>
-       <span class="p">});</span>
-   
-   
-       <span class="kt">var</span> <span class="n">actorSystem</span> <span class="p">=</span> <span class="n">ActorSystem</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="s">&#34;SignalRChatAPI&#34;</span><span class="p">);</span>
 
-       <span class="kt">var</span> <span class="n">echoActor</span> <span class="p">=</span> <span class="n">actorSystem</span><span class="p">.</span><span class="n">ActorOf</span><span class="p">(</span><span class="n">Props</span><span class="p">.</span><span class="n">Create</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">SignalREchoActor</span><span class="p">()),</span> <span class="s">&#34;echoActor&#34;</span><span class="p">);</span>
+<pre><code class="language-csharp">public class Startup
+{ 
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+   {
+       services.AddCors(options =&gt;
+       {
+           options.AddPolicy(&quot;default&quot;, policy =&gt;
+           {
+                policy.WithOrigins(&quot;http://localhost:3000&quot;)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+           });
+       });
+   }
+   
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+   {
+       app.UseCors(policy =&gt;
+       {
+            policy.WithOrigins(&quot;http://localhost:3000&quot;);
+            policy.AllowAnyHeader();
+            policy.AllowAnyMethod();
+            policy.AllowCredentials();
+       });
+   
+   
+       var actorSystem = ActorSystem.Create(&quot;SignalRChatAPI&quot;);
 
-       <span class="n">app</span><span class="p">.</span><span class="n">UseAppBuilder</span><span class="p">(</span><span class="n">appBuilder</span> <span class="p">=&gt;</span> <span class="n">appBuilder</span><span class="p">.</span><span class="n">Use</span><span class="p">((</span><span class="n">ctx</span><span class="p">,</span> <span class="n">next1</span><span class="p">)</span> <span class="p">=&gt;</span>
-       <span class="p">{</span>
-           <span class="c1">// make the actor system available via the owin environment
-</span><span class="c1"></span>           <span class="n">ctx</span><span class="p">.</span><span class="n">Environment</span><span class="na">[&#34;akka.actorsystem&#34;]</span> <span class="p">=</span> <span class="n">actorSystem</span><span class="p">;</span>
-           <span class="k">return</span> <span class="n">next1</span><span class="p">();</span>
-       <span class="p">}).</span><span class="n">MapSignalR</span><span class="p">());</span>
-   <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+       var echoActor = actorSystem.ActorOf(Props.Create(() =&gt; new SignalREchoActor()), &quot;echoActor&quot;);
+
+       app.UseAppBuilder(appBuilder =&gt; appBuilder.Use((ctx, next1) =&gt;
+       {
+           // make the actor system available via the owin environment
+           ctx.Environment[&quot;akka.actorsystem&quot;] = actorSystem;
+           return next1();
+       }).MapSignalR());
+   }
+}
+
+</code></pre>
+
 <p>Note that CORS is configured to allow connections from our Node server, which
 will be running locally on port 3000.</p>
 
@@ -462,235 +415,125 @@ abstraction of using Hubs&mdash;plus it seems easier to hook it into
 authentication.</p>
 
 <p>Here&rsquo;s the single message type that this system supports:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">Akka.Actor</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">EchoAPI.Hub</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">EchoAPI.Messages</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.AspNet.SignalR</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">EchoAPI.Actors</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">SignalREchoActor</span> <span class="p">:</span> <span class="n">TypedActor</span><span class="p">,</span>
-        <span class="n">IHandle</span><span class="p">&lt;</span><span class="n">EchoRequest</span><span class="p">&gt;</span>
-    <span class="p">{</span>
+<pre><code class="language-csharp">using Akka.Actor;
+using EchoAPI.Hub;
+using EchoAPI.Messages;
+using Microsoft.AspNet.SignalR;
 
-        <span class="k">private</span> <span class="n">IHubContext</span> <span class="n">_context</span><span class="p">;</span>
+namespace EchoAPI.Actors
+{
+    public class SignalREchoActor : TypedActor,
+        IHandle&lt;EchoRequest&gt;
+    {
 
-        <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="n">PreStart</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">_context</span> <span class="p">=</span> <span class="n">GlobalHost</span><span class="p">.</span><span class="n">ConnectionManager</span><span class="p">.</span><span class="n">GetHubContext</span><span class="p">&lt;</span><span class="n">EchoHub</span><span class="p">&gt;();</span>
-        <span class="p">}</span>
+        private IHubContext _context;
 
-        <span class="k">public</span> <span class="k">void</span> <span class="n">Handle</span><span class="p">(</span><span class="n">EchoRequest</span> <span class="n">message</span><span class="p">)</span>
-        <span class="p">{</span>          
-            <span class="c1">// send the message back to the client.
-</span><span class="c1"></span>            <span class="n">_context</span><span class="p">.</span><span class="n">Clients</span><span class="p">.</span><span class="n">All</span><span class="p">.</span><span class="n">echoMessage</span><span class="p">(</span><span class="s">$&#34;ECHO: {message.Message}&#34;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+        protected override void PreStart()
+        {
+            _context = GlobalHost.ConnectionManager.GetHubContext&lt;EchoHub&gt;();
+        }
+
+        public void Handle(EchoRequest message)
+        {          
+            // send the message back to the client.
+            _context.Clients.All.echoMessage($&quot;ECHO: {message.Message}&quot;);
+        }
+    }
+}
+</code></pre>
+
 <p>The <a href="https://github.com/mikebridge/AkkaSignalR/blob/master/src/EchoAPI/Actors/SignalREchoActor.cs">echo actor</a>
 handles the <code>EchoRequest</code> messages it receives and sends them back to all the current JavaScript clients.
 It finds those clients via the <code>IHubContext</code>, which it locates using
 <code>GlobalHost.ConnectionManager.GetHubContext</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">Akka.Actor</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">EchoAPI.Hub</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">EchoAPI.Messages</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.AspNet.SignalR</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">EchoAPI.Actors</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">SignalREchoActor</span> <span class="p">:</span> <span class="n">TypedActor</span><span class="p">,</span>
-        <span class="n">IHandle</span><span class="p">&lt;</span><span class="n">EchoRequest</span><span class="p">&gt;</span>
-    <span class="p">{</span>
+<pre><code class="language-csharp">using Akka.Actor;
+using EchoAPI.Hub;
+using EchoAPI.Messages;
+using Microsoft.AspNet.SignalR;
 
-        <span class="k">private</span> <span class="n">IHubContext</span> <span class="n">_context</span><span class="p">;</span>
+namespace EchoAPI.Actors
+{
+    public class SignalREchoActor : TypedActor,
+        IHandle&lt;EchoRequest&gt;
+    {
 
-        <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="n">PreStart</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="n">_context</span> <span class="p">=</span> <span class="n">GlobalHost</span><span class="p">.</span><span class="n">ConnectionManager</span><span class="p">.</span><span class="n">GetHubContext</span><span class="p">&lt;</span><span class="n">EchoHub</span><span class="p">&gt;();</span>
-        <span class="p">}</span>
+        private IHubContext _context;
 
-        <span class="k">public</span> <span class="k">void</span> <span class="n">Handle</span><span class="p">(</span><span class="n">EchoRequest</span> <span class="n">message</span><span class="p">)</span>
-        <span class="p">{</span>          
-            <span class="c1">// send the message back to the client.
-</span><span class="c1"></span>            <span class="n">_context</span><span class="p">.</span><span class="n">Clients</span><span class="p">.</span><span class="n">All</span><span class="p">.</span><span class="n">echoMessage</span><span class="p">(</span><span class="s">$&#34;ECHO: {message.Message}&#34;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+        protected override void PreStart()
+        {
+            _context = GlobalHost.ConnectionManager.GetHubContext&lt;EchoHub&gt;();
+        }
+
+        public void Handle(EchoRequest message)
+        {          
+            // send the message back to the client.
+            _context.Clients.All.echoMessage($&quot;ECHO: {message.Message}&quot;);
+        }
+    }
+}
+</code></pre>
+
 <p>The Hub passes along client requests to the Echo Actor, and it finds the actor via the ActorSystem.  I&rsquo;m
 getting the ActorSystem from the Owin environment variable <code>Context.Request.Environment[&quot;akka.actorsystem&quot;]</code>
 that we configured in <code>Startup.cs</code>, but the <a href="https://petabridge.com/blog/akkadotnet-aspnet/">Offical Documentation</a> says
 that you can use a global variable to find the Actor instead.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Diagnostics.CodeAnalysis</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Akka.Actor</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">EchoAPI.Messages</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.AspNet.SignalR.Owin</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">EchoAPI.Hub</span>
-<span class="p">{</span><span class="na">
-</span><span class="na">    [SuppressMessage(&#34;ReSharper&#34;, &#34;ClassNeverInstantiated.Global&#34;)]</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">EchoHub</span> <span class="p">:</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">SignalR</span><span class="p">.</span><span class="n">Hub</span>
-    <span class="p">{</span>
+<pre><code class="language-csharp">using System;
+using System.Diagnostics.CodeAnalysis;
+using Akka.Actor;
+using EchoAPI.Messages;
+using Microsoft.AspNet.SignalR.Owin;
 
-        <span class="k">public</span> <span class="k">void</span> <span class="n">SendMessage</span><span class="p">(</span><span class="n">String</span> <span class="n">message</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">actorSystem</span> <span class="p">=</span> <span class="n">FindActorSystem</span><span class="p">();</span>
-            <span class="kt">var</span> <span class="n">echoActorRef</span> <span class="p">=</span> <span class="n">actorSystem</span><span class="p">.</span><span class="n">ActorSelection</span><span class="p">(</span><span class="s">&#34;/user/echoActor&#34;</span><span class="p">);</span>
-            <span class="n">echoActorRef</span><span class="p">.</span><span class="n">Tell</span><span class="p">(</span><span class="k">new</span> <span class="n">EchoRequest</span><span class="p">(</span><span class="n">message</span><span class="p">));</span>
+namespace EchoAPI.Hub
+{
+    [SuppressMessage(&quot;ReSharper&quot;, &quot;ClassNeverInstantiated.Global&quot;)]
+    public class EchoHub : Microsoft.AspNet.SignalR.Hub
+    {
 
-        <span class="p">}</span>
+        public void SendMessage(String message)
+        {
+            var actorSystem = FindActorSystem();
+            var echoActorRef = actorSystem.ActorSelection(&quot;/user/echoActor&quot;);
+            echoActorRef.Tell(new EchoRequest(message));
 
-        <span class="k">private</span> <span class="n">ActorSystem</span> <span class="n">FindActorSystem</span><span class="p">()</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">ctx</span> <span class="p">=</span> <span class="n">Context</span><span class="p">.</span><span class="n">Request</span> <span class="k">as</span> <span class="n">ServerRequest</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">ctx</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&#34;The context was not initialized&#34;</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="kt">var</span> <span class="n">actorSystem</span> <span class="p">=</span> <span class="n">ctx</span><span class="p">.</span><span class="n">Environment</span><span class="na">[&#34;akka.actorsystem&#34;]</span> <span class="k">as</span> <span class="n">ActorSystem</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">actorSystem</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&#34;The ActorSystem was not initialized&#34;</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="n">actorSystem</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+        }
+
+        private ActorSystem FindActorSystem()
+        {
+            var ctx = Context.Request as ServerRequest;
+            if (ctx == null)
+            {
+                throw new Exception(&quot;The context was not initialized&quot;);
+            }
+            var actorSystem = ctx.Environment[&quot;akka.actorsystem&quot;] as ActorSystem;
+            if (actorSystem == null)
+            {
+                throw new Exception(&quot;The ActorSystem was not initialized&quot;);
+            }
+            return actorSystem;
+        }
+    }
+}
+</code></pre>
+
 <p>You will need to adjust the port that the API runs on in <a href="https://github.com/mikebridge/AkkaSignalR/blob/master/src/EchoAPI/Program.cs#L14">Program.cs</a>.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="na">[]</span> <span class="n">args</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WebHostBuilder</span><span class="p">()</span>
-             <span class="p">.</span><span class="n">UseKestrel</span><span class="p">()</span>
-             <span class="p">.</span><span class="n">UseContentRoot</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">())</span>
-             <span class="p">.</span><span class="n">UseUrls</span><span class="p">(</span><span class="s">&#34;http://localhost:5001&#34;</span><span class="p">)</span> <span class="c1">// add this to run on port 5001
-</span><span class="c1"></span>             <span class="p">.</span><span class="n">UseIISIntegration</span><span class="p">()</span>
-             <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
-             <span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+
+<pre><code class="language-csharp">public static void Main(string[] args)
+{
+    var host = new WebHostBuilder()
+             .UseKestrel()
+             .UseContentRoot(Directory.GetCurrentDirectory())
+             .UseUrls(&quot;http://localhost:5001&quot;) // add this to run on port 5001
+             .UseIISIntegration()
+             .UseStartup&lt;Startup&gt;()
+             .Build();
  
-    <span class="n">host</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+    host.Run();
+}
+</code></pre>
+
 <h3 id="miscellaneous-configuration">Miscellaneous Configuration</h3>
 
 <p>To be able to launch the server from Visual Studio,</p>

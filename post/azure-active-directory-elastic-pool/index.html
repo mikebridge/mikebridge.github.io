@@ -63,7 +63,7 @@
   "headline": "Azure Active Directory with Azure SQL",
   "description" : "Access Azure SQL Server in Elastic Pool via Azure Active Directory.",
   "inLanguage" : "en",
-  "wordCount": 420,
+  "wordCount": 414,
   "datePublished" : "2017-12-04T00:00:00",
   "dateModified" : "2017-12-04T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -254,7 +254,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;420&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;414&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -315,20 +315,13 @@ if (!doNotTrack) {
 
 
 <p>You can also do this <a href="https://docs.microsoft.com/en-us/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az_sql_server_ad_admin_create">from the CLI</a>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">az sql server ad-admin create --object-id <span class="p">&amp;</span>lt<span class="p">;</span>Object-Id-OfUserOrGroup<span class="p">&amp;</span>gt<span class="p">;</span>
-    -s <span class="p">&amp;</span>lt<span class="p">;</span>Database-Name<span class="p">&amp;</span>gt<span class="p">;</span>
-    -g <span class="p">&amp;</span>lt<span class="p">;</span>Resource-Group<span class="p">&amp;</span>gt<span class="p">;</span>
-    -u <span class="p">&amp;</span>lt<span class="p">;</span>NameOrEmailAkaDisplayName<span class="p">&amp;</span>gt<span class="p">;</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-bash">az sql server ad-admin create --object-id &amp;lt;Object-Id-OfUserOrGroup&amp;gt;
+    -s &amp;lt;Database-Name&amp;gt;
+    -g &amp;lt;Resource-Group&amp;gt;
+    -u &amp;lt;NameOrEmailAkaDisplayName&amp;gt;
+</code></pre>
+
 <h1 id="create-the-user-or-group-in-sql-server">Create the User or Group in SQL Server</h1>
 
 <p>You should now be able to log in to a database in the Elastic Pool
@@ -356,16 +349,11 @@ instead:</p>
 a new SQL Server USER that corresponds to an AD Group.  I&rsquo;ve already
 created an AD group called &ldquo;SQL Developers&rdquo; so I mapped it to a SQL
 Server database and added <code>db_datareader</code> permission like this:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">USER</span> <span class="p">[</span><span class="k">SQL</span> <span class="n">Developers</span><span class="p">]</span> <span class="k">FROM</span> <span class="k">EXTERNAL</span> <span class="n">PROVIDER</span> 
-<span class="k">ALTER</span> <span class="k">ROLE</span> <span class="n">db_datareader</span> <span class="k">ADD</span> <span class="n">MEMBER</span> <span class="p">[</span><span class="k">SQL</span> <span class="n">Developers</span><span class="p">]</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-sql">CREATE USER [SQL Developers] FROM EXTERNAL PROVIDER 
+ALTER ROLE db_datareader ADD MEMBER [SQL Developers]
+</code></pre>
+
 <p>For some reason, when I re-logged in as the AD Admin after being already
 logged-in via the admin connection string, it gave me the error <em>Principal &lsquo;SQL Developers&rsquo; could not be created. Only connections established with Active Directory accounts can create other Active Directory users.</em>.  I logged out and restarted SSMS and then it worked fine.</p>
 

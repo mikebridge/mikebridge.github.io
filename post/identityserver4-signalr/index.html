@@ -63,7 +63,7 @@
   "headline": "JWT Tokens, SignalR and Single Page Applications",
   "description" : "Configuring SignalR to authenticate with IdentityServer4 and OpenID Connect",
   "inLanguage" : "en",
-  "wordCount": 3124,
+  "wordCount": 2697,
   "datePublished" : "2017-03-02T00:00:00",
   "dateModified" : "2017-03-02T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -251,10 +251,10 @@ if (!doNotTrack) {
   <i class="fas fa-calendar"></i>&nbsp;Posted on March 2, 2017
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;15&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;13&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3124&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2697&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -400,175 +400,93 @@ In this app we need <em>Identity Resources</em>&mdash;the user&rsquo;s Id and Na
 
 <p>For our application we&rsquo;ll use define the profile information we want to receive about the user in <a href="https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Config.cs#L20-L35"><code>Config.cs</code></a>
 like this:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">IdentityResource</span><span class="p">&gt;</span> <span class="n">GetIdentityResources</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">userProfile</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IdentityResource</span>
-    <span class="p">{</span>
-        <span class="n">Name</span> <span class="p">=</span> <span class="s">&#34;profile.user&#34;</span><span class="p">,</span>
-        <span class="n">DisplayName</span> <span class="p">=</span> <span class="s">&#34;User profile&#34;</span><span class="p">,</span>
-        <span class="n">UserClaims</span> <span class="p">=</span> <span class="k">new</span><span class="na">[]</span> <span class="p">{</span> <span class="s">&#34;name&#34;</span> <span class="p">}</span>
-    <span class="p">};</span>
-    <span class="c1">// these resources will be requested by name in the javascript client
-</span><span class="c1"></span>    <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">IdentityResource</span><span class="p">&gt;</span>
-    <span class="p">{</span>
-        <span class="k">new</span> <span class="n">IdentityResources</span><span class="p">.</span><span class="n">OpenId</span><span class="p">(),</span>
-        <span class="k">new</span> <span class="n">IdentityResources</span><span class="p">.</span><span class="n">Email</span><span class="p">(),</span>
-        <span class="k">new</span> <span class="n">IdentityResources</span><span class="p">.</span><span class="n">Profile</span><span class="p">(),</span>
-        <span class="n">userProfile</span>
-    <span class="p">};</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-csharp">public static IEnumerable&lt;IdentityResource&gt; GetIdentityResources()
+{
+    var userProfile = new IdentityResource
+    {
+        Name = &quot;profile.user&quot;,
+        DisplayName = &quot;User profile&quot;,
+        UserClaims = new[] { &quot;name&quot; }
+    };
+    // these resources will be requested by name in the javascript client
+    return new List&lt;IdentityResource&gt;
+    {
+        new IdentityResources.OpenId(),
+        new IdentityResources.Email(),
+        new IdentityResources.Profile(),
+        userProfile
+    };
+}
+</code></pre>
+
 <p>These claims will show up in each token.</p>
 
 <p>Next, we want to protect our Chat API as an <em>API Resource</em>.  We&rsquo;ll define our resource with the string &ldquo;chatapi&rdquo; in <code>Config.cs</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ApiResource</span><span class="p">&gt;</span> <span class="n">GetApiResources</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">ApiResource</span><span class="p">&gt;</span>
-    <span class="p">{</span>
-        <span class="k">new</span> <span class="n">ApiResource</span><span class="p">(</span><span class="s">&#34;chatapi&#34;</span><span class="p">,</span> <span class="s">&#34;Chat API&#34;</span><span class="p">),</span>
-    <span class="p">};</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-csharp">public static IEnumerable&lt;ApiResource&gt; GetApiResources()
+{
+    return new List&lt;ApiResource&gt;
+    {
+        new ApiResource(&quot;chatapi&quot;, &quot;Chat API&quot;),
+    };
+}
+</code></pre>
+
 <p>Our flow is going to be <code>Implicit</code>.  So we need to tell IdentityServer to accept requests from our
 JavaScript <code>Client</code> application:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Client</span><span class="p">&gt;</span> <span class="n">GetClients</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="kt">string</span> <span class="n">baseUrl</span> <span class="p">=</span> <span class="s">&#34;http://localhost:3000&#34;</span><span class="p">;</span>
+
+<pre><code class="language-csharp">public static IEnumerable&lt;Client&gt; GetClients()
+{
+    const string baseUrl = &quot;http://localhost:3000&quot;;
             
-    <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Client</span><span class="p">&gt;</span>
-    <span class="p">{</span>
+    return new List&lt;Client&gt;
+    {
 
-        <span class="k">new</span> <span class="n">Client</span>
-        <span class="p">{</span>
-            <span class="c1">// an arbitrary name that we&#39;ll pass from the js client
-</span><span class="c1"></span>            <span class="n">ClientId</span> <span class="p">=</span> <span class="s">&#34;js.implicit&#34;</span><span class="p">,</span>
-            <span class="n">ClientName</span> <span class="p">=</span> <span class="s">&#34;JavaScript Client&#34;</span><span class="p">,</span>
-            <span class="n">AllowedGrantTypes</span> <span class="p">=</span> <span class="n">GrantTypes</span><span class="p">.</span><span class="n">Implicit</span><span class="p">,</span>
-            <span class="n">AllowAccessTokensViaBrowser</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+        new Client
+        {
+            // an arbitrary name that we'll pass from the js client
+            ClientId = &quot;js.implicit&quot;,
+            ClientName = &quot;JavaScript Client&quot;,
+            AllowedGrantTypes = GrantTypes.Implicit,
+            AllowAccessTokensViaBrowser = true,
 
-            <span class="n">RedirectUris</span> <span class="p">=</span>
-            <span class="p">{</span>
-                <span class="c1">// this where the word &#34;implicit&#34; in &#34;implicit flow&#34;
-</span><span class="c1"></span>                <span class="c1">// comes from---we are implicitly telling the 
-</span><span class="c1"></span>                <span class="c1">// server that we own the domain that hosts
-</span><span class="c1"></span>                <span class="c1">// the callback page.  The server knows the domain is valid
-</span><span class="c1"></span>                <span class="c1">// because the domain is whitelisted in the Client configuration.
-</span><span class="c1"></span>                <span class="n">UrlUtils</span><span class="p">.</span><span class="n">UrlCombine</span><span class="p">(</span><span class="n">baseUrl</span><span class="p">,</span> <span class="s">&#34;/callback&#34;</span><span class="p">)</span>
-            <span class="p">},</span>
-            <span class="n">PostLogoutRedirectUris</span> <span class="p">=</span>
-            <span class="p">{</span>
-                <span class="n">baseUrl</span>
-            <span class="p">},</span>
-            <span class="n">AllowedCorsOrigins</span> <span class="p">=</span>
-            <span class="p">{</span>
-                <span class="n">baseUrl</span>
-            <span class="p">},</span>
-            <span class="n">AllowedScopes</span> <span class="p">=</span>
-            <span class="p">{</span>
-                <span class="n">IdentityServerConstants</span><span class="p">.</span><span class="n">StandardScopes</span><span class="p">.</span><span class="n">OpenId</span><span class="p">,</span>
-                <span class="n">IdentityServerConstants</span><span class="p">.</span><span class="n">StandardScopes</span><span class="p">.</span><span class="n">Profile</span><span class="p">,</span>
-                <span class="n">IdentityServerConstants</span><span class="p">.</span><span class="n">StandardScopes</span><span class="p">.</span><span class="n">Email</span><span class="p">,</span>
-                <span class="s">&#34;chatapi&#34;</span>
-            <span class="p">},</span>
-            <span class="n">RequireConsent</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span> <span class="c1">// we don&#39;t want the &#34;Consent&#34; Screen
-</span><span class="c1"></span>            <span class="n">AllowRememberConsent</span> <span class="p">=</span> <span class="k">false</span><span class="p">,</span> 
-            <span class="n">AlwaysSendClientClaims</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-            <span class="n">AlwaysIncludeUserClaimsInIdToken</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-            <span class="n">AccessTokenType</span> <span class="p">=</span> <span class="n">AccessTokenType</span><span class="p">.</span><span class="n">Jwt</span><span class="p">,</span>
-            <span class="c1">// UpdateAccessTokenClaimsOnRefresh = true
-</span><span class="c1"></span>        <span class="p">}</span>
+            RedirectUris =
+            {
+                // this where the word &quot;implicit&quot; in &quot;implicit flow&quot;
+                // comes from---we are implicitly telling the 
+                // server that we own the domain that hosts
+                // the callback page.  The server knows the domain is valid
+                // because the domain is whitelisted in the Client configuration.
+                UrlUtils.UrlCombine(baseUrl, &quot;/callback&quot;)
+            },
+            PostLogoutRedirectUris =
+            {
+                baseUrl
+            },
+            AllowedCorsOrigins =
+            {
+                baseUrl
+            },
+            AllowedScopes =
+            {
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile,
+                IdentityServerConstants.StandardScopes.Email,
+                &quot;chatapi&quot;
+            },
+            RequireConsent = false, // we don't want the &quot;Consent&quot; Screen
+            AllowRememberConsent = false, 
+            AlwaysSendClientClaims = true,
+            AlwaysIncludeUserClaimsInIdToken = true,
+            AccessTokenType = AccessTokenType.Jwt,
+            // UpdateAccessTokenClaimsOnRefresh = true
+        }
 
-    <span class="p">};</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+    };
+}
+</code></pre>
+
 <p>In a real application, there would probably be a database of users&mdash;but for this example,
 we&rsquo;ll create an <a href="https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Services/TestUserService.cs">in-memory test store</a>.
 called <code>TestUserService.cs</code></p>
@@ -576,176 +494,91 @@ called <code>TestUserService.cs</code></p>
 <p>We&rsquo;ll also define our own &ldquo;IProfileService&rdquo;.  This is not described in the IdentityServer4
  documentation, but its purpose is to describe all the claims that will show up in both
   the identity token and the access token:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Security.Claims</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">IdentityModel</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">IdentityServer4.Extensions</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">IdentityServer4.Models</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">IdentityServer4.Services</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">IdentityServer.Services</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">LocalProfileService</span> <span class="p">:</span> <span class="n">IProfileService</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">readonly</span> <span class="n">ILocalUserService</span> <span class="n">_userService</span><span class="p">;</span>
+<pre><code class="language-csharp">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using IdentityModel;
+using IdentityServer4.Extensions;
+using IdentityServer4.Models;
+using IdentityServer4.Services;
 
-        <span class="k">public</span> <span class="n">LocalProfileService</span><span class="p">(</span><span class="n">ILocalUserService</span> <span class="n">userService</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">_userService</span> <span class="p">=</span> <span class="n">userService</span><span class="p">;</span>
-        <span class="p">}</span>
+namespace IdentityServer.Services
+{
+    public class LocalProfileService : IProfileService
+    {
+        private readonly ILocalUserService _userService;
 
-        <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// Side Effect: this mutates context.IssuedClaims with the user&#39;s identity properties if the
-</span><span class="c1"></span>        <span class="c1">/// user is found.  Otherwise do nothing.
-</span><span class="c1"></span>        <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>        <span class="c1">/// &lt;param name=&#34;context&#34;&gt;&lt;/param&gt;
-</span><span class="c1"></span>        <span class="c1">/// &lt;returns&gt;&lt;/returns&gt;
-</span><span class="c1"></span>        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">GetProfileDataAsync</span><span class="p">(</span><span class="n">ProfileDataRequestContext</span> <span class="n">context</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="cm">/*
-</span><span class="cm">             * see: https://damienbod.com/2016/11/18/extending-identity-in-identityserver4-to-manage-users-in-asp-net-core/
-</span><span class="cm">             * The Identity properties need to be added to the claims so that the client SPA or whatever client it 
-</span><span class="cm">             * is can use the properties. In IdentityServer4, the IProfileService interface is used for 
-</span><span class="cm">             * this. Each custom ApplicationUser property is added as claims as required.
-</span><span class="cm">             */</span>
+        public LocalProfileService(ILocalUserService userService)
+        {
+            _userService = userService;
+        }
+
+        /// &lt;summary&gt;
+        /// Side Effect: this mutates context.IssuedClaims with the user's identity properties if the
+        /// user is found.  Otherwise do nothing.
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;context&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public async Task GetProfileDataAsync(ProfileDataRequestContext context)
+        {
+            /*
+             * see: https://damienbod.com/2016/11/18/extending-identity-in-identityserver4-to-manage-users-in-asp-net-core/
+             * The Identity properties need to be added to the claims so that the client SPA or whatever client it 
+             * is can use the properties. In IdentityServer4, the IProfileService interface is used for 
+             * this. Each custom ApplicationUser property is added as claims as required.
+             */
              
-            <span class="c1">// the &#34;subject&#34; is where the unique user id goes.  Ours is a Guid.
-</span><span class="c1"></span>            <span class="kt">var</span> <span class="n">identityidString</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Subject</span><span class="p">.</span><span class="n">GetSubjectId</span><span class="p">();</span>
-            <span class="n">Guid</span> <span class="n">identityid</span><span class="p">;</span>
-            <span class="kt">bool</span> <span class="n">success</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">identityidString</span><span class="p">,</span> <span class="k">out</span> <span class="n">identityid</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(!</span><span class="n">success</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span><span class="p">;</span>
-            <span class="p">}</span>
+            // the &quot;subject&quot; is where the unique user id goes.  Ours is a Guid.
+            var identityidString = context.Subject.GetSubjectId();
+            Guid identityid;
+            bool success = Guid.TryParse(identityidString, out identityid);
+            if (!success)
+            {
+                return;
+            }
 
-            <span class="c1">// find the user from the database
-</span><span class="c1"></span>            <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_userService</span><span class="p">.</span><span class="n">FindAsync</span><span class="p">(</span><span class="n">identityid</span><span class="p">);</span>
+            // find the user from the database
+            var user = await _userService.FindAsync(identityid);
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">return</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="kt">var</span> <span class="n">claims</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Claim</span><span class="p">&gt;</span>
-            <span class="p">{</span>
-                <span class="k">new</span> <span class="n">Claim</span><span class="p">(</span><span class="n">JwtClaimTypes</span><span class="p">.</span><span class="n">FamilyName</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">FamilyName</span><span class="p">,</span> <span class="n">ClaimValueTypes</span><span class="p">.</span><span class="n">String</span><span class="p">),</span>
-                <span class="k">new</span> <span class="n">Claim</span><span class="p">(</span><span class="n">JwtClaimTypes</span><span class="p">.</span><span class="n">GivenName</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">GivenName</span><span class="p">,</span> <span class="n">ClaimValueTypes</span><span class="p">.</span><span class="n">String</span><span class="p">),</span>
-                <span class="k">new</span> <span class="n">Claim</span><span class="p">(</span><span class="n">JwtClaimTypes</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">FullName</span><span class="p">,</span> <span class="n">ClaimValueTypes</span><span class="p">.</span><span class="n">String</span><span class="p">),</span>
-                <span class="k">new</span> <span class="n">Claim</span><span class="p">(</span><span class="n">JwtClaimTypes</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">ToString</span><span class="p">(),</span> <span class="n">ClaimValueTypes</span><span class="p">.</span><span class="n">String</span><span class="p">),</span>
-                <span class="k">new</span> <span class="n">Claim</span><span class="p">(</span><span class="n">JwtClaimTypes</span><span class="p">.</span><span class="n">PreferredUserName</span><span class="p">,</span> <span class="n">user</span><span class="p">.</span><span class="n">UserName</span><span class="p">,</span> <span class="n">ClaimValueTypes</span><span class="p">.</span><span class="n">String</span><span class="p">)</span>
-            <span class="p">};</span>
-            <span class="c1">// hard-code access to &#34;chatapi.user&#34;----normally this would come from a
-</span><span class="c1"></span>            <span class="c1">// database!
-</span><span class="c1"></span>            <span class="n">claims</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Claim</span><span class="p">(</span><span class="n">JwtClaimTypes</span><span class="p">.</span><span class="n">Role</span><span class="p">,</span> <span class="s">&#34;chatapi.user&#34;</span><span class="p">));</span>
-            <span class="n">claims</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Claim</span><span class="p">(</span><span class="n">JwtClaimTypes</span><span class="p">.</span><span class="n">Scope</span><span class="p">,</span> <span class="s">&#34;chatapi&#34;</span><span class="p">));</span>
+            if (user == null)
+            {
+                return;
+            }
+            var claims = new List&lt;Claim&gt;
+            {
+                new Claim(JwtClaimTypes.FamilyName, user.FamilyName, ClaimValueTypes.String),
+                new Claim(JwtClaimTypes.GivenName, user.GivenName, ClaimValueTypes.String),
+                new Claim(JwtClaimTypes.Name, user.FullName, ClaimValueTypes.String),
+                new Claim(JwtClaimTypes.Id, user.Id.ToString(), ClaimValueTypes.String),
+                new Claim(JwtClaimTypes.PreferredUserName, user.UserName, ClaimValueTypes.String)
+            };
+            // hard-code access to &quot;chatapi.user&quot;----normally this would come from a
+            // database!
+            claims.Add(new Claim(JwtClaimTypes.Role, &quot;chatapi.user&quot;));
+            claims.Add(new Claim(JwtClaimTypes.Scope, &quot;chatapi&quot;));
 
-            <span class="n">context</span><span class="p">.</span><span class="n">IssuedClaims</span> <span class="p">=</span> <span class="n">claims</span><span class="p">;</span>
+            context.IssuedClaims = claims;
           
-        <span class="p">}</span>
+        }
 
-        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">IsActiveAsync</span><span class="p">(</span><span class="n">IsActiveContext</span> <span class="n">context</span><span class="p">)</span>
-        <span class="p">{</span>
+        public async Task IsActiveAsync(IsActiveContext context)
+        {
 
-            <span class="kt">var</span> <span class="n">sub</span> <span class="p">=</span> <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="n">FromResult</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Subject</span><span class="p">.</span><span class="n">GetSubjectId</span><span class="p">());</span>
+            var sub = await Task.FromResult(context.Subject.GetSubjectId());
 
-            <span class="c1">// here we hard-code &#34;isactive&#34; to true, but in a real application
-</span><span class="c1"></span>            <span class="c1">// you might have a &#34;inactive&#34; status.
-</span><span class="c1"></span>            <span class="n">context</span><span class="p">.</span><span class="n">IsActive</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            // here we hard-code &quot;isactive&quot; to true, but in a real application
+            // you might have a &quot;inactive&quot; status.
+            context.IsActive = true;
 
-        <span class="p">}</span>
-    <span class="p">}</span>
+        }
+    }
 
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+}
+</code></pre>
+
 <p>Note that we&rsquo;re hardcoding the claims in this example.  And we&rsquo;ve create a <em>scope</em> called
 <code>chatapi</code>, and a <em>role</em> within that scope called <code>chatapi.user</code>.   A <em>scope</em> is a custom set
 of claims, and we&rsquo;re defining a particular claim as a <em>role</em>.  The role name is what we&rsquo;ll use later in
@@ -754,50 +587,28 @@ annotation in the SignalR Hub.</p>
 
 <p>We can wire all this up during initialization in
 <a href="https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Startup.cs#L19-L33">Startup.cs</a>.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">services</span><span class="p">.</span><span class="n">AddMvc</span><span class="p">();</span>
 
-    <span class="n">services</span><span class="p">.</span><span class="n">AddIdentityServer</span><span class="p">()</span>
-        <span class="c1">// note: you may need to pass the StoreLocation to this next
-</span><span class="c1"></span>        <span class="c1">// call depending on where you deploy IdentityServer. 
-</span><span class="c1"></span>        <span class="c1">// You may need to use StoreLocation.LocalMachine.
-</span><span class="c1"></span>        <span class="p">.</span><span class="n">AddSigningCredential</span><span class="p">(</span><span class="s">&#34;CN=ExampleTest&#34;</span><span class="p">)</span>
-        <span class="p">.</span><span class="n">AddInMemoryIdentityResources</span><span class="p">(</span><span class="n">Config</span><span class="p">.</span><span class="n">GetIdentityResources</span><span class="p">())</span>
-        <span class="p">.</span><span class="n">AddInMemoryApiResources</span><span class="p">(</span><span class="n">Config</span><span class="p">.</span><span class="n">GetApiResources</span><span class="p">())</span>
-        <span class="p">.</span><span class="n">AddInMemoryClients</span><span class="p">(</span><span class="n">Config</span><span class="p">.</span><span class="n">GetClients</span><span class="p">())</span>
-        <span class="c1">// we define our own &#34;profile service&#34;
-</span><span class="c1"></span>        <span class="p">.</span><span class="n">AddProfileService</span><span class="p">&lt;</span><span class="n">LocalProfileService</span><span class="p">&gt;();</span>
+<pre><code class="language-csharp">public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+
+    services.AddIdentityServer()
+        // note: you may need to pass the StoreLocation to this next
+        // call depending on where you deploy IdentityServer. 
+        // You may need to use StoreLocation.LocalMachine.
+        .AddSigningCredential(&quot;CN=ExampleTest&quot;)
+        .AddInMemoryIdentityResources(Config.GetIdentityResources())
+        .AddInMemoryApiResources(Config.GetApiResources())
+        .AddInMemoryClients(Config.GetClients())
+        // we define our own &quot;profile service&quot;
+        .AddProfileService&lt;LocalProfileService&gt;();
                 
-        <span class="c1">// register our own store of test users &amp; passwords.
-</span><span class="c1"></span>        <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">ILocalUserService</span><span class="p">,</span> <span class="n">TestUserService</span><span class="p">&gt;();</span>
-    <span class="p">}</span>
-<span class="p">}</span>    </code></pre></td></tr></table>
-</div>
-</div>
+        // register our own store of test users &amp; passwords.
+        services.AddSingleton&lt;ILocalUserService, TestUserService&gt;();
+    }
+}    
+</code></pre>
+
 <p>You&rsquo;ll also have to <a href="https://github.com/mikebridge/IdentityServer4SignalR/#create-and-install-asymmetric-keys">set up the key pair</a>
 if you haven&rsquo;t done that already.</p>
 
@@ -809,132 +620,72 @@ is React/Redux-specific so I won&rsquo;t go into it in too much detail.</p>
 
 <p>The oidc configuration in the JavaScript client has to match with our Client configuration
 in IdentityServer4.  <a href="https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/Web/src/config/oidcConfig.ts">Here&rsquo;s</a> how I set it up:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">import</span> <span class="p">{</span> <span class="n">globalConfig</span> <span class="p">}</span> <span class="k">from</span> <span class="s">&#34;./env&#34;</span><span class="p">;</span>
 
-<span class="k">const</span> <span class="n">authUrl</span> <span class="p">=</span> <span class="n">globalConfig</span><span class="p">.</span><span class="n">baseIdentityUrl</span><span class="p">;</span>
-<span class="k">const</span> <span class="n">baseUrl</span> <span class="p">=</span> <span class="n">globalConfig</span><span class="p">.</span><span class="n">currentBaseUrl</span><span class="p">;</span>
+<pre><code class="language-csharp">import { globalConfig } from &quot;./env&quot;;
 
-<span class="n">export</span> <span class="k">const</span> <span class="n">oidcImplicitSettings</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="c1">// URL of your OpenID Connect server.
-</span><span class="c1"></span>    <span class="c1">// The library uses it to access the metadata document
-</span><span class="c1"></span>
-    <span class="c1">// authority points to our IdentityServer
-</span><span class="c1"></span>    <span class="n">authority</span><span class="p">:</span> <span class="n">authUrl</span><span class="p">,</span>
+const authUrl = globalConfig.baseIdentityUrl;
+const baseUrl = globalConfig.currentBaseUrl;
 
-    <span class="c1">// the client_id is an arbitrary string that matches our IdentityServer4 ClientId
-</span><span class="c1"></span>    <span class="n">client_id</span><span class="p">:</span> <span class="s">&#34;js.implicit&#34;</span><span class="p">,</span>
+export const oidcImplicitSettings = {
+    // URL of your OpenID Connect server.
+    // The library uses it to access the metadata document
 
-    <span class="c1">// after the user has authenticated with IdentityServer, he will get redirected
-</span><span class="c1"></span>    <span class="c1">// to our callback page.
-</span><span class="c1"></span>    <span class="n">redirect_uri</span><span class="p">:</span> <span class="err">`$</span><span class="p">{</span><span class="n">baseUrl</span><span class="p">}/</span><span class="n">callback</span><span class="err">`</span><span class="p">,</span>
+    // authority points to our IdentityServer
+    authority: authUrl,
 
-    <span class="n">post_logout_redirect_uri</span><span class="p">:</span> <span class="err">`$</span><span class="p">{</span><span class="n">baseUrl</span><span class="p">}/</span><span class="n">index</span><span class="err">`</span><span class="p">,</span>
+    // the client_id is an arbitrary string that matches our IdentityServer4 ClientId
+    client_id: &quot;js.implicit&quot;,
 
-    <span class="c1">// For JavaScript clients, we want both an identity token and an
-</span><span class="c1"></span>    <span class="c1">// access token as per Openid Connect.
-</span><span class="c1"></span>    <span class="n">response_type</span><span class="p">:</span> <span class="s">&#34;id_token token&#34;</span><span class="p">,</span>
+    // after the user has authenticated with IdentityServer, he will get redirected
+    // to our callback page.
+    redirect_uri: `${baseUrl}/callback`,
 
-    <span class="c1">// Resources requested during the authorisation request
-</span><span class="c1"></span>    <span class="n">scope</span><span class="p">:</span> <span class="s">&#34;openid email profile chatapi&#34;</span><span class="p">,</span>
+    post_logout_redirect_uri: `${baseUrl}/index`,
 
-    <span class="c1">// Number of seconds before the token expires to trigger
-</span><span class="c1"></span>    <span class="c1">// the `tokenExpiring` event
-</span><span class="c1"></span>    <span class="n">accessTokenExpiringNotificationTime</span><span class="p">:</span> <span class="m">4</span><span class="p">,</span>
+    // For JavaScript clients, we want both an identity token and an
+    // access token as per Openid Connect.
+    response_type: &quot;id_token token&quot;,
 
-    <span class="c1">// Do we want to renew the access token automatically when it&#39;s
-</span><span class="c1"></span>    <span class="c1">// about to expire?
-</span><span class="c1"></span>    <span class="n">automaticSilentRenew</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
+    // Resources requested during the authorisation request
+    scope: &quot;openid email profile chatapi&quot;,
 
-    <span class="c1">// Do we want to filter OIDC protocol-specific claims from the response?
-</span><span class="c1"></span>    <span class="n">filterProtocolClaims</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
+    // Number of seconds before the token expires to trigger
+    // the `tokenExpiring` event
+    accessTokenExpiringNotificationTime: 4,
 
-    <span class="n">nonce</span> <span class="p">:</span> <span class="s">&#34;N&#34;</span> <span class="p">+</span> <span class="n">Math</span><span class="p">.</span><span class="n">random</span><span class="p">()</span> <span class="p">+</span> <span class="s">&#34;&#34;</span> <span class="p">+</span> <span class="n">Date</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
-<span class="p">};</span></code></pre></td></tr></table>
-</div>
-</div>
+    // Do we want to renew the access token automatically when it's
+    // about to expire?
+    automaticSilentRenew: true,
+
+    // Do we want to filter OIDC protocol-specific claims from the response?
+    filterProtocolClaims: true,
+
+    nonce : &quot;N&quot; + Math.random() + &quot;&quot; + Date.now()
+};
+</code></pre>
+
 <p>The &ldquo;response_type&rdquo; specifies that we want both an id token and an access token, as per the OpenID
 Connect specification.  The scope is &ldquo;openid email profile chatapi&rdquo;, which reflects the
 resources that we <a href="https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/IdentityServer/Config.cs#L20-L43">configured in the Config.cs</a></p>
 
 <p>We will launch the login process here with the</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">const</span> <span class="n">oidcManager</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Oidc</span><span class="p">.</span><span class="n">UserManager</span><span class="p">(</span><span class="n">oidcImplicitSettings</span><span class="p">);</span>
-<span class="n">oidcManager</span><span class="p">.</span><span class="n">signinRedirect</span><span class="p">(...);</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-csharp">const oidcManager = new Oidc.UserManager(oidcImplicitSettings);
+oidcManager.signinRedirect(...);
+</code></pre>
+
 <p>Then on the callback page you&rsquo;ll need to get the user object:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">userManager</span><span class="p">.</span><span class="n">signinRedirectCallback</span><span class="p">().</span><span class="n">then</span><span class="p">(</span><span class="n">result</span> <span class="p">=&gt;</span> <span class="p">{</span>
-      <span class="n">userManager</span><span class="p">.</span><span class="n">getUser</span><span class="p">().</span><span class="n">then</span><span class="p">(</span><span class="n">user</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="c1">// save the user!
-</span><span class="c1"></span>          <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s">&#34;logged in!);
-</span><span class="s"></span>          <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
-      <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
-      <span class="p">});</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-csharp">userManager.signinRedirectCallback().then(result =&gt; {
+      userManager.getUser().then(user =&gt; {
+          // save the user!
+          console.log(&quot;logged in!);
+          console.log(user);
+      }).catch((e) =&gt; {
+          console.error(e);
+      });
+</code></pre>
+
 <p>At the very least, you&rsquo;ll need to save the <code>user.access_token</code> to pass through to
 SignalR&mdash;this is the JWT access token.  You should have a look at the contents at
 <a href="http://jwt.io">http://jwt.io</a>.</p>
@@ -947,14 +698,10 @@ a server-side call.  The first option is a little less yucky, so we&rsquo;ll do 
 
 <p>I also won&rsquo;t describe how to use SignalR, except to note that you&rsquo;ll need
 to set the &ldquo;.qs&rdquo; on your HubConnection:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">hubConnection</span><span class="p">.</span><span class="n">qs</span> <span class="p">=</span> <span class="n">token</span> <span class="p">?</span> <span class="err">`</span><span class="n">authtoken</span><span class="p">=</span><span class="err">$</span><span class="p">{</span><span class="n">user</span><span class="p">.</span><span class="n">access_token</span><span class="p">}</span><span class="err">`</span> <span class="p">:</span> <span class="s">&#34;&#34;</span><span class="p">;</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-csharp">hubConnection.qs = token ? `authtoken=${user.access_token}` : &quot;&quot;;
+</code></pre>
+
 <p>Annoyingly, you have to disconnect and reconnect if your access_token changes, e.g.
 it expires and you need to renew it.</p>
 
@@ -969,451 +716,236 @@ middleware, but to authenticate with SignalR we&rsquo;ll need to add an extra mi
 
 <p>My <a href="https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/ChatAPI/project.json">ChatAPI package.json</a>
 contains these dependencies:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
- <span class="nt">&#34;dependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;Microsoft.AspNetCore.Diagnostics&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.AspNetCore.Server.IISIntegration&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.AspNetCore.Server.Kestrel&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.1&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.Extensions.Logging.Console&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.Extensions.Configuration.Json&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.Extensions.Configuration.FileExtensions&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
 
-    <span class="nt">&#34;Microsoft.AspNetCore.Cors&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.AspNetCore.Mvc&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.1&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.AspNetCore.Mvc.Core&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.1&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.AspNetCore.Owin&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.IdentityModel.Tokens&#34;</span><span class="p">:</span> <span class="s2">&#34;5.1.2&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.AspNetCore.Authentication.JwtBearer&#34;</span><span class="p">:</span> <span class="s2">&#34;1.1.0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;Microsoft.AspNet.SignalR&#34;</span><span class="p">:</span> <span class="s2">&#34;2.2.1&#34;</span>
-  <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+<pre><code class="language-json">{
+ &quot;dependencies&quot;: {
+    &quot;Microsoft.AspNetCore.Diagnostics&quot;: &quot;1.0.0&quot;,
+    &quot;Microsoft.AspNetCore.Server.IISIntegration&quot;: &quot;1.0.0&quot;,
+    &quot;Microsoft.AspNetCore.Server.Kestrel&quot;: &quot;1.0.1&quot;,
+    &quot;Microsoft.Extensions.Logging.Console&quot;: &quot;1.0.0&quot;,
+    &quot;Microsoft.Extensions.Configuration.Json&quot;: &quot;1.1.0&quot;,
+    &quot;Microsoft.Extensions.Configuration.FileExtensions&quot;: &quot;1.1.0&quot;,
+
+    &quot;Microsoft.AspNetCore.Cors&quot;: &quot;1.1.0&quot;,
+    &quot;Microsoft.AspNetCore.Mvc&quot;: &quot;1.1.1&quot;,
+    &quot;Microsoft.AspNetCore.Mvc.Core&quot;: &quot;1.1.1&quot;,
+    &quot;Microsoft.AspNetCore.Owin&quot;: &quot;1.1.0&quot;,
+    &quot;Microsoft.IdentityModel.Tokens&quot;: &quot;5.1.2&quot;,
+    &quot;Microsoft.AspNetCore.Authentication.JwtBearer&quot;: &quot;1.1.0&quot;,
+    &quot;Microsoft.AspNet.SignalR&quot;: &quot;2.2.1&quot;
+  }
+}
+</code></pre>
+
 <p>Setting up SignalR is a little finicky because it hasn&rsquo;t been updated for DotNet Core, but
 there&rsquo;s <a href="/articles/signalr-akka/">more detail in this previous blog post</a></p>
 
 <p>We&rsquo;ll add in the basic configuration to <a href="https://github.com/mikebridge/IdentityServer4SignalR/blob/master/src/ChatAPI/Startup.cs">Startup.cs</a>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
-<span class="p">{</span>
-    <span class="c1">// ...
-</span><span class="c1"></span>    
-    <span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">services</span><span class="p">.</span><span class="n">AddCors</span><span class="p">();</span>
-        <span class="c1">// NOTE: unhandled Exception: System.InvalidOperationException: Unable to resolve service for type 
-</span><span class="c1"></span>        <span class="c1">// &#39;System.Text.Encodings.Web.UrlEncoder&#39; while attempting to activate 
-</span><span class="c1"></span>        <span class="c1">// &#39;Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerMiddleware&#39;
-</span><span class="c1"></span>        <span class="c1">// is resolved by AddAuthentication (esp. if it&#39;s not brought in by MVC config)
-</span><span class="c1"></span>        <span class="n">services</span><span class="p">.</span><span class="n">AddAuthentication</span><span class="p">();</span>
-    <span class="p">}</span>
+
+<pre><code class="language-csharp">public class Startup
+{
+    // ...
     
-     <span class="k">public</span> <span class="k">void</span> <span class="n">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
-     <span class="p">{</span>
-         <span class="n">JWTInitialization</span><span class="p">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">Configuration</span><span class="p">);</span>
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddCors();
+        // NOTE: unhandled Exception: System.InvalidOperationException: Unable to resolve service for type 
+        // 'System.Text.Encodings.Web.UrlEncoder' while attempting to activate 
+        // 'Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerMiddleware'
+        // is resolved by AddAuthentication (esp. if it's not brought in by MVC config)
+        services.AddAuthentication();
+    }
+    
+     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+     {
+         JWTInitialization.Initialize(app, Configuration);
            
-         <span class="n">app</span><span class="p">.</span><span class="n">UseCors</span><span class="p">(</span><span class="n">policy</span> <span class="p">=&gt;</span>
-         <span class="p">{</span>
-             <span class="c1">//policy.WithOrigins(&#34;*&#34;);
-</span><span class="c1"></span>             <span class="n">policy</span><span class="p">.</span><span class="n">WithOrigins</span><span class="p">(</span><span class="s">&#34;http://localhost:3000&#34;</span><span class="p">);</span>
-             <span class="n">policy</span><span class="p">.</span><span class="n">AllowAnyHeader</span><span class="p">();</span>
-             <span class="n">policy</span><span class="p">.</span><span class="n">AllowAnyMethod</span><span class="p">();</span>
-             <span class="n">policy</span><span class="p">.</span><span class="n">AllowCredentials</span><span class="p">();</span>
-         <span class="p">});</span>
-     <span class="p">}</span>
+         app.UseCors(policy =&gt;
+         {
+             //policy.WithOrigins(&quot;*&quot;);
+             policy.WithOrigins(&quot;http://localhost:3000&quot;);
+             policy.AllowAnyHeader();
+             policy.AllowAnyMethod();
+             policy.AllowCredentials();
+         });
+     }
     
-    <span class="c1">// ...
-</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+    // ...
+}
+</code></pre>
+
 <p>We&rsquo;ll need to write the middleware that watches for our <code>authtoken</code> and puts it into an
 <code>Authorization</code> header:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Akka.Util.Internal</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Builder</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">ChatAPI.Auth</span>
-<span class="p">{</span>
+<pre><code class="language-csharp">using System;
+using System.Linq;
+using Akka.Util.Internal;
+using Microsoft.AspNetCore.Builder;
 
-    <span class="c1">/// &lt;summary&gt;
-</span><span class="c1"></span>    <span class="c1">/// Middleware to intercept a query string bearer token value (since SignalR isn&#39;t
-</span><span class="c1"></span>    <span class="c1">/// able to use a Header) into an auth header so that the Jwt handler can see it.
-</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
-</span><span class="c1"></span>    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">JwtSignalRExtensions</span>
-    <span class="p">{</span>
-        <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">String</span> <span class="n">AUTH_QUERY_STRING_KEY</span> <span class="p">=</span> <span class="s">&#34;authtoken&#34;</span><span class="p">;</span>
+namespace ChatAPI.Auth
+{
 
-        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">UseJwtSignalRAuthentication</span><span class="p">(</span><span class="k">this</span> <span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">app</span><span class="p">.</span><span class="n">Use</span><span class="p">(</span><span class="k">async</span> <span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">next</span><span class="p">)</span> <span class="p">=&gt;</span>
-            <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Headers</span><span class="na">[&#34;Authorization&#34;]</span><span class="p">))</span>
-                <span class="p">{</span>
-                    <span class="k">try</span>
-                    <span class="p">{</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">QueryString</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span>
-                        <span class="p">{</span>
+    /// &lt;summary&gt;
+    /// Middleware to intercept a query string bearer token value (since SignalR isn't
+    /// able to use a Header) into an auth header so that the Jwt handler can see it.
+    /// &lt;/summary&gt;
+    public static class JwtSignalRExtensions
+    {
+        private static readonly String AUTH_QUERY_STRING_KEY = &quot;authtoken&quot;;
 
-                            <span class="kt">var</span> <span class="n">token</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">QueryString</span><span class="p">.</span><span class="n">Value</span>
-                                <span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;&amp;&#39;</span><span class="p">)</span>
-                                <span class="p">.</span><span class="n">SingleOrDefault</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">AUTH_QUERY_STRING_KEY</span><span class="p">))?</span>
-                                <span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">&#39;=&#39;</span><span class="p">)</span>
-                                <span class="p">.</span><span class="n">Drop</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-                                <span class="p">.</span><span class="n">First</span><span class="p">();</span>
+        public static void UseJwtSignalRAuthentication(this IApplicationBuilder app)
+        {
+            app.Use(async (context, next) =&gt;
+            {
+                if (string.IsNullOrWhiteSpace(context.Request.Headers[&quot;Authorization&quot;]))
+                {
+                    try
+                    {
+                        if (context.Request.QueryString.HasValue)
+                        {
 
-                            <span class="k">if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
-                            <span class="p">{</span>
-                                <span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&#34;Authorization&#34;</span><span class="p">,</span> <span class="k">new</span><span class="na">[]</span> <span class="p">{</span><span class="s">$&#34;Bearer {token}&#34;</span><span class="p">});</span>
-                            <span class="p">}</span>
+                            var token = context.Request.QueryString.Value
+                                .Split('&amp;')
+                                .SingleOrDefault(x =&gt; x.Contains(AUTH_QUERY_STRING_KEY))?
+                                .Split('=')
+                                .Drop(1)
+                                .First();
 
-                        <span class="p">}</span>
+                            if (!string.IsNullOrWhiteSpace(token))
+                            {
+                                context.Request.Headers.Add(&quot;Authorization&quot;, new[] {$&quot;Bearer {token}&quot;});
+                            }
 
-                    <span class="p">}</span>
-                    <span class="k">catch</span>
-                    <span class="p">{</span>
-                        <span class="c1">// if multiple headers it may throw an error.  Ignore both.
-</span><span class="c1"></span>                    <span class="p">}</span>
-                <span class="p">}</span>
-                <span class="k">await</span> <span class="n">next</span><span class="p">.</span><span class="n">Invoke</span><span class="p">();</span>
-            <span class="p">});</span>
+                        }
 
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+                    }
+                    catch
+                    {
+                        // if multiple headers it may throw an error.  Ignore both.
+                    }
+                }
+                await next.Invoke();
+            });
+
+        }
+    }
+}
+</code></pre>
+
 <p>To configure the JWT authentication and wire the query-string processing middleware and
 the JWT processing middleware together is verbose:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
-</span><span class="lnt">71
-</span><span class="lnt">72
-</span><span class="lnt">73
-</span><span class="lnt">74
-</span><span class="lnt">75
-</span><span class="lnt">76
-</span><span class="lnt">77
-</span><span class="lnt">78
-</span><span class="lnt">79
-</span><span class="lnt">80
-</span><span class="lnt">81
-</span><span class="lnt">82
-</span><span class="lnt">83
-</span><span class="lnt">84
-</span><span class="lnt">85
-</span><span class="lnt">86
-</span><span class="lnt">87
-</span><span class="lnt">88
-</span><span class="lnt">89
-</span><span class="lnt">90
-</span><span class="lnt">91
-</span><span class="lnt">92
-</span><span class="lnt">93
-</span><span class="lnt">94
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">System.Security.Cryptography.X509Certificates</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Builder</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.Extensions.Configuration</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.IdentityModel.Tokens</span><span class="p">;</span>
 
-<span class="k">namespace</span> <span class="nn">ChatAPI.Auth</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">JWTInitialization</span>
-    <span class="p">{</span>
+<pre><code class="language-csharp">using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
-        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">Initialize</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IConfigurationRoot</span> <span class="n">configuration</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">ConfigureJwtAuth</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">configuration</span><span class="p">);</span>
-        <span class="p">}</span>
+namespace ChatAPI.Auth
+{
+    public static class JWTInitialization
+    {
 
-        <span class="k">private</span> <span class="k">static</span> <span class="n">X509Certificate2</span> <span class="n">GetCertificateFromStore</span><span class="p">(</span><span class="kt">string</span> <span class="n">certName</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="c1">// Get the certificate store---you may need to change the StoreLocation
-</span><span class="c1"></span>            <span class="c1">// depending on where this is deployed.
-</span><span class="c1"></span>            <span class="c1">// using (X509Store store = new X509Store(StoreName.TrustedPeople, StoreLocation.CurrentUser))
-</span><span class="c1"></span>            <span class="k">using</span> <span class="p">(</span><span class="n">X509Store</span> <span class="n">store</span> <span class="p">=</span> <span class="k">new</span> <span class="n">X509Store</span><span class="p">(</span><span class="n">StoreName</span><span class="p">.</span><span class="n">TrustedPeople</span><span class="p">))</span>
-            <span class="p">{</span>
-                <span class="n">store</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">OpenFlags</span><span class="p">.</span><span class="n">ReadOnly</span><span class="p">);</span>
+        public static void Initialize(IApplicationBuilder app, IConfigurationRoot configuration)
+        {
+            ConfigureJwtAuth(app, configuration);
+        }
 
-                <span class="c1">// Place all certificates in an X509Certificate2Collection object.
-</span><span class="c1"></span>                <span class="n">X509Certificate2Collection</span> <span class="n">certCollection</span> <span class="p">=</span> <span class="n">store</span><span class="p">.</span><span class="n">Certificates</span><span class="p">;</span>
+        private static X509Certificate2 GetCertificateFromStore(string certName)
+        {
+            // Get the certificate store---you may need to change the StoreLocation
+            // depending on where this is deployed.
+            // using (X509Store store = new X509Store(StoreName.TrustedPeople, StoreLocation.CurrentUser))
+            using (X509Store store = new X509Store(StoreName.TrustedPeople))
+            {
+                store.Open(OpenFlags.ReadOnly);
 
-                <span class="c1">// If using a certificate with a trusted root you do not need to FindByTimeValid, instead:
-</span><span class="c1"></span>                <span class="c1">// currentCerts.Find(X509FindType.FindBySubjectDistinguishedName, certName, true);
-</span><span class="c1"></span>                <span class="n">X509Certificate2Collection</span> <span class="n">currentCerts</span> <span class="p">=</span> <span class="n">certCollection</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">X509FindType</span><span class="p">.</span><span class="n">FindByTimeValid</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">,</span>
-                    <span class="k">false</span><span class="p">);</span>
-                <span class="n">X509Certificate2Collection</span> <span class="n">signingCert</span> <span class="p">=</span> <span class="n">currentCerts</span><span class="p">.</span><span class="n">Find</span><span class="p">(</span><span class="n">X509FindType</span><span class="p">.</span><span class="n">FindBySubjectDistinguishedName</span><span class="p">,</span>
-                    <span class="n">certName</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">signingCert</span><span class="p">.</span><span class="n">Count</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
-                    <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
-                <span class="c1">// Return the first certificate in the collection, has the right name and is current.
-</span><span class="c1"></span>                <span class="k">return</span> <span class="n">signingCert</span><span class="na">[0]</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+                // Place all certificates in an X509Certificate2Collection object.
+                X509Certificate2Collection certCollection = store.Certificates;
 
-        <span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="n">ConfigureJwtAuth</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IConfigurationRoot</span> <span class="n">configuration</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">jwtAppSettingOptions</span> <span class="p">=</span> <span class="n">configuration</span><span class="p">.</span><span class="n">GetSection</span><span class="p">(</span><span class="s">&#34;JwtIssuerOptions&#34;</span><span class="p">);</span>
+                // If using a certificate with a trusted root you do not need to FindByTimeValid, instead:
+                // currentCerts.Find(X509FindType.FindBySubjectDistinguishedName, certName, true);
+                X509Certificate2Collection currentCerts = certCollection.Find(X509FindType.FindByTimeValid, DateTime.Now,
+                    false);
+                X509Certificate2Collection signingCert = currentCerts.Find(X509FindType.FindBySubjectDistinguishedName,
+                    certName, false);
+                if (signingCert.Count == 0)
+                    return null;
+                // Return the first certificate in the collection, has the right name and is current.
+                return signingCert[0];
+            }
+        }
 
-            <span class="kt">var</span> <span class="n">selector</span> <span class="p">=</span> <span class="n">jwtAppSettingOptions</span><span class="na">[&#34;CertName&#34;]</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">selector</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&#34;The CertName is not configured in the appsettings&#34;</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="kt">var</span> <span class="n">cert</span> <span class="p">=</span> <span class="n">GetCertificateFromStore</span><span class="p">(</span><span class="n">selector</span><span class="p">);</span>
+        private static void ConfigureJwtAuth(IApplicationBuilder app, IConfigurationRoot configuration)
+        {
+            var jwtAppSettingOptions = configuration.GetSection(&quot;JwtIssuerOptions&quot;);
 
-            <span class="k">if</span> <span class="p">(</span><span class="n">cert</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-            <span class="p">{</span>
-                <span class="n">Console</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Unable to find cert for &#34;</span> <span class="p">+</span> <span class="n">selector</span><span class="p">);</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">&#34;Unable to find cert for &#34;</span> <span class="p">+</span> <span class="n">selector</span><span class="p">);</span>
-            <span class="p">}</span>
+            var selector = jwtAppSettingOptions[&quot;CertName&quot;];
+            if (selector == null)
+            {
+                throw new Exception(&quot;The CertName is not configured in the appsettings&quot;);
+            }
+            var cert = GetCertificateFromStore(selector);
+
+            if (cert == null)
+            {
+                Console.Error.WriteLine(&quot;Unable to find cert for &quot; + selector);
+                throw new Exception(&quot;Unable to find cert for &quot; + selector);
+            }
             
-            <span class="kt">var</span> <span class="n">tokenValidationParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TokenValidationParameters</span>
-            <span class="p">{</span>
-                <span class="n">ValidateIssuer</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-                <span class="n">ValidIssuer</span> <span class="p">=</span> <span class="n">jwtAppSettingOptions</span><span class="na">[&#34;Issuer&#34;]</span><span class="p">,</span>
-                <span class="n">ValidateAudience</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-                <span class="n">ValidAudience</span> <span class="p">=</span> <span class="n">jwtAppSettingOptions</span><span class="na">[&#34;Audience&#34;]</span><span class="p">,</span>
-                <span class="n">ValidateIssuerSigningKey</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-                <span class="n">IssuerSigningKeys</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">SecurityKey</span><span class="p">&gt;</span>
-                <span class="p">{</span>
-                    <span class="k">new</span> <span class="n">X509SecurityKey</span><span class="p">(</span><span class="n">cert</span><span class="p">)</span>
-                    <span class="c1">// If there are multiple valid keys, configure them here,
-</span><span class="c1"></span>                    <span class="c1">// e.g. during a key migration.
-</span><span class="c1"></span>                <span class="p">},</span>
-                <span class="n">RequireExpirationTime</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-                <span class="n">ValidateLifetime</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-                <span class="n">ClockSkew</span> <span class="p">=</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="n">Zero</span>
-            <span class="p">};</span>
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = jwtAppSettingOptions[&quot;Issuer&quot;],
+                ValidateAudience = true,
+                ValidAudience = jwtAppSettingOptions[&quot;Audience&quot;],
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKeys = new List&lt;SecurityKey&gt;
+                {
+                    new X509SecurityKey(cert)
+                    // If there are multiple valid keys, configure them here,
+                    // e.g. during a key migration.
+                },
+                RequireExpirationTime = true,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
 
-            <span class="c1">// add middleware to translate the query string token 
-</span><span class="c1"></span>            <span class="c1">// passed by SignalR into an Authorization Bearer header
-</span><span class="c1"></span>            <span class="n">app</span><span class="p">.</span><span class="n">UseJwtSignalRAuthentication</span><span class="p">();</span>
+            // add middleware to translate the query string token 
+            // passed by SignalR into an Authorization Bearer header
+            app.UseJwtSignalRAuthentication();
 
-            <span class="c1">// then add the standard JWT processing layer AFTER
-</span><span class="c1"></span>            <span class="c1">// the SignalR layer.
-</span><span class="c1"></span>            <span class="n">app</span><span class="p">.</span><span class="n">UseJwtBearerAuthentication</span><span class="p">(</span><span class="k">new</span> <span class="n">JwtBearerOptions</span>
-            <span class="p">{</span>
-                <span class="n">AutomaticAuthenticate</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-                <span class="n">AutomaticChallenge</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
-                <span class="n">TokenValidationParameters</span> <span class="p">=</span> <span class="n">tokenValidationParameters</span>
-            <span class="p">});</span>
+            // then add the standard JWT processing layer AFTER
+            // the SignalR layer.
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                TokenValidationParameters = tokenValidationParameters
+            });
 
-        <span class="p">}</span>
+        }
 
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+    }
+}
+
+</code></pre>
+
 <h2 id="signalr">SignalR</h2>
 
 <p>Crap, that was a lot of work to get to here.  But now that it&rsquo;s set up, we can use
 the <code>Microsoft.AspNet.SignalR.Authorize</code> header.  (Don&rsquo;t get this far and
 add the incompatible WebAPI <code>Authorize</code> header by accident!)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[Authorize(Roles = &#34;chatapi.user&#34;)]</span>
 
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">EchoHub</span> <span class="p">:</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNet</span><span class="p">.</span><span class="n">SignalR</span><span class="p">.</span><span class="n">Hub</span>
-    <span class="p">{</span>
-       <span class="c1">//...
-</span><span class="c1"></span>    <span class="p">}</span></code></pre></td></tr></table>
-</div>
-</div>
+<pre><code class="language-csharp">[Authorize(Roles = &quot;chatapi.user&quot;)]
+
+    public class EchoHub : Microsoft.AspNet.SignalR.Hub
+    {
+       //...
+    }
+</code></pre>
+
 
         
 

@@ -63,7 +63,7 @@
   "headline": "Clearing React Native Caches",
   "description" : "Clear caches in React Native on Windows",
   "inLanguage" : "en",
-  "wordCount": 275,
+  "wordCount": 267,
   "datePublished" : "2019-02-15T00:00:00",
   "dateModified" : "2019-02-15T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -254,7 +254,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;275&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;267&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -314,28 +314,17 @@ What&rsquo;s that?  And just <a href="https://github.com/facebook/react-native/i
 
 <p>Here&rsquo;s a way of clearing these out on Windows in PowerShell.  I put this in a file
 called <code>clearCaches.ps1</code> in a directory beside <code>build</code>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nb">Write-Output</span> <span class="s2">&#34;Clearing the Haste Module Map...&#34;</span>
-<span class="nb">Remove-Item</span> <span class="nv">$env:TEMP</span><span class="p">\</span><span class="n">haste-map</span><span class="p">*</span>
-<span class="nb">Write-Output</span> <span class="s2">&#34;Clearing the Metro Cache...&#34;</span>
-<span class="nb">Remove-Item</span> <span class="n">-Recurse</span> <span class="n">-Force</span>  <span class="n">-ErrorAction</span> <span class="n">Ignore</span> <span class="nv">$env:TEMP</span><span class="p">\</span><span class="n">metro-cache</span>
-<span class="nb">Write-Output</span> <span class="s2">&#34;Removing /build/dist...&#34;</span>
-<span class="nb">Remove-Item</span> <span class="n">-Recurse</span> <span class="n">-Force</span>  <span class="n">-ErrorAction</span> <span class="n">Ignore</span> <span class="s2">&#34;$PSScriptRoot\..\build\dist&#34;</span>
-<span class="nb">Write-Output</span> <span class="s2">&#34;Removing node_modules...&#34;</span>
-<span class="nb">Remove-Item</span> <span class="n">-Recurse</span> <span class="n">-Force</span>  <span class="n">-ErrorAction</span> <span class="n">Ignore</span> <span class="s2">&#34;$PSScriptRoot\..\node_modules&#34;</span></code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-powershell">Write-Output &quot;Clearing the Haste Module Map...&quot;
+Remove-Item $env:TEMP\haste-map*
+Write-Output &quot;Clearing the Metro Cache...&quot;
+Remove-Item -Recurse -Force  -ErrorAction Ignore $env:TEMP\metro-cache
+Write-Output &quot;Removing /build/dist...&quot;
+Remove-Item -Recurse -Force  -ErrorAction Ignore &quot;$PSScriptRoot\..\build\dist&quot;
+Write-Output &quot;Removing node_modules...&quot;
+Remove-Item -Recurse -Force  -ErrorAction Ignore &quot;$PSScriptRoot\..\node_modules&quot;
+</code></pre>
+
 <p>Here are some other miscellaneous incantations to clear out stuff:</p>
 
 <pre>

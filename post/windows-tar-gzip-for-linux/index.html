@@ -286,12 +286,13 @@ container.</p>
 <p><strong>TLDR;</strong> Turns out the standard unix tar command is now standard-issue in
 Windows—no need to use PowerShell functions at all.</p>
 
-<p><div>&nbsp;</div>
-<pre>
-tar -cvzf myfile.tgz mydir
-</pre></p>
+<div>&nbsp;</div>
 
-<p>Microsoft <a href="https://blogs.technet.microsoft.com/virtualization/2017/12/19/tar-and-curl-come-to-windows/">added this in 2017</a>—nice!</p>
+<pre>
+tar -cvzf myfile.tgz mydir 
+</pre>
+
+<p>Microsoft <a href="https://blogs.technet.microsoft.com/virtualization/2017/12/19/tar-and-curl-come-to-windows/">added this in 2017</a> —nice!</p>
 
 <p>These didn&rsquo;t work for me:</p>
 
@@ -304,18 +305,13 @@ does not currently install cleanly on the most recent PowerShell without <a href
 <li>I didn&rsquo;t try <a href="https://docs.microsoft.com/en-us/dotnet/api/system.io.compression.gzipstream?view=netcore-2.2">GZipStream</a> because I didn&rsquo;t see an equivalent to <code>Tar</code>.</li>
 </ul>
 
-<p><div>&nbsp;</div>
-But if you&rsquo;re stuck with zip file with windows paths, this one-liner will rename the extracted files, create the directories
-and move them to the right location (<a href="https://stackoverflow.com/questions/44490413/how-to-rename-file-name-contains-backslash-in-bash#answer-44490964">credit</a>):
-<div>&nbsp;</div></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">for</span> file in *<span class="se">\\</span>*<span class="p">;</span> <span class="k">do</span> <span class="nv">target</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">file</span><span class="p">//</span><span class="se">\\</span><span class="p">//</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> mkdir -p <span class="s2">&#34;</span><span class="si">${</span><span class="nv">target</span><span class="p">%/*</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> mv -v <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$target</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">done</span></code></pre></td></tr></table>
-</div>
-</div>
+<div>&nbsp;</div>
+But if you're stuck with zip file with windows paths, this one-liner will rename the extracted files, create the directories
+and move them to the right location ([credit](https://stackoverflow.com/questions/44490413/how-to-rename-file-name-contains-backslash-in-bash#answer-44490964)):
+<div>&nbsp;</div>
+
+<pre><code class="language-bash">for file in *\\*; do target=&quot;${file//\\//}&quot;; mkdir -p &quot;${target%/*}&quot;; mv -v &quot;$file&quot; &quot;$target&quot;; done
+</code></pre>
 
         
 

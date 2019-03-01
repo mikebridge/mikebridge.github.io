@@ -63,7 +63,7 @@
   "headline": "Testing Redux-Observable Epics",
   "description" : "Creating Jest tests for Redux-ObservableAjax Epics",
   "inLanguage" : "en",
-  "wordCount": 460,
+  "wordCount": 408,
   "datePublished" : "2017-04-26T00:00:00",
   "dateModified" : "2017-04-26T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -251,10 +251,10 @@ if (!doNotTrack) {
   <i class="fas fa-calendar"></i>&nbsp;Posted on April 26, 2017
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;460&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;408&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -285,112 +285,112 @@ example has three actions: <code>USER_LOAD_REQUEST</code> is the result of a req
 <code>USER_LOAD_RESULT</code> indicates a successful response, and <code>USER_LOAD_ERROR</code> holds an
 ajax error.</p>
 
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">import</span> <span class="p">{</span><span class="nx">ActionsObservable</span><span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;redux-observable&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span><span class="nx">AjaxError</span><span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;rxjs/Rx&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="s2">&#34;rxjs/Rx&#34;</span><span class="p">;</span>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#000;font-weight:bold">import</span> {ActionsObservable} from <span style="color:#d14">&#34;redux-observable&#34;</span>;
+<span style="color:#000;font-weight:bold">import</span> {AjaxError} from <span style="color:#d14">&#34;rxjs/Rx&#34;</span>;
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;rxjs/Rx&#34;</span>;
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">USER_LOAD_REQUEST</span> <span class="o">=</span> <span class="s2">&#34;example/USER_LOAD_REQUEST&#34;</span><span class="p">;</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">const</span> USER_LOAD_REQUEST <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;example/USER_LOAD_REQUEST&#34;</span>;
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">USER_LOAD_RESULT</span> <span class="o">=</span> <span class="s2">&#34;example/USER_LOAD_RESULT&#34;</span><span class="p">;</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">const</span> USER_LOAD_RESULT <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;example/USER_LOAD_RESULT&#34;</span>;
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">USER_LOAD_ERROR</span> <span class="o">=</span> <span class="s2">&#34;example/USER_LOAD_ERROR&#34;</span><span class="p">;</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">const</span> USER_LOAD_ERROR <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;example/USER_LOAD_ERROR&#34;</span>;
 
-<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">IUserResult</span> <span class="p">{</span>
-    <span class="nx">id</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">name</span>: <span class="kt">string</span><span class="p">;</span>
-<span class="p">}</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">interface</span> IUserResult {
+    id: <span style="color:#458;font-weight:bold">string</span>;
+    name: <span style="color:#458;font-weight:bold">string</span>;
+}
 
-<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">ICustomAjaxError</span> <span class="p">{</span>
-    <span class="nx">type</span>: <span class="kt">string</span><span class="p">;</span>
-    <span class="nx">message</span>: <span class="kt">string</span><span class="p">;</span>
-<span class="p">}</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">interface</span> ICustomAjaxError {
+    type: <span style="color:#458;font-weight:bold">string</span>;
+    message: <span style="color:#458;font-weight:bold">string</span>;
+}
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">loadUser</span> <span class="o">=</span> <span class="p">(</span><span class="nx">userid</span>: <span class="kt">string</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
-    <span class="nx">type</span>: <span class="kt">USER_LOAD_REQUEST</span><span class="p">,</span>
-    <span class="nx">userid</span>
-<span class="p">});</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">const</span> loadUser <span style="color:#000;font-weight:bold">=</span> (userid: <span style="color:#458;font-weight:bold">string</span>) <span style="color:#000;font-weight:bold">=&gt;</span> ({
+    type: <span style="color:#458;font-weight:bold">USER_LOAD_REQUEST</span>,
+    userid
+});
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">loadUserResult</span> <span class="o">=</span> <span class="p">(</span><span class="nx">results</span>: <span class="kt">IUserResult</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
-    <span class="nx">type</span>: <span class="kt">USER_LOAD_RESULT</span><span class="p">,</span>
-    <span class="nx">results</span>
-<span class="p">});</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">const</span> loadUserResult <span style="color:#000;font-weight:bold">=</span> (results: <span style="color:#458;font-weight:bold">IUserResult</span>) <span style="color:#000;font-weight:bold">=&gt;</span> ({
+    type: <span style="color:#458;font-weight:bold">USER_LOAD_RESULT</span>,
+    results
+});
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">loadFailure</span> <span class="o">=</span> <span class="p">(</span><span class="nx">message</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">ICustomAjaxError</span> <span class="o">=&gt;</span> <span class="p">({</span>
-    <span class="nx">type</span>: <span class="kt">USER_LOAD_ERROR</span><span class="p">,</span>
-    <span class="nx">message</span>
-<span class="p">});</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">const</span> loadFailure <span style="color:#000;font-weight:bold">=</span> (message: <span style="color:#458;font-weight:bold">string</span>)<span style="color:#000;font-weight:bold">:</span> ICustomAjaxError <span style="color:#000;font-weight:bold">=&gt;</span> ({
+    type: <span style="color:#458;font-weight:bold">USER_LOAD_ERROR</span>,
+    message
+});
 
 
-<span class="kr">export</span> <span class="kr">const</span> <span class="nx">loadUserEpic</span> <span class="o">=</span> <span class="p">(</span><span class="nx">action$</span>: <span class="kt">ActionsObservable</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">store</span><span class="p">,</span> <span class="p">{</span><span class="nx">getJSON</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">action$</span><span class="p">.</span><span class="nx">ofType</span><span class="p">(</span><span class="nx">USER_LOAD_REQUEST</span><span class="p">)</span>
-        <span class="p">.</span><span class="k">do</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Locating User ...&#34;</span><span class="p">))</span> <span class="c1">// debugging
-</span><span class="c1"></span>        <span class="p">.</span><span class="nx">mergeMap</span><span class="p">(</span><span class="nx">action</span> <span class="o">=&gt;</span>
-            <span class="nx">getJSON</span><span class="p">(</span><span class="sb">`%PUBLIC_URL%/api/users`</span><span class="p">)</span>
-                <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">loadUserResult</span><span class="p">(</span><span class="nx">response</span> <span class="kr">as</span> <span class="nx">any</span><span class="p">))</span>
-                <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span>: <span class="kt">AjaxError</span><span class="p">)</span><span class="o">:</span> <span class="nx">ActionsObservable</span><span class="o">&lt;</span><span class="nx">ICustomAjaxError</span><span class="o">&gt;</span> <span class="o">=&gt;</span>
-                    <span class="nx">ActionsObservable</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">loadFailure</span><span class="p">(</span>
-                        <span class="sb">`An error occurred: </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span>
-                    <span class="p">)))</span>
-        <span class="p">);</span>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">const</span> loadUserEpic <span style="color:#000;font-weight:bold">=</span> (action$: <span style="color:#458;font-weight:bold">ActionsObservable</span><span style="color:#000;font-weight:bold">&lt;</span>any<span style="color:#000;font-weight:bold">&gt;</span>, store, {getJSON}) <span style="color:#000;font-weight:bold">=&gt;</span> {
+    <span style="color:#000;font-weight:bold">return</span> action$.ofType(USER_LOAD_REQUEST)
+        .<span style="color:#000;font-weight:bold">do</span>(() <span style="color:#000;font-weight:bold">=&gt;</span> console.log(<span style="color:#d14">&#34;Locating User ...&#34;</span>)) <span style="color:#998;font-style:italic">// debugging
+</span><span style="color:#998;font-style:italic"></span>        .mergeMap(action <span style="color:#000;font-weight:bold">=&gt;</span>
+            getJSON(<span style="color:#d14">`%PUBLIC_URL%/api/users`</span>)
+                .map(response <span style="color:#000;font-weight:bold">=&gt;</span> loadUserResult(response <span style="color:#000;font-weight:bold">as</span> any))
+                .<span style="color:#000;font-weight:bold">catch</span>((error: <span style="color:#458;font-weight:bold">AjaxError</span>)<span style="color:#000;font-weight:bold">:</span> ActionsObservable<span style="color:#000;font-weight:bold">&lt;</span>ICustomAjaxError<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">=&gt;</span>
+                    ActionsObservable.of(loadFailure(
+                        <span style="color:#d14">`An error occurred: </span><span style="color:#d14">${</span>error.message<span style="color:#d14">}</span><span style="color:#d14">`</span>
+                    )))
+        );
 
-<span class="p">};</span>
+};
 
-<span class="kr">export</span> <span class="k">default</span> <span class="nx">loadUserEpic</span><span class="p">;</span></code></pre></td></tr></table>
+<span style="color:#000;font-weight:bold">export</span> <span style="color:#000;font-weight:bold">default</span> loadUserEpic;</code></pre></td></tr></table>
 </div>
 </div>
 
@@ -400,116 +400,61 @@ parameter.  In this case, I&rsquo;m injecting the <code>ajax.getJSON</code> prop
 
 <p>Mocking the AJAX call involves either wrapping a plain JS object or a plain JS <code>Error</code> in an
 <code>Observable</code>.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-typescript" data-lang="typescript"><span class="kr">import</span> <span class="p">{</span> <span class="nx">ActionsObservable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;redux-observable&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="s2">&#34;rxjs/Rx&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&#34;rxjs/Observable&#34;</span><span class="p">;</span>
 
-<span class="kr">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">example</span> <span class="nx">from</span> <span class="s2">&#34;./exampleEpic&#34;</span><span class="p">;</span>
+<pre><code class="language-typescript">import { ActionsObservable } from &quot;redux-observable&quot;;
+import &quot;rxjs/Rx&quot;;
+import { Observable } from &quot;rxjs/Observable&quot;;
 
-<span class="kr">const</span> <span class="nx">successResult</span>: <span class="kt">example.IUserResult</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="nx">id</span><span class="o">:</span> <span class="s2">&#34;123&#34;</span><span class="p">,</span>
-    <span class="nx">name</span><span class="o">:</span> <span class="s2">&#34;Test User&#34;</span>
-<span class="p">};</span>
+import * as example from &quot;./exampleEpic&quot;;
 
-<span class="nx">describe</span><span class="p">(</span><span class="s2">&#34;loadUserEpic&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+const successResult: example.IUserResult = {
+    id: &quot;123&quot;,
+    name: &quot;Test User&quot;
+};
 
-    <span class="c1">// done: see https://facebook.github.io/jest/docs/asynchronous.html
-</span><span class="c1"></span>
-    <span class="nx">it</span><span class="p">(</span><span class="s2">&#34;dispatches a result action when the user is loaded&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+describe(&quot;loadUserEpic&quot;, () =&gt; {
 
-        <span class="kr">const</span> <span class="nx">dependencies</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="nx">getJSON</span>: <span class="kt">url</span> <span class="o">=&gt;</span> <span class="nx">Observable</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">successResult</span><span class="p">)</span>
-        <span class="p">};</span>
+    // done: see https://facebook.github.io/jest/docs/asynchronous.html
 
-        <span class="kr">const</span> <span class="nx">action$</span> <span class="o">=</span> <span class="nx">ActionsObservable</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">example</span><span class="p">.</span><span class="nx">loadUser</span><span class="p">(</span><span class="nx">successResult</span><span class="p">.</span><span class="nx">id</span><span class="p">));</span>
-        <span class="kr">const</span> <span class="nx">expectedOutputActions</span> <span class="o">=</span> <span class="nx">example</span><span class="p">.</span><span class="nx">loadUserResult</span><span class="p">(</span><span class="nx">successResult</span><span class="p">);</span>
+    it(&quot;dispatches a result action when the user is loaded&quot;, (done) =&gt; {
 
-        <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">example</span><span class="p">.</span><span class="nx">loadUserEpic</span><span class="p">(</span><span class="nx">action$</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">dependencies</span><span class="p">).</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">actionReceived</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="nx">expect</span><span class="p">((</span><span class="nx">actionReceived</span> <span class="kr">as</span> <span class="nx">any</span><span class="p">).</span><span class="nx">type</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">expectedOutputActions</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>
-            <span class="nx">done</span><span class="p">();</span>
-        <span class="p">});</span>
+        const dependencies = {
+            getJSON: url =&gt; Observable.of(successResult)
+        };
 
-    <span class="p">});</span>
+        const action$ = ActionsObservable.of(example.loadUser(successResult.id));
+        const expectedOutputActions = example.loadUserResult(successResult);
 
-    <span class="nx">it</span><span class="p">(</span><span class="s2">&#34;dispatches an error action when ajax fails&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        const result = example.loadUserEpic(action$, null, dependencies).subscribe(actionReceived =&gt; {
+            expect((actionReceived as any).type).toBe(expectedOutputActions.type);
+            done();
+        });
+
+    });
+
+    it(&quot;dispatches an error action when ajax fails&quot;, (done) =&gt; {
         
-        <span class="kr">const</span> <span class="nx">errorMessage</span> <span class="o">=</span> <span class="s2">&#34;Failed Ajax Call&#34;</span><span class="p">;</span>
+        const errorMessage = &quot;Failed Ajax Call&quot;;
         
-        <span class="kr">const</span> <span class="nx">dependencies</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="nx">getJSON</span>: <span class="kt">url</span> <span class="o">=&gt;</span> <span class="nx">Observable</span><span class="p">.</span><span class="k">throw</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">errorMessage</span><span class="p">))</span>
-        <span class="p">};</span>
+        const dependencies = {
+            getJSON: url =&gt; Observable.throw(new Error(errorMessage))
+        };
 
-        <span class="kr">const</span> <span class="nx">action$</span> <span class="o">=</span> <span class="nx">ActionsObservable</span><span class="p">.</span><span class="nx">of</span><span class="p">(</span><span class="nx">example</span><span class="p">.</span><span class="nx">loadUser</span><span class="p">(</span><span class="nx">successResult</span><span class="p">.</span><span class="nx">id</span><span class="p">));</span>
-        <span class="kr">const</span> <span class="nx">expectedOutputActions</span> <span class="o">=</span> <span class="nx">example</span><span class="p">.</span><span class="nx">loadFailure</span><span class="p">(</span><span class="sb">`An error occurred: </span><span class="si">${</span><span class="nx">errorMessage</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+        const action$ = ActionsObservable.of(example.loadUser(successResult.id));
+        const expectedOutputActions = example.loadFailure(`An error occurred: ${errorMessage}`);
 
-        <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">example</span><span class="p">.</span><span class="nx">loadUserEpic</span><span class="p">(</span><span class="nx">action$</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">dependencies</span><span class="p">).</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">actionReceived</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="nx">expect</span><span class="p">((</span><span class="nx">actionReceived</span> <span class="kr">as</span> <span class="nx">any</span><span class="p">).</span><span class="nx">type</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">expectedOutputActions</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>
-            <span class="nx">expect</span><span class="p">((</span><span class="nx">actionReceived</span> <span class="kr">as</span> <span class="nx">any</span><span class="p">).</span><span class="nx">message</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span>
-                <span class="nx">expectedOutputActions</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-            <span class="nx">done</span><span class="p">();</span>
-        <span class="p">});</span>
+        const result = example.loadUserEpic(action$, null, dependencies).subscribe(actionReceived =&gt; {
+            expect((actionReceived as any).type).toBe(expectedOutputActions.type);
+            expect((actionReceived as any).message).toBe(
+                expectedOutputActions.message);
+            done();
+        });
 
-    <span class="p">});</span>
+    });
 
-<span class="p">});</span></code></pre></td></tr></table>
-</div>
-</div>
+});
+</code></pre>
+
 <p>Note the <a href="https://facebook.github.io/jest/docs/asynchronous.html"><code>done</code></a> parameter&mdash;this is a way of
 signaling to jest that an async call has completed.</p>
 

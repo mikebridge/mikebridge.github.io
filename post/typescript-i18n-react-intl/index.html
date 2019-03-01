@@ -63,7 +63,7 @@
   "headline": "I18N in React with Typescript &amp; React-Intl",
   "description" : "Internationalization with TypeScript &amp; React-Intl",
   "inLanguage" : "en",
-  "wordCount": 768,
+  "wordCount": 764,
   "datePublished" : "2017-03-21T00:00:00",
   "dateModified" : "2017-03-21T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -254,7 +254,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;768&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;764&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -311,27 +311,17 @@ could use.</p>
 <h2 id="setup">Setup</h2>
 
 <p>Create a new project with the <a href="https://github.com/wmonk/create-react-app-typescript">TypeScript fork of create-react-app</a>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ create-react-app react-intl-ts-demo --scripts-version react-scripts-ts</code></pre></td></tr></table>
-</div>
-</div>
+
+<pre><code class="language-bash">$ create-react-app react-intl-ts-demo --scripts-version react-scripts-ts
+</code></pre>
+
 <p>Then add <strong>babel</strong> with the react plugins, <strong>react-intl</strong> and the <strong>react-intl-translations-manager</strong>:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">$ npm install --save-dev  babel-cli babel-plugin-react-intl babel-preset-es2015 babel-preset-react
+
+<pre><code class="language-bash">$ npm install --save-dev  babel-cli babel-plugin-react-intl babel-preset-es2015 babel-preset-react
 $ npm install --save react-intl
-$ npm install --save-dev react-intl-translations-manager  </code></pre></td></tr></table>
-</div>
-</div>
+$ npm install --save-dev react-intl-translations-manager  
+</code></pre>
+
 <p>So at this point the <a href="https://github.com/mikebridge/react-intl-ts-demo/blob/master/package.json"><code>package.json</code></a> file should look something like this:</p>
 
 <script src="https://gist.github.com/mikebridge/722823800a09493158c0214c20ff4d16.js"></script>
