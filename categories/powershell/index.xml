@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on Mike Bridge - Dev Notes</title>
-    <link>https://mikebridge.github.io/categories/docker/</link>
-    <description>Recent content in Docker on Mike Bridge - Dev Notes</description>
+    <title>Powershell on Mike Bridge - Dev Notes</title>
+    <link>https://mikebridge.github.io/categories/powershell/</link>
+    <description>Recent content in Powershell on Mike Bridge - Dev Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
     <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
     <lastBuildDate>Fri, 07 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://mikebridge.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mikebridge.github.io/categories/powershell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,22 +20,6 @@
       <guid>https://mikebridge.github.io/post/python-flask-kubernetes-1/</guid>
       <description>Code for this can be found on GitHub. Or you can use this template as a starting point.
  The Microservice Scenario So here&amp;rsquo;s the situation: you&amp;rsquo;ve added data scientists to your team, and they&amp;rsquo;re coming up with great ideas that they&amp;rsquo;re implementing in jupyter. Lots of these new bits and pieces need to make it into the rest of your non-python system, so you decide that these small bits of logic should be deployed separately as microservices.</description>
-    </item>
-    
-    <item>
-      <title>Compress a Folder in PowerShell for use in Linux</title>
-      <link>https://mikebridge.github.io/post/windows-tar-gzip-for-linux/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      <author>mike@bridgecanada.com (Mike Bridge)</author>
-      <guid>https://mikebridge.github.io/post/windows-tar-gzip-for-linux/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://mikebridge.github.io/images/windows/fresh-tar.gif&#34; alt=&#34;Fresh Tar&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I wasted quite a bit of time trying to find the correct way to zip a folder
-in PowerShell so that it could later be extracted in a Linux docker
-container.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TLDR;&lt;/strong&gt; Turns out the standard unix tar command is now standard-issue in
-Windows—no need to use PowerShell functions at all.&lt;/p&gt;</description>
     </item>
     
   </channel>
