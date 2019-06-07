@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Creating Python Microservices, Part 1 - Mike Bridge - Dev Notes</title>
-  <meta property="og:title" content="Creating Python Microservices, Part 1" />
-  <meta name="twitter:title" content="Creating Python Microservices, Part 1" />
+  <title>Getting Started with Python Microservices in Flask - Mike Bridge - Dev Notes</title>
+  <meta property="og:title" content="Getting Started with Python Microservices in Flask" />
+  <meta name="twitter:title" content="Getting Started with Python Microservices in Flask" />
   <meta name="description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta property="og:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta name="twitter:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
@@ -49,7 +49,7 @@
         "position": 3,
         "item": {
           "@id": "https://mikebridge.github.io/post/python-flask-kubernetes-1/",
-          "name": "Creating python microservices, part 1"
+          "name": "Getting started with python microservices in flask"
         }
     }]
 }
@@ -60,12 +60,12 @@
   "author": {
     "name" : "Mike Bridge"
   },
-  "headline": "Creating Python Microservices, Part 1",
+  "headline": "Getting Started with Python Microservices in Flask",
   "description" : "Set up and deploy a python microservice in Flask on Azure Kubernetes",
   "inLanguage" : "en",
-  "wordCount": 1594,
-  "datePublished" : "2019-06-07T00:00:00",
-  "dateModified" : "2019-06-07T00:00:00",
+  "wordCount": 1058,
+  "datePublished" : "2019-06-01T00:00:00",
+  "dateModified" : "2019-06-01T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
   "keywords" : [ "" ],
   "mainEntityOfPage" : "https://mikebridge.github.io/post/python-flask-kubernetes-1/",
@@ -82,13 +82,13 @@
 }
 </script>
 
-<meta property="og:title" content="Creating Python Microservices, Part 1" />
+<meta property="og:title" content="Getting Started with Python Microservices in Flask" />
 <meta property="og:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
 <meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
 <meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-1/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
-  <meta name="twitter:title" content="Creating Python Microservices, Part 1" />
+  <meta name="twitter:title" content="Getting Started with Python Microservices in Flask" />
   <meta name="twitter:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
@@ -240,21 +240,25 @@ if (!doNotTrack) {
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>Creating Python Microservices, Part 1</h1>
+                <h1>Getting Started with Python Microservices in Flask</h1>
               
               
+              
+                
+                  <h2 class="post-subheading">Creating Python Microservices, Part 1</h2>
+                
               
               
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on June 7, 2019
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 1, 2019
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1594&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1058&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -359,7 +363,7 @@ jsonschema==3.0.1
 
 <p>If you don&rsquo;t know much about python, you&rsquo;ll quickly realize that
 the <a href="https://docs.python.org/3/reference/import.html">module loading system</a>
-is confusing.  At least, <strong>I</strong> find it confusing and I can see that <a href="https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">I&rsquo;m not the only one</a>.  Here&rsquo;s
+is confusing.  At least, <em>I</em> find it confusing and I can see that <a href="https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">I&rsquo;m not the only one</a>.  Here&rsquo;s
 my current recommendation for laying out the directories to minimize the pain:</p>
 
 <pre><code>src/app         # the Flask REST interface code
@@ -399,7 +403,7 @@ tests\test_greetings.py:5: AssertionError
 </code></pre>
 
 <p>If you know how to make <a href="https://docs.pytest.org/en/latest/">pytest</a> load modules from the command-line,
-that&rsquo;s great.  I decided that I&rsquo;ve exceeded my
+that&rsquo;s great.  It doesn&rsquo;t work for me, but I&rsquo;ve decided that I have exceeded my
 life-quota of debugging python-module-loading issues, so I invoke it
 with <code>python -m pytest</code> and add <code>-s</code> to see stuff logged to the console.</p>
 
@@ -508,7 +512,7 @@ def hello() -&gt; str:
 </code></pre>
 
 <p>This isn’t production-quality yet, but it should provide the basics.  From <a href="https://www.getpostman.com/">postman</a>
-or <a href="https://curl.haxx.se/">curl</a>, send a json post to <a href="http://localhost/hello]">http://localhost/hello</a> with
+or <a href="https://curl.haxx.se/">curl</a>, send a json post to <a href="http://localhost/hello">http://localhost/hello</a> with
 the <code>application/json</code> payload <code>&quot;{&quot;greetee&quot;: &quot;world&quot;}&quot;</code>.  Did it work?</p>
 
 <p>Let’s add a unit test.  Note that the flask test <code>client</code> is found in the pytest fixtures file and passed in as a fixture.</p>
@@ -529,192 +533,7 @@ def test_hello_greets_greetee(client):
 
 <p>That test shows that flask is connecting to our business logic and greeting users by name.</p>
 
-<h3 id="input-validation">Input validation</h3>
-
-<p>We don&rsquo;t have any validation yet, so let&rsquo;s add that in.  We want to have a 400 error
-of some sort, so let&rsquo;s write a test for it:</p>
-
-<pre><code class="language-python"># src/tests/app/test_validation.py
-
-def test_hello_requires_greetee(client):
-   request_payload = {}
-   response = client.post(&quot;/hello&quot;, json=request_payload)
-   result = response.get_json()
-
-   assert response.status_code == 400
-   assert result is not None
-   assert &quot;message&quot; in result
-   assert &quot;is a required property&quot; in result['message'][0]
-</code></pre>
-
-<p>This test doesn’t pass yet.  In our case, we’re using json, and there are many ways
-input can go wrong&mdash;missing keys, bad types, weird structure.  So let’s come up
-with a json schema to validate our greeting input.  The flask extension
-<a href="https://pythonhosted.org/Flask-Inputs/">flask_input</a> can validate
-incoming json against the python <a href="https://pypi.org/project/jsonschema/">jsonschema</a>
-library.</p>
-
-<p>This comes from the <a href="http://flask.pocoo.org/docs/0.12/patterns/apierrors/">suggestions on validating API
-errors</a>:</p>
-
-<pre><code class="language-python"># /src/app/invalid_usage.py
-class InvalidUsage(Exception):
-    status_code = 400
-
-    def __init__(self, message, status_code=None, payload=None):
-        Exception.__init__(self)
-        self.message = message
-        if status_code is not None:
-            self.status_code = status_code
-        self.payload = payload
-
-    def to_dict(self):
-        rv = dict(self.payload or ())
-        rv['message'] = self.message
-        return rv
-</code></pre>
-
-<p>Then let’s register an error handler in main.py</p>
-
-<pre><code class="language-python"># src/app/main.py
-
-@app.errorhandler(InvalidUsage)
-def handle_invalid_usage(error):
-   response = jsonify(error.to_dict())
-   response.status_code = error.status_code
-   return response
-</code></pre>
-
-<p>Then rewrite our hello-handler to validate the input</p>
-
-<pre><code class="language-python"># src/app/main.py
-
-@app.route(&quot;/hello&quot;, methods=['POST'])
-def hello() -&gt; str:
-   errors = validate_greeting(request)
-   if errors is not None:
-       print(errors)
-       raise InvalidUsage(errors)
-   greetee = request.json.get(&quot;greetee&quot;, None)
-   response = {&quot;message&quot;: say_hello_to(greetee)}
-   return jsonify(response)
-</code></pre>
-
-<p>You’ll see that 400 errors can be created by raising an InvalidUsage exception,
-which is processed by our handler.</p>
-
-<p>Flask_inputs is a bit behind in maintenance&mdash;I get some Deprecation warnings when I run it:</p>
-
-<pre><code>tests/app/test_main.py::test_hello_greets_greetee
-  C:\Users\MikeBridge\venv\pythondemo\lib\site-packages\flask_inputs\inputs.py:37: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
-    elif isinstance(input, collections.Iterable):
-</code></pre>
-
-<p>Ugh. Let’s get rid of the deprecation warning:</p>
-
-<pre><code class="language-powershell">python -W ignore::DeprecationWarning -m pytest -s
-</code></pre>
-
-<p>Lastly, let’s implement the validation.  Have a look at
-<a href="https://pythonhosted.org/Flask-Inputs/#module-flask_inputs">this</a>
-and <a href="https://json-schema.org/understanding-json-schema/">this</a>
-for more information on how the json schema works:</p>
-
-<pre><code># src/app/validation.py
-
-from flask_inputs import Inputs
-from flask_inputs.validators import JsonSchema
-
-# https://pythonhosted.org/Flask-Inputs/#module-flask_inputs
-# https://json-schema.org/understanding-json-schema/
-# we want an object containing a required greetee  string value
-greeting_schema = {
-   'type': 'object',
-   'properties': {
-       'greetee': {
-           'type': 'string',
-       }
-   },
-   'required': ['greetee']
-}
-
-
-class GreetingInputs(Inputs):
-   json = [JsonSchema(schema=greeting_schema)]
-
-
-def validate_greeting(request):
-   inputs = GreetingInputs(request)
-   if inputs.validate():
-       return None
-   else:
-       return inputs.errors
-</code></pre>
-
-<p>You could make this more succinct by triggering the validation as a method decorator,
-but I think it’s easier to unit test if it’s more explicit.  Let’s test our schema out
-by creating a valid request via the fixture <code>create_valid_greeting_request</code>,
-then altering it in various ways to test different inputs:</p>
-
-<pre><code class="language-python"># src/app/tests/conftest.py
-
-import pytest
-from app import main
-
-# ...
-
-@pytest.fixture()
-def create_valid_greeting_request():
-    &quot;&quot;&quot;
-    Helper function for creating a correctly-structured
-    json request
-    &quot;&quot;&quot;
-    def _create_valid_greeting_request(greetee=&quot;fixture&quot;):
-        return {
-            &quot;greetee&quot;: greetee
-        }
-    return _create_valid_greeting_request
-</code></pre>
-
-<pre><code class="language-python"># src/tests/app/test_validation.py
-
-import pytest
-from flask import Flask, request
-
-from app.validation import validate_greeting
-
-app = Flask(__name__)
-
-
-@pytest.mark.parametrize(&quot;params&quot;, [
-   {&quot;greetee&quot;: 1},
-   {&quot;greetee&quot;: [&quot;array&quot;]}
-])
-def test_invalid_types_are_rejected(params, create_valid_greeting_request):
-   json_input = create_valid_greeting_request(**params)
-   with app.test_request_context('/', json=json_input):
-       errors = validate_greeting(request)
-       assert errors is not None
-
-
-@pytest.mark.parametrize(&quot;required_parm_name&quot;, [&quot;greetee&quot;])
-def test_missing_required_params_is_rejected(required_parm_name, create_valid_greeting_request):
-   json_input = create_valid_greeting_request()
-   del json_input[required_parm_name]
-   with app.test_request_context('/', json=json_input):
-       errors = validate_greeting(request)
-       assert errors is not None
-
-
-def test_valid_greetee_is_accepted(create_valid_greeting_request):
-   json_input = create_valid_greeting_request(greetee=&quot;Tester&quot;)
-   with app.test_request_context('/', json=json_input):
-       errors = validate_greeting(request)
-       assert errors is None
-</code></pre>
-
-<p>Our flask app is pretty much done at this point.  Next, let&rsquo;s dockerize it and
-ship it via Kubernetes.</p>
+<p>Next is input validation, described in <a href="/post/python-flask-kubernetes-2">Part 2</a>.</p>
 
 
         
@@ -729,7 +548,7 @@ ship it via Kubernetes.</p>
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;text=Creating%20Python%20Microservices%2c%20Part%201&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;text=Getting%20Started%20with%20Python%20Microservices%20in%20Flask&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -750,28 +569,28 @@ ship it via Kubernetes.</p>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;title=Creating%20Python%20Microservices%2c%20Part%201" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;title=Getting%20Started%20with%20Python%20Microservices%20in%20Flask" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;title=Creating%20Python%20Microservices%2c%20Part%201" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;title=Getting%20Started%20with%20Python%20Microservices%20in%20Flask" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;title=Creating%20Python%20Microservices%2c%20Part%201" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;title=Getting%20Started%20with%20Python%20Microservices%20in%20Flask" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;description=Creating%20Python%20Microservices%2c%20Part%201" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-1%2f&amp;description=Getting%20Started%20with%20Python%20Microservices%20in%20Flask" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -795,6 +614,10 @@ ship it via Kubernetes.</p>
               <a href="https://mikebridge.github.io/post/windows-tar-gzip-for-linux/" data-toggle="tooltip" data-placement="top" title="Compress a Folder in PowerShell for use in Linux">&larr; Previous Post</a>
             </li>
           
+          
+            <li class="next">
+              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-2/" data-toggle="tooltip" data-placement="top" title="Flask JSON Input Validation">Next Post &rarr;</a>
+            </li>
           
         </ul>
       
