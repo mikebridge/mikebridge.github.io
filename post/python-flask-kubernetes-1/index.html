@@ -63,7 +63,7 @@
   "headline": "Creating Python Microservices, Part 1",
   "description" : "Set up and deploy a python microservice in Flask on Azure Kubernetes",
   "inLanguage" : "en",
-  "wordCount": 1610,
+  "wordCount": 1594,
   "datePublished" : "2019-06-07T00:00:00",
   "dateModified" : "2019-06-07T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
@@ -254,7 +254,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1610&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1594&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -359,18 +359,17 @@ jsonschema==3.0.1
 
 <p>If you don&rsquo;t know much about python, you&rsquo;ll quickly realize that
 the <a href="https://docs.python.org/3/reference/import.html">module loading system</a>
-is confusing.  At least, <em>I</em> find it confusing and I can see that <a href="https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">I&rsquo;m not the only one</a>.  Here&rsquo;s
+is confusing.  At least, <strong>I</strong> find it confusing and I can see that <a href="https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">I&rsquo;m not the only one</a>.  Here&rsquo;s
 my current recommendation for laying out the directories to minimize the pain:</p>
 
 <pre><code>src/app         # the Flask REST interface code
-src/cli         # a simple CLI we can use to do maintenance
-src/mypkg       # the business logic will 
+src/mypkg       # the business logic 
 src/tests/app   # unit tests for the Flask app
 src/tests/mypkg # unit tests for the business logic
 </code></pre>
 
-<p>Put a magical empty file called <code>__init__.py</code> <a href="https://docs.python.org/3/tutorial/modules.html">in every directory</a> in <code>src</code>, and
-every directory under <code>app</code>, <code>cli</code> and <code>mypkg</code>.</p>
+<p>Put a <a href="https://docs.python.org/3/tutorial/modules.html">magical empty file</a> called <code>__init__.py</code> in <code>src</code>, and
+every directory under <code>src/app</code>, and <code>src/mypkg</code>.</p>
 
 <p>We&rsquo;ll start out with good TDD habits and write a test for our
 business logic first:</p>
