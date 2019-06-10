@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Flask JSON Input Validation - Mike Bridge - Dev Notes</title>
-  <meta property="og:title" content="Flask JSON Input Validation" />
-  <meta name="twitter:title" content="Flask JSON Input Validation" />
+  <title>Dockerizing Flask Microservices for Deployment - Mike Bridge - Dev Notes</title>
+  <meta property="og:title" content="Dockerizing Flask Microservices for Deployment" />
+  <meta name="twitter:title" content="Dockerizing Flask Microservices for Deployment" />
   <meta name="description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta property="og:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta name="twitter:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
@@ -48,8 +48,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https://mikebridge.github.io/post/python-flask-kubernetes-2/",
-          "name": "Flask j s o n input validation"
+          "@id": "https://mikebridge.github.io/post/python-flask-kubernetes-3/",
+          "name": "Dockerizing flask microservices for deployment"
         }
     }]
 }
@@ -60,15 +60,15 @@
   "author": {
     "name" : "Mike Bridge"
   },
-  "headline": "Flask JSON Input Validation",
+  "headline": "Dockerizing Flask Microservices for Deployment",
   "description" : "Set up and deploy a python microservice in Flask on Azure Kubernetes",
   "inLanguage" : "en",
-  "wordCount": 602,
-  "datePublished" : "2019-06-07T00:00:00",
-  "dateModified" : "2019-06-07T00:00:00",
+  "wordCount": 1229,
+  "datePublished" : "2019-06-10T00:00:00",
+  "dateModified" : "2019-06-10T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
   "keywords" : [ "" ],
-  "mainEntityOfPage" : "https://mikebridge.github.io/post/python-flask-kubernetes-2/",
+  "mainEntityOfPage" : "https://mikebridge.github.io/post/python-flask-kubernetes-3/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https://mikebridge.github.io",
@@ -82,13 +82,13 @@
 }
 </script>
 
-<meta property="og:title" content="Flask JSON Input Validation" />
+<meta property="og:title" content="Dockerizing Flask Microservices for Deployment" />
 <meta property="og:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
 <meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
-<meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-2/" />
+<meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-3/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
-  <meta name="twitter:title" content="Flask JSON Input Validation" />
+  <meta name="twitter:title" content="Dockerizing Flask Microservices for Deployment" />
   <meta name="twitter:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
@@ -100,7 +100,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@michaelbridge" />
   <meta name="twitter:creator" content="@michaelbridge" />
-  <meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-2/" />
+  <meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-3/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
 
@@ -240,25 +240,25 @@ if (!doNotTrack) {
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>Flask JSON Input Validation</h1>
+                <h1>Dockerizing Flask Microservices for Deployment</h1>
               
               
               
                 
-                  <h2 class="post-subheading">Creating Python Microservices, Part 2</h2>
+                  <h2 class="post-subheading">Creating Python Microservices, Part 3</h2>
                 
               
               
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on June 7, 2019
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 10, 2019
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;602&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1229&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -284,201 +284,229 @@ if (!doNotTrack) {
         
 
 <p>We&rsquo;ve created a simple Python microservice using Flask
-in <a href="/post/python-flask-kubernetes-1">Part 1</a>.  Using that as a starting
-point, let&rsquo;s take a quick side-trip through input validation before
-we deploy the whole thing on Kubernetes.</p>
+in <a href="/post/python-flask-kubernetes-1">Part 1</a> and set up
+some simple validation in <a href="/post/python-flask-kubernetes-2">Part 2</a>.
+In Part 3 we will package up what we&rsquo;ve built in a Docker container so it can be deployed
+in Kubernetes.</p>
 
 <blockquote>
 <p>Code for this can be found on <a href="https://github.com/mikebridge/PythonKubernetesMicroserviceDemo">GitHub</a>.
 Or you can <a href="https://github.com/mikebridge/PythonKubernetesMicroserviceDemo/generate">use this template</a> as a starting point.</p>
 </blockquote>
 
-<h3 id="input-validation">Input validation</h3>
+<p>Because Flask doesn&rsquo;t handle parallel execution or networking, we need to deploy Flask inside an application server
+such as <a href="http://flask.pocoo.org/docs/1.0/deploying/uwsgi/">uWSGI</a>, and uWSGI will in turn run inside an http
+server like <a href="https://www.nginx.com/">nginx</a>.  uWSGI will manage the lifecycle of the parallel instances of Flask and propagate http
+requests from nginx to our app.  The heavy lifting for  this configuration task is already done
+for us in <a href="https://github.com/tiangolo/uwsgi-nginx-flask-docker">this family of Docker images</a> provided
+by <a href="https://github.com/tiangolo">Sebastián Ramírez</a>.  This takes care of the basic uWSGI and nginx setup
+(we&rsquo;ll address load balancing and SSL later) so all we need to do is build on what&rsquo;s already been configured.</p>
 
-<p>We don&rsquo;t have any validation yet, so let&rsquo;s add that in.  We want to have a 400 error
-of some sort, so let&rsquo;s write a test for it:</p>
+<p>Docker has become an <a href="https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/container-docker-introduction/docker-defined">important part of Microsoft&rsquo;s overall strategy</a>
+but it seems like not all Microsoft developers are up-to-speed on it yet.  There are many places where you can read
+about what a docker container <em>is</em>, so I won&rsquo;t reproduce that here.  Instead, I will give a quick introduction to the
+most important docker and docker-compose commands.</p>
 
-<pre><code class="language-python"># src/tests/app/test_validation.py
+<p>And&mdash;although we&rsquo;ll be <em>creating</em> Docker containers from the Windows 10 command-line, Linux works much better <em>inside</em>
+Docker containers than Windows.  As a result, all our python code will run inside a Linux container.</p>
 
-def test_hello_requires_greetee(client):
-   request_payload = {}
-   response = client.post(&quot;/hello&quot;, json=request_payload)
-   result = response.get_json()
+<h1 id="set-up-docker-on-windows">Set up Docker on Windows</h1>
 
-   assert response.status_code == 400
-   assert result is not None
-   assert &quot;message&quot; in result
-   assert &quot;is a required property&quot; in result['message'][0]
+<p>Docker on Windows is easy to set up.  <a href="https://docs.docker.com/docker-for-windows/">Download it here</a>.   <code>docker-compose</code> makes
+life a little easier, so you may want to <a href="https://docs.docker.com/compose/install/">install that too</a>.</p>
+
+<h1 id="configuring-our-app-for-docker">Configuring Our App for Docker</h1>
+
+<p>There&rsquo;s very little to configure to get our app into a Docker container.  Here&rsquo;s a Dockerfile that
+provides most of what we need:</p>
+
+<pre><code class="language-Dockerfile"># src/Dockerfile
+# &quot;FROM&quot; starts us out from this Ubuntu-based image
+# https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7/Dockerfile
+
+FROM tiangolo/uwsgi-nginx-flask:python3.7
+
+# Optionally, install some typical packages used for building and network debugging.
+RUN apt-get update
+RUN apt-get install -y  build-essential \
+                        software-properties-common \
+                        apt-transport-https \
+                        build-essential \
+                        ca-certificates \
+                        checkinstall \
+                        netcat \
+                        iputils-ping
+
+# Update to the latest PIP
+RUN pip3 install --upgrade pip
+
+# Uncommenting this will make rebuilding the image a little faster
+# RUN pip3 install Flask==1.0.2 \
+#                 flask-inputs==0.3.0 \
+#                 jsonschema==3.0.1 \
+#                 pytest==4.6.2
+
+# Our application code will exist in the /app directory,
+# so set the current working directory to that
+WORKDIR /app
+
+# Backup the default app files.  You could also delete these
+RUN mkdir bak &amp;&amp; \
+    mv main.py uwsgi.ini bak
+
+
+# Copy our files into the current working directory WORKDIR
+COPY ./ ./
+
+# install our dependencies
+RUN  pip3 install -r requirements.txt
 </code></pre>
 
-<p>This test doesn’t pass yet.  In our case, we’re using json, and there are many ways
-input can go wrong&mdash;missing keys, bad types, weird structure.  So let’s come up
-with a json schema to validate our greeting input.  The flask extension
-<a href="https://pythonhosted.org/Flask-Inputs/">flask_input</a> can validate
-incoming json against the python <a href="https://pypi.org/project/jsonschema/">jsonschema</a>
-library.</p>
+<p>This Dockerfile is the recipe for creating the image that we&rsquo;ll use to spawn a container for our app.  The <code>FROM</code> line
+tells Docker to start from an image from <a href="https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/">Docker Hub</a> that has
+versions of Python 3.7, Flask and uWSGI already installed.  It then copies the relevant parts of our app to
+the <code>/app</code> directory.  You can have a look at the <a href="https://github.com/tiangolo/uwsgi-nginx-docker/blob/master/python3.7/Dockerfile">original uwsgi-nginx Dockerfile</a>
+And the <a href="https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7/Dockerfile">derived flask Dockerfile</a> if
+you want to know exactly what is installed.  And the <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile reference</a> has
+more information on each of the instructions like <code>COPY</code> and <code>RUN</code>.  But the part that might not be obvious is that
+the base images already contain a <a href="https://docs.docker.com/engine/reference/builder/#entrypoint"><code>ENTRYPOINT</code></a> which
+runs flask&mdash;we don&rsquo;t need to override any startup commands ourselves.</p>
 
-<p>This comes from the <a href="http://flask.pocoo.org/docs/0.12/patterns/apierrors/">suggestions on validating API
-errors</a>:</p>
+<p>I&rsquo;ve added the basic Linux build tools into the image, plus some useful utilites for debugging&mdash;you could easily
+omit the <code>apt-get</code> lines if your python libraries don&rsquo;t need to be built from source.</p>
 
-<pre><code class="language-python"># /src/app/invalid_usage.py
-class InvalidUsage(Exception):
-    status_code = 400
+<p>I also upgrade <code>pip</code> to the most recent version.  You could also pre-install some of the updated python libraries that
+you&rsquo;ll be using with pip&mdash;this saves some time when you&rsquo;re running <code>docker build</code> (or <code>docker-compose build</code>) later.</p>
 
-    def __init__(self, message, status_code=None, payload=None):
-        Exception.__init__(self)
-        self.message = message
-        if status_code is not None:
-            self.status_code = status_code
-        self.payload = payload
+<p>The rest of the file creates our app in <code>/app</code> by moving the default <code>main.py</code> and config files into a directory
+called <code>/bak</code>, replacing them with our own, and then installing our python libraries from within our newly-created container.</p>
 
-    def to_dict(self):
-        rv = dict(self.payload or ())
-        rv['message'] = self.message
-        return rv
+<p>We want to omit the intermediate files from being copied to the deployment version of the container, and we can do
+this by creating a file called <code>src/.dockerignore</code>:</p>
+
+<pre><code># src/.dockerignore
+
+**/__pycache__
+**/*.py[cod]
+**/*$py.class
+**/*.pytest_cache
+
+# C extensions
+*.so
+
+**/*.pkl
+
+app/tmp
+app/.gitignore
+tmp/
+
+Dockerfile*
 </code></pre>
 
-<p>Then let’s register an error handler in main.py</p>
+<p>Lastly, we will need the file <code>src/uwsgi.ini</code> that tells uWSGI how to start the flask server:</p>
 
-<pre><code class="language-python"># src/app/main.py
-
-@app.errorhandler(InvalidUsage)
-def handle_invalid_usage(error):
-   response = jsonify(error.to_dict())
-   response.status_code = error.status_code
-   return response
+<pre><code class="language-ini"># src/uwsgi.ini 
+[uwsgi]
+module = app.main
+callable = app
 </code></pre>
 
-<p>Then rewrite our hello-handler to validate the input</p>
+<h2 id="build-the-container">Build the Container</h2>
 
-<pre><code class="language-python"># src/app/main.py
+<p>You can use plain docker to build the app and run it:</p>
 
-@app.route(&quot;/hello&quot;, methods=['POST'])
-def hello() -&gt; str:
-   errors = validate_greeting(request)
-   if errors is not None:
-       print(errors)
-       raise InvalidUsage(errors)
-   greetee = request.json.get(&quot;greetee&quot;, None)
-   response = {&quot;message&quot;: say_hello_to(greetee)}
-   return jsonify(response)
+<pre><code class="language-powershell">&gt; docker build -t pythondemo .
+&gt; docker run --name demo -p 80:80 pythondemo 
 </code></pre>
 
-<p>You’ll see that 400 errors can be created by raising an InvalidUsage exception,
-which is processed by our handler.</p>
+<p>Or you can store your configuration in a <em>.yml</em> file and use <code>docker-compose</code> instead.
+<code>docker-compose</code> requires a <a href="https://docs.docker.com/compose/install/">separate installation</a>.
+It&rsquo;s not really essential for a single container like this, but it allows you to save
+configuration in a file so that you don&rsquo;t have to remember a profusion of <code>docker</code> parameters,
+and it will allow you to add more containers or mount volumes more easily later on.</p>
 
-<p>Flask_inputs is a bit behind in maintenance&mdash;I get some Deprecation warnings when I run it:</p>
+<pre><code>&gt; docker-compose build
+&gt; docker-compose up
 
-<pre><code>tests/app/test_main.py::test_hello_greets_greetee
-  C:\Users\MikeBridge\venv\pythondemo\lib\site-packages\flask_inputs\inputs.py:37: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
-    elif isinstance(input, collections.Iterable):
+# ... or do both
+&gt; docker-compose up --build
+
+# then stop the container
+&gt; docker-compose down
 </code></pre>
 
-<p>Ugh. Let’s get rid of the deprecation warning:</p>
+<p>To use <code>docker-compose</code>, first you need to create a simple <code>docker-compose.yml</code> file in the root directory
+(i.e. above <code>src</code>) like this:</p>
 
-<pre><code class="language-powershell">python -W ignore::DeprecationWarning -m pytest -s
+<pre><code class="language-yml">version: '3'
+
+services:
+
+  demo:
+    # this is the &quot;repository&quot; name.
+    image: pythondemo
+    # custom container name (rather than the generated default)
+    container_name: pythondemo
+    restart: unless-stopped
+    build: src
+    environment:
+      FLASK_ENV: &quot;development&quot;
+    ports:
+      - &quot;0.0.0.0:80:80&quot;
 </code></pre>
 
-<p>Lastly, let’s implement the validation.  Have a look at
-<a href="https://pythonhosted.org/Flask-Inputs/#module-flask_inputs">this</a>
-and <a href="https://json-schema.org/understanding-json-schema/">this</a>
-for more information on how the json schema works:</p>
+<p>Regardless, you should now have a running Linux container, and you should now be able to access
+your app locally at <a href="http://localhost">http://localhost</a>.</p>
 
-<pre><code># src/app/validation.py
+<p>The resulting image will be what gets deployed later in Kubernetes.</p>
 
-from flask_inputs import Inputs
-from flask_inputs.validators import JsonSchema
+<h1 id="useful-docker-commands">Useful Docker Commands</h1>
 
-# https://pythonhosted.org/Flask-Inputs/#module-flask_inputs
-# https://json-schema.org/understanding-json-schema/
-# we want an object containing a required greetee  string value
-greeting_schema = {
-   'type': 'object',
-   'properties': {
-       'greetee': {
-           'type': 'string',
-       }
-   },
-   'required': ['greetee']
-}
+<p>Now that you have a docker app running locally, try out some Docker commands from PowerShell:</p>
 
+<ul>
+<li><code>docker images</code> - lists the Docker images that are stored locally.  You should see one
+named <code>tiangolo/uwsgi-nginx-flask</code>, as well as the image you just created.</li>
+<li><code>docker ps</code> - lists the running containers.</li>
+<li><code>docker stop &lt;name&gt;</code> - stops a running container</li>
+<li><code>docker rm &lt;name&gt;</code> - deletes a stopped container</li>
+<li><code>docker rmi &lt;name&gt;</code> - deletes an image</li>
+</ul>
 
-class GreetingInputs(Inputs):
-   json = [JsonSchema(schema=greeting_schema)]
+<p>Note that if you don&rsquo;t have a <code>name</code> for an image or a running container, you can also substitute part of the
+hash of the container id or image id.  For example, if <code>docker ps</code> returns the following, you can
+type <code>docker stop cd0a</code> to stop the image:</p>
 
-
-def validate_greeting(request):
-   inputs = GreetingInputs(request)
-   if inputs.validate():
-       return None
-   else:
-       return inputs.errors
+<pre><code>&gt; docker ps
+CONTAINER ID   IMAGE    COMMAND                  CREATED        ...     
+cd0afa472755   abc      &quot;/entrypoint.sh /sta…&quot;   40 minutes ago ...
 </code></pre>
 
-<p>You could make this more succinct by triggering the validation as a method decorator,
-but I think it’s easier to unit test if it’s more explicit.  Let’s test our schema out
-by creating a valid request via the fixture <code>create_valid_greeting_request</code>,
-then altering it in various ways to test different inputs:</p>
+<h2 id="debugging-a-docker-container">Debugging a docker container</h2>
 
-<pre><code class="language-python"># src/app/tests/conftest.py
+<p>Sometimes the easiest way to debug your container is to log into it by starting a <code>bash</code> shell and
+poking around.  This is easy to do for a running container:</p>
 
-import pytest
-from app import main
-
-# ...
-
-@pytest.fixture()
-def create_valid_greeting_request():
-    &quot;&quot;&quot;
-    Helper function for creating a correctly-structured
-    json request
-    &quot;&quot;&quot;
-    def _create_valid_greeting_request(greetee=&quot;fixture&quot;):
-        return {
-            &quot;greetee&quot;: greetee
-        }
-    return _create_valid_greeting_request
+<pre><code class="language-powershell">docker exec -it &lt;name&gt; bash
 </code></pre>
 
-<pre><code class="language-python"># src/tests/app/test_validation.py
+<p>So for our running container:</p>
 
-import pytest
-from flask import Flask, request
+<pre><code class="language-powershell">&gt; docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
+cd0afa472755        abc                 &quot;/entrypoint.sh /sta…&quot;   About a minute ago   Up About a minute   0.0.0.0:80-&gt;80/tcp, 443/tcp   demo
 
-from app.validation import validate_greeting
+&gt; docker exec -it demo bash
+root@cd0afa472755:/app# ls
 
-app = Flask(__name__)
-
-
-@pytest.mark.parametrize(&quot;params&quot;, [
-   {&quot;greetee&quot;: 1},
-   {&quot;greetee&quot;: [&quot;array&quot;]}
-])
-def test_invalid_types_are_rejected(params, create_valid_greeting_request):
-   json_input = create_valid_greeting_request(**params)
-   with app.test_request_context('/', json=json_input):
-       errors = validate_greeting(request)
-       assert errors is not None
-
-
-@pytest.mark.parametrize(&quot;required_parm_name&quot;, [&quot;greetee&quot;])
-def test_missing_required_params_is_rejected(required_parm_name, create_valid_greeting_request):
-   json_input = create_valid_greeting_request()
-   del json_input[required_parm_name]
-   with app.test_request_context('/', json=json_input):
-       errors = validate_greeting(request)
-       assert errors is not None
-
-
-def test_valid_greetee_is_accepted(create_valid_greeting_request):
-   json_input = create_valid_greeting_request(greetee=&quot;Tester&quot;)
-   with app.test_request_context('/', json=json_input):
-       errors = validate_greeting(request)
-       assert errors is None
+Dockerfile  app  bak  mypkg  prestart.sh  requirements.txt  tests  uwsgi.ini
+root@cd0afa472755:/app#
 </code></pre>
 
-<p>Our flask app is pretty much done at this point.  Next, <a href="/post/python-flask-kubernetes-3">let&rsquo;s dockerize it</a> and
-ship it via Kubernetes.</p>
+<p><code>Ctrl-D</code> will close your shell, but keep your docker image running.</p>
+
+<p>There&rsquo;s a lot more to know about Docker, but this is enough to start deploying our <em>pythondemo</em> app on
+Azure Kubernetes Services in Part 4.</p>
 
 
         
@@ -493,49 +521,49 @@ ship it via Kubernetes.</p>
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-2%2f&amp;text=Flask%20JSON%20Input%20Validation&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;text=Dockerizing%20Flask%20Microservices%20for%20Deployment&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-2%2f" target="_blank" title="Share on Google Plus">
+        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f" target="_blank" title="Share on Google Plus">
           <i class="fab fa-google-plus"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-2%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-2%2f&amp;title=Flask%20JSON%20Input%20Validation" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;title=Dockerizing%20Flask%20Microservices%20for%20Deployment" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-2%2f&amp;title=Flask%20JSON%20Input%20Validation" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;title=Dockerizing%20Flask%20Microservices%20for%20Deployment" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-2%2f&amp;title=Flask%20JSON%20Input%20Validation" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;title=Dockerizing%20Flask%20Microservices%20for%20Deployment" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-2%2f&amp;description=Flask%20JSON%20Input%20Validation" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;description=Dockerizing%20Flask%20Microservices%20for%20Deployment" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -556,13 +584,9 @@ ship it via Kubernetes.</p>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-1/" data-toggle="tooltip" data-placement="top" title="Getting Started with Python Microservices in Flask">&larr; Previous Post</a>
+              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-2/" data-toggle="tooltip" data-placement="top" title="Flask JSON Input Validation">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-3/" data-toggle="tooltip" data-placement="top" title="Dockerizing Flask Microservices for Deployment">Next Post &rarr;</a>
-            </li>
           
         </ul>
       
@@ -572,12 +596,12 @@ ship it via Kubernetes.</p>
         
           
           <div class="disqus-comments">                  
-            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/python-flask-kubernetes-2">comments</span></button>
+            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/python-flask-kubernetes-3">comments</span></button>
             <div id="disqus_thread"></div>
 
             <script type="text/javascript">
               var disqus_config = function () {
-              this.page.url = 'https:\/\/mikebridge.github.io\/post\/python-flask-kubernetes-2';
+              this.page.url = 'https:\/\/mikebridge.github.io\/post\/python-flask-kubernetes-3';
             };
 
           </script>

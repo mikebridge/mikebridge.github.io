@@ -10,9 +10,9 @@
   <title>Overview of all pages with the category #Kubernetes - Mike Bridge - Dev Notes</title>
   <meta property="og:title" content="Overview of all pages with the category #Kubernetes" />
   <meta name="twitter:title" content="Overview of all pages with the category #Kubernetes" />
-  <meta name="description" content="Overview of all pages with the category #Kubernetes, such as: Flask JSON Input Validation">
-  <meta property="og:description" content="Overview of all pages with the category #Kubernetes, such as: Flask JSON Input Validation">
-  <meta name="twitter:description" content="Overview of all pages with the category #Kubernetes, such as: Flask JSON Input Validation">
+  <meta name="description" content="Overview of all pages with the category #Kubernetes, such as: Dockerizing Flask Microservices for Deployment">
+  <meta property="og:description" content="Overview of all pages with the category #Kubernetes, such as: Dockerizing Flask Microservices for Deployment">
+  <meta name="twitter:description" content="Overview of all pages with the category #Kubernetes, such as: Dockerizing Flask Microservices for Deployment">
   <meta name="author" content="Mike Bridge"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -211,6 +211,50 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-3/">
+                <h2 class="post-title">Dockerizing Flask Microservices for Deployment</h2>
+
+                
+                  <h3 class="post-subtitle">
+                    Creating Python Microservices, Part 3
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 10, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1229&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  We&rsquo;ve created a simple Python microservice using Flask in Part 1 and set up some simple validation in Part 2. In Part 3 we will package up what we&rsquo;ve built in a Docker container so it can be deployed in Kubernetes.
+ Code for this can be found on GitHub. Or you can use this template as a starting point.
+ Because Flask doesn&rsquo;t handle parallel execution or networking, we need to deploy Flask inside an application server such as uWSGI, and uWSGI will in turn run inside an http server like nginx.
+                  <a href="https://mikebridge.github.io/post/python-flask-kubernetes-3/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+
+            </article>
           
             <article class="post-preview">
               <a href="https://mikebridge.github.io/post/python-flask-kubernetes-2/">
