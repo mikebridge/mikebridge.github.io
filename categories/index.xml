@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>mike@bridgecanada.com (Mike Bridge)</managingEditor>
     <webMaster>mike@bridgecanada.com (Mike Bridge)</webMaster>
-    <lastBuildDate>Mon, 04 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mikebridge.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Active Directory</title>
       <link>https://mikebridge.github.io/categories/active-directory/</link>
-      <pubDate>Mon, 04 Dec 2017 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/categories/active-directory/</guid>
       <description></description>
@@ -45,6 +45,15 @@
       <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/categories/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Azuresql</title>
+      <link>https://mikebridge.github.io/categories/azuresql/</link>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/categories/azuresql/</guid>
       <description></description>
     </item>
     
@@ -198,6 +207,15 @@
       <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/categories/microservices/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mssql</title>
+      <link>https://mikebridge.github.io/categories/mssql/</link>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/categories/mssql/</guid>
       <description></description>
     </item>
     

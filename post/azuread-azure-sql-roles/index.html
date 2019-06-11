@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Overview of all pages with the category #Active Directory - Mike Bridge - Dev Notes</title>
-  <meta property="og:title" content="Overview of all pages with the category #Active Directory" />
-  <meta name="twitter:title" content="Overview of all pages with the category #Active Directory" />
-  <meta name="description" content="Overview of all pages with the category #Active Directory, such as: Azure Sql Roles from Azure Active Directory">
-  <meta property="og:description" content="Overview of all pages with the category #Active Directory, such as: Azure Sql Roles from Azure Active Directory">
-  <meta name="twitter:description" content="Overview of all pages with the category #Active Directory, such as: Azure Sql Roles from Azure Active Directory">
+  <title>Azure Sql Roles from Azure Active Directory - Mike Bridge - Dev Notes</title>
+  <meta property="og:title" content="Azure Sql Roles from Azure Active Directory" />
+  <meta name="twitter:title" content="Azure Sql Roles from Azure Active Directory" />
+  <meta name="description" content="Role-based AzureSQL access via Azure Active Directory">
+  <meta property="og:description" content="Role-based AzureSQL access via Azure Active Directory">
+  <meta name="twitter:description" content="Role-based AzureSQL access via Azure Active Directory">
   <meta name="author" content="Mike Bridge"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -33,13 +33,63 @@
   
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://mikebridge.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https://mikebridge.github.io/post/azuread-azure-sql-roles/",
+          "name": "Azure sql roles from azure active directory"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Mike Bridge"
+  },
+  "headline": "Azure Sql Roles from Azure Active Directory",
+  "description" : "Role-based AzureSQL access via Azure Active Directory",
+  "inLanguage" : "en",
+  "wordCount": 177,
+  "datePublished" : "2019-05-15T00:00:00",
+  "dateModified" : "2019-05-15T00:00:00",
+  "image" : "https://mikebridge.github.io/images/avatar.jpg",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https://mikebridge.github.io/post/azuread-azure-sql-roles/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https://mikebridge.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https://mikebridge.github.io/images/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-<meta property="og:title" content="Active Directory" />
+<meta property="og:title" content="Azure Sql Roles from Azure Active Directory" />
+<meta property="og:description" content="Role-based AzureSQL access via Azure Active Directory">
 <meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
-<meta property="og:url" content="https://mikebridge.github.io/categories/active-directory/" />
+<meta property="og:url" content="https://mikebridge.github.io/post/azuread-azure-sql-roles/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
-  <meta name="twitter:title" content="Active Directory" />
+  <meta name="twitter:title" content="Azure Sql Roles from Azure Active Directory" />
+  <meta name="twitter:description" content="Role-based AzureSQL access via Azure Active Directory">
   <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@michaelbridge" />
@@ -50,7 +100,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@michaelbridge" />
   <meta name="twitter:creator" content="@michaelbridge" />
-  <meta property="og:url" content="https://mikebridge.github.io/categories/active-directory/" />
+  <meta property="og:url" content="https://mikebridge.github.io/post/azuread-azure-sql-roles/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
 
@@ -188,38 +238,13 @@ if (!doNotTrack) {
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="categories-heading">
+            <div class="post-heading">
               
-                <h1>Active Directory</h1>
-              
-              
-                <hr class="small">
+                <h1>Azure Sql Roles from Azure Active Directory</h1>
               
               
               
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-
-    
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-        <div class="posts-list">
-          
-            <article class="post-preview">
-              <a href="https://mikebridge.github.io/post/azuread-azure-sql-roles/">
-                <h2 class="post-title">Azure Sql Roles from Azure Active Directory</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
+              
                 <span class="post-meta">
   
   
@@ -238,65 +263,153 @@ if (!doNotTrack) {
 </span>
 
 
-              </p>
-              <div class="post-entry">
-                
-                  If your users are managed in Azure Active Directory, it&rsquo;s fairly straightforward to give them Azure SQL access by assigning them to an Azure Active Directory Group:
-1) Create a Group in Azure Active Directory via the Portal or command line. For example, you could name the group SQL ReadOnly
-2) Assign Azure AD Users to that group.
-3) Now log into the database as an administrator. Note that you need to use your own Azure login to run the subsequent commands&mdash;logging in via password won&rsquo;t work.
-                  <a href="https://mikebridge.github.io/post/azuread-azure-sql-roles/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
               
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://mikebridge.github.io/post/azure-active-directory-elastic-pool/">
-                <h2 class="post-title">Azure Active Directory with Azure SQL</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on December 4, 2017
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;414&nbsp;words
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  This post describes how to set up user access to Azure SQL Server within an Elastic Pool via Azure Active Directory. Specifically, I want to allow an AD user to connect to an Azure-hosted database with his own Connection String.
- So you&rsquo;ve got users and groups in Azure Active Directory, and you have one or more Azure SQL Servers in an Elastic Pool. How can you grant those AD Users access to your SQL Server databases?
-                  <a href="https://mikebridge.github.io/post/azure-active-directory-elastic-pool/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-
-            </article>
-          
+            </div>
+          </div>
         </div>
-        
       </div>
     </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>If your users are managed in Azure Active Directory, it&rsquo;s fairly straightforward to give them Azure SQL access
+by assigning them to an Azure Active Directory Group:</p>
+
+<p>1) Create a <em>Group</em> in Azure Active Directory via the <a href="https://portal.azure.com">Portal</a> or command
+line.  For example, you could name the group <code>SQL ReadOnly</code></p>
+
+<p>2) Assign Azure AD <em>Users</em> to that group.</p>
+
+<p>3) Now log into the database as an administrator.  Note that you need to use your own Azure login
+to run the subsequent commands&mdash;logging in via password won&rsquo;t work.</p>
+
+<p>4) Create a <em>USER</em> corresponding to the Azure AD <em>Group</em> we just created in the SQL Server instance, and then
+assign that user to the appropriate local SQL Server roles, such as <code>db_datareader</code>:</p>
+
+<pre><code class="language-sql">CREATE USER [SQL ReadOnly] FROM EXTERNAL PROVIDER
+
+EXEC sp_addrolemember 'db_datareader', 'SQL ReadOnly'
+</code></pre>
+
+<p>Now any of the users that are members of the <code>SQL ReadOnly</code> group can access that database
+in read-only mode.  From <a href="https://docs.microsoft.com/en-us/sql/ssms/sql-server-management-studio-ssms?view=sql-server-2017">SSMS</a>, they would log in using their AzureAD login by selecting an
+Active Directory authentication method, e.g. <code>Active Directory - Universal with MFA support</code></p>
+
+
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fazuread-azure-sql-roles%2f&amp;text=Azure%20Sql%20Roles%20from%20Azure%20Active%20Directory&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fazuread-azure-sql-roles%2f" target="_blank" title="Share on Google Plus">
+          <i class="fab fa-google-plus"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fazuread-azure-sql-roles%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fazuread-azure-sql-roles%2f&amp;title=Azure%20Sql%20Roles%20from%20Azure%20Active%20Directory" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fazuread-azure-sql-roles%2f&amp;title=Azure%20Sql%20Roles%20from%20Azure%20Active%20Directory" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fazuread-azure-sql-roles%2f&amp;title=Azure%20Sql%20Roles%20from%20Azure%20Active%20Directory" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fazuread-azure-sql-roles%2f&amp;description=Azure%20Sql%20Roles%20from%20Azure%20Active%20Directory" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
   </div>
+  
+              </div>
+            </section>
+        
+
+        
+          
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://mikebridge.github.io/post/windows-tar-gzip-for-linux/" data-toggle="tooltip" data-placement="top" title="Compress a Folder in PowerShell for use in Linux">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-1/" data-toggle="tooltip" data-placement="top" title="Getting Started with Python Microservices in Flask">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+          
+          <div class="disqus-comments">                  
+            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/azuread-azure-sql-roles">comments</span></button>
+            <div id="disqus_thread"></div>
+
+            <script type="text/javascript">
+              var disqus_config = function () {
+              this.page.url = 'https:\/\/mikebridge.github.io\/post\/azuread-azure-sql-roles';
+            };
+
+          </script>
+          </div>
+          
+        
+        
+      
+
+    </div>
+  </div>
+</div>
 
     <footer>
   <div class="container">
@@ -363,7 +476,7 @@ if (!doNotTrack) {
           
           <li>
             
-            <a href="https://mikebridge.github.io/categories/active-directory/index.xml" title="RSS">
+            <a href="https://mikebridge.github.io/index.xml" title="RSS">
             
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>

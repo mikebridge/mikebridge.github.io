@@ -45,6 +45,18 @@
     </item>
     
     <item>
+      <title>Azure Sql Roles from Azure Active Directory</title>
+      <link>https://mikebridge.github.io/post/azuread-azure-sql-roles/</link>
+      <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
+      <author>mike@bridgecanada.com (Mike Bridge)</author>
+      <guid>https://mikebridge.github.io/post/azuread-azure-sql-roles/</guid>
+      <description>If your users are managed in Azure Active Directory, it&amp;rsquo;s fairly straightforward to give them Azure SQL access by assigning them to an Azure Active Directory Group:
+1) Create a Group in Azure Active Directory via the Portal or command line. For example, you could name the group SQL ReadOnly
+2) Assign Azure AD Users to that group.
+3) Now log into the database as an administrator. Note that you need to use your own Azure login to run the subsequent commands&amp;mdash;logging in via password won&amp;rsquo;t work.</description>
+    </item>
+    
+    <item>
       <title>Compress a Folder in PowerShell for use in Linux</title>
       <link>https://mikebridge.github.io/post/windows-tar-gzip-for-linux/</link>
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>

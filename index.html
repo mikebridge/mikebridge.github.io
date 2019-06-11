@@ -312,6 +312,44 @@ if (!doNotTrack) {
             </article>
           
             <article class="post-preview">
+              <a href="https://mikebridge.github.io/post/azuread-azure-sql-roles/">
+                <h2 class="post-title">Azure Sql Roles from Azure Active Directory</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on May 15, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;177&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  If your users are managed in Azure Active Directory, it&rsquo;s fairly straightforward to give them Azure SQL access by assigning them to an Azure Active Directory Group:
+1) Create a Group in Azure Active Directory via the Portal or command line. For example, you could name the group SQL ReadOnly
+2) Assign Azure AD Users to that group.
+3) Now log into the database as an administrator. Note that you need to use your own Azure login to run the subsequent commands&mdash;logging in via password won&rsquo;t work.
+                  <a href="https://mikebridge.github.io/post/azuread-azure-sql-roles/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="https://mikebridge.github.io/post/windows-tar-gzip-for-linux/">
                 <h2 class="post-title">Compress a Folder in PowerShell for use in Linux</h2>
                 
@@ -529,47 +567,6 @@ ReactNative development is an endless stream of inscrutable, never-before-seen e
                   This is part of this series of blog posts introducing TypeScript and React. Here&rsquo;s Part 1.
  React-router 4 removed the query string parsing feature that was present in past versions. This is a good example of where a React higher order control would make a good substitute. Instead of forcing Components to take dependencies on both the location and a query-string parser, making things hard to test and refactor, it&rsquo;d be much easier to create a wrapper that does the boring parsing work for you and DRYs out your code.
                   <a href="https://mikebridge.github.io/post/react-router-4-query-string-hoc/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://mikebridge.github.io/post/getting-started-typescript-react-4/">
-                <h2 class="post-title">TypeScript and React, Part 4</h2>
-                
-                  <h3 class="post-subtitle">
-                  React Higher Order Components in TypeScript
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on May 4, 2017
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1596&nbsp;words
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  This is part of this series of blog posts introducing TypeScript and React. Here&rsquo;s Part 1.
-Edit, Feb 26, 2019: Nobody on the team liked this approach as much as Render Props, so we&rsquo;ve switched to that. Our experience was that HOCs can create mind-bending types.
- React&rsquo;s Higher Order Component pattern is a technique to help developers design better components and component interactions. Refactoring out cross-cutting concerns from a complex component with HOCs touches on at least three or four of the SOLID principles, but creating a cohesive design can be difficult without proper typing.
-                  <a href="https://mikebridge.github.io/post/getting-started-typescript-react-4/" class="post-read-more">[Read More]</a>
                 
               </div>
 
