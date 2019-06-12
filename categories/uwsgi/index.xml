@@ -18,9 +18,11 @@
       <pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate>
       <author>mike@bridgecanada.com (Mike Bridge)</author>
       <guid>https://mikebridge.github.io/post/python-flask-kubernetes-3/</guid>
-      <description>We&amp;rsquo;ve created a simple Python microservice using Flask in Part 1 and set up some simple validation in Part 2. In Part 3 we will package up what we&amp;rsquo;ve built in a Docker container so it can be deployed in Kubernetes.
- Code for this can be found on GitHub. Or you can use this template as a starting point.
- Because Flask doesn&amp;rsquo;t handle parallel execution or networking, we need to deploy Flask inside an application server such as uWSGI, and uWSGI will in turn run inside an http server like nginx.</description>
+      <description>&lt;p&gt;We&amp;rsquo;ve created a simple Python microservice using Flask
+in &lt;a href=&#34;https://mikebridge.github.io/post/python-flask-kubernetes-1&#34;&gt;Part 1&lt;/a&gt; and set up
+some simple validation in &lt;a href=&#34;https://mikebridge.github.io/post/python-flask-kubernetes-2&#34;&gt;Part 2&lt;/a&gt;.
+In Part 3 we will package up what we&amp;rsquo;ve built in a Docker container so it can be deployed
+in Kubernetes.&lt;/p&gt;</description>
     </item>
     
   </channel>

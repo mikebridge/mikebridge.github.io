@@ -10,9 +10,9 @@
   <title>Overview of all pages with the category #Azure - Mike Bridge - Dev Notes</title>
   <meta property="og:title" content="Overview of all pages with the category #Azure" />
   <meta name="twitter:title" content="Overview of all pages with the category #Azure" />
-  <meta name="description" content="Overview of all pages with the category #Azure, such as: Dockerizing Flask Microservices for Deployment">
-  <meta property="og:description" content="Overview of all pages with the category #Azure, such as: Dockerizing Flask Microservices for Deployment">
-  <meta name="twitter:description" content="Overview of all pages with the category #Azure, such as: Dockerizing Flask Microservices for Deployment">
+  <meta name="description" content="Overview of all pages with the category #Azure, such as: Introduction to Kubernetes: kubectl">
+  <meta property="og:description" content="Overview of all pages with the category #Azure, such as: Introduction to Kubernetes: kubectl">
+  <meta name="twitter:description" content="Overview of all pages with the category #Azure, such as: Introduction to Kubernetes: kubectl">
   <meta name="author" content="Mike Bridge"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -213,6 +213,97 @@ if (!doNotTrack) {
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-5/">
+                <h2 class="post-title">Introduction to Kubernetes: kubectl</h2>
+
+                
+                  <h3 class="post-subtitle">
+                    Creating Python Microservices, Part 5
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 12, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1013&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>Over the past few installments, we&rsquo;ve create a <a href="/post/python-flask-kubernetes-1">python microservice</a>,
+<a href="/post/python-flask-kubernetes-3">dockerized the result</a>, created a <a href="/post/python-flask-kubernetes-4">Container Registry and
+Set up the Azure Kubernetes Service</a>.  We now have
+a container serving a flask app to the internet from within a Kubernetes cluster.  Let&rsquo;s
+try out some Kubernetes features via <code>kubectl</code>.</p>
+                  <a href="https://mikebridge.github.io/post/python-flask-kubernetes-5/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-4/">
+                <h2 class="post-title">Set up Kubernetes on Azure</h2>
+
+                
+                  <h3 class="post-subtitle">
+                    Creating Python Microservices, Part 4
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 11, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1279&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>So far in this set of blog posts we&rsquo;ve <a href="/post/python-flask-kubernetes-1">created a simple python microservice</a> using
+flask, <a href="/post/python-flask-kubernetes-2">added user input validation</a> and then <a href="/post/python-flask-kubernetes-3">dockerized the result</a>.
+In Part 4 we&rsquo;ll set up a Kubernetes Cluster on <a href="https://azure.microsoft.com/en-ca/services/kubernetes-service/">Azure Kubernetes Service</a> so
+that we can deploy a preliminary version of the app.</p>
+                  <a href="https://mikebridge.github.io/post/python-flask-kubernetes-4/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="https://mikebridge.github.io/post/python-flask-kubernetes-3/">
                 <h2 class="post-title">Dockerizing Flask Microservices for Deployment</h2>
 
@@ -245,9 +336,11 @@ if (!doNotTrack) {
               </p>
               <div class="post-entry">
                 
-                  We&rsquo;ve created a simple Python microservice using Flask in Part 1 and set up some simple validation in Part 2. In Part 3 we will package up what we&rsquo;ve built in a Docker container so it can be deployed in Kubernetes.
- Code for this can be found on GitHub. Or you can use this template as a starting point.
- Because Flask doesn&rsquo;t handle parallel execution or networking, we need to deploy Flask inside an application server such as uWSGI, and uWSGI will in turn run inside an http server like nginx.
+                  <p>We&rsquo;ve created a simple Python microservice using Flask
+in <a href="/post/python-flask-kubernetes-1">Part 1</a> and set up
+some simple validation in <a href="/post/python-flask-kubernetes-2">Part 2</a>.
+In Part 3 we will package up what we&rsquo;ve built in a Docker container so it can be deployed
+in Kubernetes.</p>
                   <a href="https://mikebridge.github.io/post/python-flask-kubernetes-3/" class="post-read-more">[Read More]</a>
                 
               </div>

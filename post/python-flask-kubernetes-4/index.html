@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Dockerizing Flask Microservices for Deployment - Mike Bridge - Dev Notes</title>
-  <meta property="og:title" content="Dockerizing Flask Microservices for Deployment" />
-  <meta name="twitter:title" content="Dockerizing Flask Microservices for Deployment" />
+  <title>Set up Kubernetes on Azure - Mike Bridge - Dev Notes</title>
+  <meta property="og:title" content="Set up Kubernetes on Azure" />
+  <meta name="twitter:title" content="Set up Kubernetes on Azure" />
   <meta name="description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta property="og:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta name="twitter:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
@@ -48,8 +48,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https://mikebridge.github.io/post/python-flask-kubernetes-3/",
-          "name": "Dockerizing flask microservices for deployment"
+          "@id": "https://mikebridge.github.io/post/python-flask-kubernetes-4/",
+          "name": "Set up kubernetes on azure"
         }
     }]
 }
@@ -60,15 +60,15 @@
   "author": {
     "name" : "Mike Bridge"
   },
-  "headline": "Dockerizing Flask Microservices for Deployment",
+  "headline": "Set up Kubernetes on Azure",
   "description" : "Set up and deploy a python microservice in Flask on Azure Kubernetes",
   "inLanguage" : "en",
-  "wordCount": 1229,
-  "datePublished" : "2019-06-10T00:00:00",
-  "dateModified" : "2019-06-10T00:00:00",
+  "wordCount": 1279,
+  "datePublished" : "2019-06-11T00:00:00",
+  "dateModified" : "2019-06-11T00:00:00",
   "image" : "https://mikebridge.github.io/images/avatar.jpg",
   "keywords" : [ "" ],
-  "mainEntityOfPage" : "https://mikebridge.github.io/post/python-flask-kubernetes-3/",
+  "mainEntityOfPage" : "https://mikebridge.github.io/post/python-flask-kubernetes-4/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https://mikebridge.github.io",
@@ -82,13 +82,13 @@
 }
 </script>
 
-<meta property="og:title" content="Dockerizing Flask Microservices for Deployment" />
+<meta property="og:title" content="Set up Kubernetes on Azure" />
 <meta property="og:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
 <meta property="og:image" content="https://mikebridge.github.io/images/avatar.jpg" />
-<meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-3/" />
+<meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-4/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
-  <meta name="twitter:title" content="Dockerizing Flask Microservices for Deployment" />
+  <meta name="twitter:title" content="Set up Kubernetes on Azure" />
   <meta name="twitter:description" content="Set up and deploy a python microservice in Flask on Azure Kubernetes">
   <meta name="twitter:image" content="https://mikebridge.github.io/images/avatar.jpg" />
   <meta name="twitter:card" content="summary" />
@@ -100,7 +100,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@michaelbridge" />
   <meta name="twitter:creator" content="@michaelbridge" />
-  <meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-3/" />
+  <meta property="og:url" content="https://mikebridge.github.io/post/python-flask-kubernetes-4/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Mike Bridge - Dev Notes" />
 
@@ -240,25 +240,25 @@ if (!doNotTrack) {
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>Dockerizing Flask Microservices for Deployment</h1>
+                <h1>Set up Kubernetes on Azure</h1>
               
               
               
                 
-                  <h2 class="post-subheading">Creating Python Microservices, Part 3</h2>
+                  <h2 class="post-subheading">Creating Python Microservices, Part 4</h2>
                 
               
               
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on June 10, 2019
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 11, 2019
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1229&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1279&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Mike Bridge
@@ -281,230 +281,275 @@ if (!doNotTrack) {
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>We&rsquo;ve created a simple Python microservice using Flask
-in <a href="/post/python-flask-kubernetes-1">Part 1</a> and set up
-some simple validation in <a href="/post/python-flask-kubernetes-2">Part 2</a>.
-In Part 3 we will package up what we&rsquo;ve built in a Docker container so it can be deployed
-in Kubernetes.</p>
+        <p>So far in this set of blog posts we&rsquo;ve <a href="/post/python-flask-kubernetes-1">created a simple python microservice</a> using
+flask, <a href="/post/python-flask-kubernetes-2">added user input validation</a> and then <a href="/post/python-flask-kubernetes-3">dockerized the result</a>.
+In Part 4 we&rsquo;ll set up a Kubernetes Cluster on <a href="https://azure.microsoft.com/en-ca/services/kubernetes-service/">Azure Kubernetes Service</a> so
+that we can deploy a preliminary version of the app.</p>
 
 <blockquote>
 <p>Code for this can be found on <a href="https://github.com/mikebridge/PythonKubernetesMicroserviceDemo">GitHub</a>.
 Or you can <a href="https://github.com/mikebridge/PythonKubernetesMicroserviceDemo/generate">use this template</a> as a starting point.</p>
 </blockquote>
 
-<p>Because Flask doesn&rsquo;t handle parallel execution or networking, we need to deploy Flask inside an application server
-such as <a href="http://flask.pocoo.org/docs/1.0/deploying/uwsgi/">uWSGI</a>, and uWSGI will in turn run inside an http
-server like <a href="https://www.nginx.com/">nginx</a>.  uWSGI will manage the lifecycle of the parallel instances of Flask and propagate http
-requests from nginx to our app.  The heavy lifting for  this configuration task is already done
-for us in <a href="https://github.com/tiangolo/uwsgi-nginx-flask-docker">this family of Docker images</a> provided
-by <a href="https://github.com/tiangolo">Sebastián Ramírez</a>.  This takes care of the basic uWSGI and nginx setup
-(we&rsquo;ll address load balancing and SSL later) so all we need to do is build on what&rsquo;s already been configured.</p>
+<h1 id="create-a-kubernetes-cluster">Create a Kubernetes Cluster</h1>
 
-<p>Docker has become an <a href="https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/container-docker-introduction/docker-defined">important part of Microsoft&rsquo;s overall strategy</a>
-but it seems like not all Microsoft developers are up-to-speed on it yet.  There are many places where you can read
-about what a docker container <em>is</em>, so I won&rsquo;t reproduce that here.  Instead, I will give a quick introduction to the
-most important docker and docker-compose commands.</p>
+<p>A <strong>cluster</strong> is a group of machines that runs containerized applications.  If you have an
+Azure account, you can launch an AKS cluster in the <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerService%2FmanagedClusters]">Azure Portal</a>.  Click on
+&lsquo;Add&rsquo; to create a new Kubernetes Cluster and create a new Resource Group (e.g. <code>KubernetesDemo</code>) to put
+it in.</p>
 
-<p>And&mdash;although we&rsquo;ll be <em>creating</em> Docker containers from the Windows 10 command-line, Linux works much better <em>inside</em>
-Docker containers than Windows.  As a result, all our python code will run inside a Linux container.</p>
+<p>
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/azure/create-kubernetes-cluster-1.png" alt="Create a AKS Cluster on the Azure Portal"/>
+    </div>
+    <a href="/images/azure/create-kubernetes-cluster-1.png" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Create a AKS Cluster on the Azure Portal</p>
+      </figcaption>
+  </figure>
+</div>
 
-<h1 id="set-up-docker-on-windows">Set up Docker on Windows</h1>
+<p>&nbsp;</p>
+Make sure &ldquo;RBAC&rdquo; is turned on under &ldquo;Authentication&rdquo;&mdash;<em>Role-Based Access</em> will be important later on.  In the meantime, all the
+other defaults should be OK.  Click on &ldquo;Review and Create&rdquo;,</p>
 
-<p>Docker on Windows is easy to set up.  <a href="https://docs.docker.com/docker-for-windows/">Download it here</a>.   <code>docker-compose</code> makes
-life a little easier, so you may want to <a href="https://docs.docker.com/compose/install/">install that too</a>.</p>
+<blockquote>
+<p>When creating a cluster in the Portal, you may want to use a simple, human-readable name
+for the &ldquo;kubernetes cluster name&rdquo; like &ldquo;production&rdquo;, &ldquo;staging&rdquo;, &ldquo;operations&rdquo;, etc., since
+that&rsquo;s what you&rsquo;ll be typing from the command line.</p>
+</blockquote>
 
-<h1 id="configuring-our-app-for-docker">Configuring Our App for Docker</h1>
+<p>Click on &ldquo;Create&rdquo;.  Azure will take a few minutes to create your cluster.</p>
 
-<p>There&rsquo;s very little to configure to get our app into a Docker container.  Here&rsquo;s a Dockerfile that
-provides most of what we need:</p>
+<blockquote>
+<p>When you create a &ldquo;real&rdquo; cluster later, you will probably want to create a service principal
+separately with a long expiry time.  The &ldquo;default service principal&rdquo; that is auto-created here
+will expire after a year, which may give your future self an unpleasant surprise 365
+days from now.</p>
+</blockquote>
 
-<pre><code class="language-Dockerfile"># src/Dockerfile
-# &quot;FROM&quot; starts us out from this Ubuntu-based image
-# https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7/Dockerfile
+<h1 id="install-the-kubernetes-tools">Install the Kubernetes Tools</h1>
 
-FROM tiangolo/uwsgi-nginx-flask:python3.7
-
-# Optionally, install some typical packages used for building and network debugging.
-RUN apt-get update
-RUN apt-get install -y  build-essential \
-                        software-properties-common \
-                        apt-transport-https \
-                        build-essential \
-                        ca-certificates \
-                        checkinstall \
-                        netcat \
-                        iputils-ping
-
-# Update to the latest PIP
-RUN pip3 install --upgrade pip
-
-# Uncommenting this will make rebuilding the image a little faster
-# RUN pip3 install Flask==1.0.2 \
-#                 flask-inputs==0.3.0 \
-#                 jsonschema==3.0.1 \
-#                 pytest==4.6.2
-
-# Our application code will exist in the /app directory,
-# so set the current working directory to that
-WORKDIR /app
-
-# Backup the default app files.  You could also delete these
-RUN mkdir bak &amp;&amp; \
-    mv main.py uwsgi.ini bak
-
-
-# Copy our files into the current working directory WORKDIR
-COPY ./ ./
-
-# install our dependencies
-RUN  pip3 install -r requirements.txt
-</code></pre>
-
-<p>This Dockerfile is the recipe for creating the image that we&rsquo;ll use to spawn a container for our app.  The <code>FROM</code> line
-tells Docker to start from an image from <a href="https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/">Docker Hub</a> that has
-versions of Python 3.7, Flask and uWSGI already installed.  It then copies the relevant parts of our app to
-the <code>/app</code> directory.  You can have a look at the <a href="https://github.com/tiangolo/uwsgi-nginx-docker/blob/master/python3.7/Dockerfile">original uwsgi-nginx Dockerfile</a>
-And the <a href="https://github.com/tiangolo/uwsgi-nginx-flask-docker/blob/master/python3.7/Dockerfile">derived flask Dockerfile</a> if
-you want to know exactly what is installed.  And the <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile reference</a> has
-more information on each of the instructions like <code>COPY</code> and <code>RUN</code>.  But the part that might not be obvious is that
-the base images already contain a <a href="https://docs.docker.com/engine/reference/builder/#entrypoint"><code>ENTRYPOINT</code></a> which
-runs flask&mdash;we don&rsquo;t need to override any startup commands ourselves.</p>
-
-<p>I&rsquo;ve added the basic Linux build tools into the image, plus some useful utilites for debugging&mdash;you could easily
-omit the <code>apt-get</code> lines if your python libraries don&rsquo;t need to be built from source.</p>
-
-<p>I also upgrade <code>pip</code> to the most recent version.  You could also pre-install some of the updated python libraries that
-you&rsquo;ll be using with pip&mdash;this saves some time when you&rsquo;re running <code>docker build</code> (or <code>docker-compose build</code>) later.</p>
-
-<p>The rest of the file creates our app in <code>/app</code> by moving the default <code>main.py</code> and config files into a directory
-called <code>/bak</code>, replacing them with our own, and then installing our python libraries from within our newly-created container.</p>
-
-<p>We want to omit the intermediate files from being copied to the deployment version of the container, and we can do
-this by creating a file called <code>src/.dockerignore</code>:</p>
-
-<pre><code># src/.dockerignore
-
-**/__pycache__
-**/*.py[cod]
-**/*$py.class
-**/*.pytest_cache
-
-# C extensions
-*.so
-
-**/*.pkl
-
-app/tmp
-app/.gitignore
-tmp/
-
-Dockerfile*
-</code></pre>
-
-<p>Lastly, we will need the file <code>src/uwsgi.ini</code> that tells uWSGI how to start the flask server:</p>
-
-<pre><code class="language-ini"># src/uwsgi.ini 
-[uwsgi]
-module = app.main
-callable = app
-</code></pre>
-
-<h2 id="build-the-container">Build the Container</h2>
-
-<p>You can use plain docker to build the app and run it:</p>
-
-<pre><code class="language-powershell">&gt; docker build -t pythondemo .
-&gt; docker run --name demo -p 80:80 pythondemo 
-</code></pre>
-
-<p>Or you can store your configuration in a <em>.yml</em> file and use <code>docker-compose</code> instead.
-<code>docker-compose</code> requires a <a href="https://docs.docker.com/compose/install/">separate installation</a>.
-It&rsquo;s not really essential for a single container like this, but it allows you to save
-configuration in a file so that you don&rsquo;t have to remember a profusion of <code>docker</code> parameters,
-and it will allow you to add more containers or mount volumes more easily later on.</p>
-
-<pre><code>&gt; docker-compose build
-&gt; docker-compose up
-
-# ... or do both
-&gt; docker-compose up --build
-
-# then stop the container
-&gt; docker-compose down
-</code></pre>
-
-<p>To use <code>docker-compose</code>, first you need to create a simple <code>docker-compose.yml</code> file in the root directory
-(i.e. above <code>src</code>) like this:</p>
-
-<pre><code class="language-yml">version: '3'
-
-services:
-
-  demo:
-    # this is the &quot;repository&quot; name.
-    image: pythondemo
-    # custom container name (rather than the generated default)
-    container_name: pythondemo
-    restart: unless-stopped
-    build: src
-    environment:
-      FLASK_ENV: &quot;development&quot;
-    ports:
-      - &quot;0.0.0.0:80:80&quot;
-</code></pre>
-
-<p>Regardless, you should now have a running Linux container, and you should now be able to access
-your app locally at <a href="http://localhost">http://localhost</a>.</p>
-
-<p>The resulting image will be what gets deployed later in Kubernetes.</p>
-
-<h1 id="useful-docker-commands">Useful Docker Commands</h1>
-
-<p>Now that you have a docker app running locally, try out some Docker commands from PowerShell:</p>
+<p>While you&rsquo;re waiting for the cluster to start up, you can go ahead and install the
+Azure and Kubernetes command line tools:</p>
 
 <ul>
-<li><code>docker images</code> - lists the Docker images that are stored locally.  You should see one
-named <code>tiangolo/uwsgi-nginx-flask</code>, as well as the image you just created.</li>
-<li><code>docker ps</code> - lists the running containers.</li>
-<li><code>docker stop &lt;name&gt;</code> - stops a running container</li>
-<li><code>docker rm &lt;name&gt;</code> - deletes a stopped container</li>
-<li><code>docker rmi &lt;name&gt;</code> - deletes an image</li>
+<li>the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest">Azure command-line tool</a> <code>az</code></li>
+<li>The <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows">Kubernetes command-line tool</a> <code>kubectl</code></li>
 </ul>
 
-<p>Note that if you don&rsquo;t have a <code>name</code> for an image or a running container, you can also substitute part of the
-hash of the container id or image id.  For example, if <code>docker ps</code> returns the following, you can
-type <code>docker stop cd0a</code> to stop the image:</p>
+<p>You can log in to azure using the <code>az</code> tool. This will cache your AKS (Azure Kubernetes
+Service) credentials for the &ldquo;demo&rdquo; cluster on Kubernetes on your local machine:</p>
 
-<pre><code>&gt; docker ps
-CONTAINER ID   IMAGE    COMMAND                  CREATED        ...     
-cd0afa472755   abc      &quot;/entrypoint.sh /sta…&quot;   40 minutes ago ...
+<pre><code class="language-bash">az login
+az aks get-credentials --resource-group KubernetesDemo --name demo
 </code></pre>
 
-<h2 id="debugging-a-docker-container">Debugging a docker container</h2>
+<h1 id="create-a-docker-registry">Create a Docker Registry</h1>
 
-<p>Sometimes the easiest way to debug your container is to log into it by starting a <code>bash</code> shell and
-poking around.  This is easy to do for a running container:</p>
+<p>You will need a place to store your docker images so that your cluster can find them.  The
+main registry for containers is <a href="https://hub.docker.com/">Docker Hub</a>, but here we&rsquo;ll create our
+own private <a href="https://azure.microsoft.com/en-ca/services/container-registry/">Container Registry</a> on
+Azure instead.</p>
 
-<pre><code class="language-powershell">docker exec -it &lt;name&gt; bash
+<p>From the <a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries">Azure Portal</a> find
+&ldquo;Container Registries&rdquo; and create a new one&mdash;we&rsquo;ll call ours <code>mydemoregistry</code>, and put it in a new resource group
+<code>ContainerRegistryDemo</code>.  The registry name must be globally unique, as it creates a url
+at <code>mydemoregistry.azurecr.io</code> that you&rsquo;ll use later to access your registry.  So you&rsquo;ll have
+to give yours a different name.</p>
+
+<p>
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/azure/create-container-registry-azure.png" alt="Create a Container Registry in the Azure Portal"/>
+    </div>
+    <a href="/images/azure/create-container-registry-azure.png" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Create a Container Registry in the Azure Portal</p>
+      </figcaption>
+  </figure>
+</div>
+
+<p>&nbsp;</p></p>
+
+<p>The defaults Azure gives you should be fine&mdash;click on &ldquo;Create&rdquo; and wait for the registry to be created.  Once it&rsquo;s created,
+click on &ldquo;Access Control (IAM) -&gt; Role Assignments&rdquo;.  You&rsquo;ll need to make sure your login has access if it doesn&rsquo;t
+already:</p>
+
+<p>
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/images/azure/add-role-assignment-azure.png" alt="Role Assignment"/>
+    </div>
+    <a href="/images/azure/add-role-assignment-azure.png" itemprop="contentUrl"></a>
+      <figcaption>
+          <p>Role Assignment</p>
+      </figcaption>
+  </figure>
+</div>
+
+<p>&nbsp;</p></p>
+
+<h1 id="log-into-the-docker-registry">Log Into the Docker Registry</h1>
+
+<p>This will log you in to your newly-created Azure Container registry:</p>
+
+<pre><code>az acr login --name mydemoregistry
 </code></pre>
 
-<p>So for our running container:</p>
+<p>Now we can take the dockerized Flask image <a href="/post/python-flask-kubernetes-3">we created from part 3</a>, tag it
+and push it to the registry.  We called our original image <code>pythondemo</code>, but in order to push it to
+the right place we need to give it a new <code>repository</code> name.</p>
 
-<pre><code class="language-powershell">&gt; docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                         NAMES
-cd0afa472755        abc                 &quot;/entrypoint.sh /sta…&quot;   About a minute ago   Up About a minute   0.0.0.0:80-&gt;80/tcp, 443/tcp   demo
-
-&gt; docker exec -it demo bash
-root@cd0afa472755:/app# ls
-
-Dockerfile  app  bak  mypkg  prestart.sh  requirements.txt  tests  uwsgi.ini
-root@cd0afa472755:/app#
+<pre><code>docker tag pythondemo mydemoregistry.azurecr.io/pythondemo:0.0.1
 </code></pre>
 
-<p><code>Ctrl-D</code> will close your shell, but keep your docker image running.</p>
+<p>The <code>0.0.1</code> <em>tag</em> that appears after the colon is optional, but we&rsquo;ll include it so we
+can keep track of hypothetical versions. (Another tagging best-practice is to tag each
+commit with the first few characters of the git commit SHA).</p>
 
-<p>There&rsquo;s a lot more to know about Docker, but this is enough to start deploying our <em>pythondemo</em> app on
-Azure Kubernetes Services in Part 4.</p>
+<p>We should now be able to push our container to the registry:</p>
+
+<pre><code>docker push mydemoregistry.azurecr.io/pythondemo:0.0.1
+</code></pre>
+
+<p>Don&rsquo;t worry if this takes a long time.  You probably noticed that it&rsquo;s pushing several
+different things in parallel&mdash;those are docker layers, and fortunately most of those
+layers will remain the same as you modify your app over time.  That means that future
+pushes will only incrementally send the layers that contain your changes, and the
+main Docker layers like the large Ubuntu distribution will already be there.</p>
+
+<p>We&rsquo;re almost ready to deploy this thing&mdash;we just need to give our cluster permission to access
+the container registry.  (If you notice an error later in <code>kubectl logs</code> that says <em>trying and failing to pull image</em>, this
+is probably the reason.)  This script to set the permissions is from <a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks">docs.microsoft.com</a>
+and adapted here from bash to PowerShell (!):</p>
+
+<pre><code class="language-powershell"># PowerShell
+$AKS_RESOURCE_GROUP=&quot;KubernetesDemo&quot;
+$AKS_CLUSTER_NAME=&quot;demo&quot;
+$ACR_RESOURCE_GROUP=&quot;ContainerRegistryDemo&quot;
+$ACR_NAME=&quot;mydemoregistry&quot;
+
+# Get the id of the service principal configured for AKS
+$CLIENT_ID=(az aks show --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER_NAME --query &quot;servicePrincipalProfile.clientId&quot; --output tsv)
+
+# Get the ACR registry resource id
+$ACR_ID=(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --query &quot;id&quot; --output tsv)
+
+# Create Role Assignment
+az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+</code></pre>
+
+<p>If you prefer, you could also use the &ldquo;Add Role assignment&rdquo; dialogue in the Portal to
+assign &ldquo;Reader&rdquo; permissions to the Demo-cluster security principal that we
+created when we created the cluster.</p>
+
+<h1 id="deploy">Deploy</h1>
+
+<p>Kubernetes deployments are usually done with <code>YML</code> files.  We&rsquo;ll need to create a simple one to get our
+flask app online:</p>
+
+<pre><code class="language-yaml"># deploy-demo.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-python-flask-deployment
+spec:
+  selector:
+    matchLabels:
+      app: demo-python-flask
+  template:
+    metadata:
+      labels:
+        app: demo-python-flask
+    spec:
+      containers:
+        - name: demo-python-flask
+          image: mydemoregistry.azurecr.io/pythondemo:0.0.1
+          imagePullPolicy: Always
+          env:
+            - name: FLASK_ENV
+              value: &quot;development&quot;
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pythondemo-flask-service
+spec:
+  selector:
+    app: demo-python-flask
+  type: LoadBalancer
+  # uncomment this if you have preallocated a static IP address:
+  # loadBalancerIP: a.b.c.d
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  loadBalancerSourceRanges:
+    # replace e.f.g.h with your public IP address: https://www.whatismyip.com/
+    # to limit access via the firewall to your network's public ip address.
+    - e.f.g.h/32
+</code></pre>
+
+<p>This is divided into two sections&mdash;a <strong>Deployment</strong> and a <strong>Service</strong>. In Kubernetes,
+a deployment is a description of how to roll out <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod/"><strong>pods</strong></a> that will run your
+containers.  A <a href="https://kubernetes.io/docs/concepts/services-networking/service/"><strong>service</strong></a> is a description of how your pods will be accessible</p>
+
+<h3 id="deployment">Deployment</h3>
+
+<p>Our deployment defines a <code>selector</code> that it will use to figure out which pods belong to it&mdash;in
+this case it&rsquo;s <code>app = demo-python-flask</code>.   We&rsquo;ll pull the docker image <code>mydemoregistry.azurecr.io/pythondemo:0.0.1</code> from
+our registry, set an environment variable, and open up port 80.</p>
+
+<h3 id="service">Service</h3>
+
+<p>If we were to deploy this without an accompanying service, our flask serice would be
+available to other pods within in our cluster on port 80.  But our goal here is to make our
+app available to the rest of the internet.  To do that, we&rsquo;ll tell Kubernetes to provision an
+IP address and publish our service to the internet behind a load balancer.</p>
+
+<p>We could specify a particular static IP address by explicitly setting a <code>loadBalancerIP</code>, but in this demo
+we will let Azure assign one for us.</p>
+
+<p>The service also uses the same selector <code>app=demo-python-flask</code> to find pods to publish.
+We&rsquo;ll publish this service with the name &ldquo;pythondemo-flask-service&rdquo; so we can
+refer to it later in the command line via <code>kubectl</code>.</p>
+
+<p>Since we aren&rsquo;t really ready to let just anyone use our service, we&rsquo;ll configure the firewall
+to limit access to our own IP address&mdash;so you should replace <code>e.f.g.h</code> with your own
+ip4 address before you deploy the service.</p>
+
+<h1 id="ship-it">Ship It!</h1>
+
+<pre><code class="language-powershell">kubectl apply -f ./deploy-demo.yml
+</code></pre>
+
+<p>Let&rsquo;s see where Kubernetes deployed our app:</p>
+
+<pre><code class="language-powershell">&gt; kubectl get service pythondemo-flask-service
+NAME                       TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
+pythondemo-flask-service   LoadBalancer   10.0.16.114   93.184.216.34   80:32746/TCP   1m
+</code></pre>
+
+<p>If you type this before the machine is available, you&rsquo;ll see &ldquo;pending&rdquo; under EXTERNAL-IP.  But
+we waited enough time, so we can now browse to our service at <a href="http://93.184.216.34">http://93.184.216.34</a>.  (Note that
+it may take a few moments before it becomes fully available.)</p>
+
+<pre><code class="language-json">{
+  &quot;message&quot;: &quot;It Works&quot;
+}
+</code></pre>
+
+<p>Before we shut things down, let&rsquo;s take a <a href="/post/python-flask-kubernetes-5">quick tour of <code>kubectl</code></a> in Part 5.</p>
 
         
 
@@ -518,49 +563,49 @@ Azure Kubernetes Services in Part 4.</p>
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;text=Dockerizing%20Flask%20Microservices%20for%20Deployment&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-4%2f&amp;text=Set%20up%20Kubernetes%20on%20Azure&amp;via=michaelbridge" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f" target="_blank" title="Share on Google Plus">
+        <a href="//plus.google.com/share?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-4%2f" target="_blank" title="Share on Google Plus">
           <i class="fab fa-google-plus"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-4%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;title=Dockerizing%20Flask%20Microservices%20for%20Deployment" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-4%2f&amp;title=Set%20up%20Kubernetes%20on%20Azure" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;title=Dockerizing%20Flask%20Microservices%20for%20Deployment" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-4%2f&amp;title=Set%20up%20Kubernetes%20on%20Azure" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;title=Dockerizing%20Flask%20Microservices%20for%20Deployment" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-4%2f&amp;title=Set%20up%20Kubernetes%20on%20Azure" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-3%2f&amp;description=Dockerizing%20Flask%20Microservices%20for%20Deployment" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fmikebridge.github.io%2fpost%2fpython-flask-kubernetes-4%2f&amp;description=Set%20up%20Kubernetes%20on%20Azure" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -581,12 +626,12 @@ Azure Kubernetes Services in Part 4.</p>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-2/" data-toggle="tooltip" data-placement="top" title="Flask JSON Input Validation">&larr; Previous Post</a>
+              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-3/" data-toggle="tooltip" data-placement="top" title="Dockerizing Flask Microservices for Deployment">&larr; Previous Post</a>
             </li>
           
           
             <li class="next">
-              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-4/" data-toggle="tooltip" data-placement="top" title="Set up Kubernetes on Azure">Next Post &rarr;</a>
+              <a href="https://mikebridge.github.io/post/python-flask-kubernetes-5/" data-toggle="tooltip" data-placement="top" title="Introduction to Kubernetes: kubectl">Next Post &rarr;</a>
             </li>
           
         </ul>
@@ -597,12 +642,12 @@ Azure Kubernetes Services in Part 4.</p>
         
           
           <div class="disqus-comments">                  
-            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/python-flask-kubernetes-3">comments</span></button>
+            <button id="show-comments" class="btn btn-default" type="button">Show <span class="disqus-comment-count" data-disqus-url="https://mikebridge.github.io/post/python-flask-kubernetes-4">comments</span></button>
             <div id="disqus_thread"></div>
 
             <script type="text/javascript">
               var disqus_config = function () {
-              this.page.url = 'https:\/\/mikebridge.github.io\/post\/python-flask-kubernetes-3';
+              this.page.url = 'https:\/\/mikebridge.github.io\/post\/python-flask-kubernetes-4';
             };
 
           </script>
