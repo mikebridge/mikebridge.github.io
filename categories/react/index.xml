@@ -80,17 +80,6 @@ performs an ajax call.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>I18N in React with Typescript &amp; React-Intl</title>
-      <link>https://mikebridge.github.io/post/typescript-i18n-react-intl/</link>
-      <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
-      <author>mike@bridgecanada.com (Mike Bridge)</author>
-      <guid>https://mikebridge.github.io/post/typescript-i18n-react-intl/</guid>
-      <description>Earlier this week I went in search of a React-friendly i18n library and I spent some time experimenting with react-intl. React-intl is based on FormatJS, which is a library for localizing numbers, dates, and strings. My impression is that react-intl is a fairly small, practical library that is written to make i18n unobtrusive for developers.
- Edit, May 1, 2017
-Today I&amp;rsquo;m wondering whether it may have been a mistake to adopt react-intl over the alternatives.</description>
-    </item>
-    
-    <item>
       <title>JWT Tokens, SignalR and Single Page Applications</title>
       <link>https://mikebridge.github.io/post/identityserver4-signalr/</link>
       <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>

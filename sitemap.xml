@@ -88,11 +88,6 @@
   </url>
   
   <url>
-    <loc>https://mikebridge.github.io/post/typescript-i18n-react-intl/</loc>
-    <lastmod>2017-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://mikebridge.github.io/post/intellij-react-native/</loc>
     <lastmod>2017-03-04T00:00:00+00:00</lastmod>
   </url>
@@ -239,12 +234,6 @@
   </url>
   
   <url>
-    <loc>https://mikebridge.github.io/categories/i18n/</loc>
-    <lastmod>2017-03-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://mikebridge.github.io/categories/identityserver4/</loc>
     <lastmod>2017-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -252,7 +241,7 @@
   
   <url>
     <loc>https://mikebridge.github.io/categories/intellij/</loc>
-    <lastmod>2017-03-21T00:00:00+00:00</lastmod>
+    <lastmod>2017-03-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
